@@ -1,3 +1,4 @@
+
 <header class="header">
    
    <section class="flex">
@@ -17,14 +18,31 @@
       </div>
 
       <div class="profile">
-         <img src="images/pic-1.jpg" class="image" alt="">
-         <h3 class="name">shaikh anas</h3>
-         <p class="role">studen</p>
-         <a href="profile.html" class="btn">view profile</a>
-         <div class="flex-btn">
+         
+         <?php
+            $sql = "select * from tb_tai_khoan where id_taikhoan = '$id_taikhoan'";
+            $query = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($query);
+            if($row > 0){
+
+         ?>
+         <img src="uploaded_files/<?= $row['hinh_anh']; ?>" alt="">
+         <h3><?= $row['ten_hien_thi']; ?></h3>
+         <span>student</span>
+         <a href="home.php?title=profile" class="btn">view profile</a>
+         
+         <a href="components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
+         <?php
+            }else{
+         ?>
+         <h3>please login or register</h3>
+          <div class="flex-btn">
             <a href="home.php?title=login" class="option-btn">login</a>
             <a href="home.php?title=register" class="option-btn">register</a>
          </div>
+         <?php
+            }
+         ?>
       </div>
 
    </section>

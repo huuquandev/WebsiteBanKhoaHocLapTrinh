@@ -1,18 +1,35 @@
-<section class="home-grid">
+
+<section class="quick-select">
 
    <h1 class="heading">quick options</h1>
 
-   <div class="box-container">
+<div class="box-container">
 
-      <div class="box">
-         <h3 class="title">likes and comments</h3>
-         <p class="likes">total likes : <span>25</span></p>
-         <a href="#" class="inline-btn">view likes</a>
-         <p class="likes">total comments : <span>12</span></p>
-         <a href="#" class="inline-btn">view comments</a>
-         <p class="likes">saved playlists : <span>4</span></p>
-         <a href="#" class="inline-btn">view playlists</a>
-      </div>
+         <?php
+            if($id_taikhoan != ''){
+         ?>
+         <div class="box">
+            <h3 class="title">likes and comments</h3>
+            <p>total likes : <span><?= $total_likes = 0; ?></span></p>
+            <a href="likes.php" class="inline-btn">view likes</a>
+            <p>total comments : <span><?= $total_comments = 0; ?></span></p>
+            <a href="comments.php" class="inline-btn">view comments</a>
+            <p>saved playlist : <span><?= $total_bookmarked = 0; ?></span></p>
+            <a href="bookmark.php" class="inline-btn">view bookmark</a>
+         </div>
+         <?php
+            }else{ 
+         ?>
+         <div class="box" style="text-align: center;">
+            <h3 class="title">please login or register</h3>
+            <div class="flex-btn" style="padding-top: .5rem;">
+               <a href="home.php?title=login" class="option-btn">login</a>
+               <a href="home.php?title=register" class="option-btn">register</a>
+            </div>
+         </div>
+         <?php
+         }
+         ?>
 
       <div class="box">
          <h3 class="title">top categories</h3>
