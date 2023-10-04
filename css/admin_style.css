@@ -95,11 +95,6 @@ section{
    display: inline-block;
 }
 
-.btn,
-.inline-btn{
-   background-color: var(--main-color);
-}
-
 .option-btn,
 .inline-option-btn{
    background-color: var(--oragen);

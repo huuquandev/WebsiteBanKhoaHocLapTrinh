@@ -9,13 +9,12 @@ if(isset($_POST['submit'])){
    $username =  trim($_POST['username']);
    $pass = trim($_POST['pass']);
    $cfpass = trim($_POST['cfpass']);
-   $phone =  trim($_POST['phone']);
+   $phone = $_POST['phone'];
    $bdate = $_POST['bdate'];
    $doi_tuong = 1;
-   $gioi_tinh = $_POST['sex'];;
-   $image = $_FILES['image']['name'];
+   $gioi_tinh = $_POST['sex'];
 
-   if(register($username, $name, $pass, $cfpass, $phone, $bdate, $doi_tuong, $gioi_tinh, $image) == false){
+   if(register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh) == false){
       $message[] = 'Tài khoản đã tồn tại!';
    }else if($pass != $cfpass){
       $message[] = 'Mật khẩu không trùng nhau!';

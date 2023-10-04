@@ -32,17 +32,19 @@
         return false;
     }
     //register
-    function register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh, $image){
+    function register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
         GLOBAL $conn;
         $filter_id = unique_id();
         $filter_name = mysqli_real_escape_string($conn, $name);
-        $filter_username = mysqli_real_escape_string($conn, $_POST['username']);
+        $filter_username = mysqli_real_escape_string($conn, $username);
         $filter_pass = mysqli_real_escape_string($conn, $pass);
         $filter_phone = mysqli_real_escape_string($conn, $phone);
         $filter_bdate = mysqli_real_escape_string($conn, $bdate);
-        $filter_doi_tuong = mysqli_real_escape_string($conn, $doi_tuong);;
-        $filter_gioi_tinh = mysqli_real_escape_string($conn, $gioi_tinh);;
-        $filter_image = mysqli_real_escape_string($conn, $image);
+        $filter_doi_tuong = mysqli_real_escape_string($conn, $doi_tuong);
+        $filter_gioi_tinh = mysqli_real_escape_string($conn, $gioi_tinh);
+        
+        $image = $_FILES['image']['name'];
+        $image = mysqli_real_escape_string($conn, $image);
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         $rename = unique_id().'.'.$ext;
         $image_size = $_FILES['image']['size'];
@@ -55,7 +57,7 @@
             return false;
         } else{
             $sql = "insert into tb_tai_khoan (tai_khoan, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
-            values('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$filter_image')";
+            values('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
             $query = mysqli_query($conn, $sql);
             move_uploaded_file($image_tmp_name, $image_folder);
             return true;

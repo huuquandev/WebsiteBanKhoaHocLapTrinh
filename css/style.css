@@ -523,6 +523,7 @@ section{
 }
 
 .courses .box-container .box{
+   position: relative;
    border-radius: .5rem;
    background-color: var(--white);
    padding: 2rem;
@@ -1445,4 +1446,14 @@ section{
 
 .quick-select .box-container .box .flex a:hover span{
    color: var(--white)  ;
+}
+
+.icon_courses {
+   position: absolute;
+   top: -0.9rem;
+   right: 0.1rem;
+}
+.icon_courses a {
+   padding: .5rem 1.5rem;
+   font-size: 1.5rem;
 }
