@@ -28,7 +28,7 @@
          </div>
          <h3 class="title">complete HTML tutorial</h3>
          <div class="flex-content">
-            <a href="home.php?title=playlist" class="inline-btn" style="back">view playlist</a>
+            <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
          </div>
 
       </div>
