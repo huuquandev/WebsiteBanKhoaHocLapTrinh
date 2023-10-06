@@ -1,10 +1,10 @@
-<section class="addplaylist">
+<section class="editplaylist">
 
-   <h1 class="heading">Thêm bài giảng</h1>
+   <h1 class="heading">Sửa bài giảng</h1>
 
     <section class="form-container">
 
-        <form class="addplaylist" action="" method="post" enctype="multipart/form-data">
+        <form class="register" action="" method="post" enctype="multipart/form-data">
 
         <h3>Thông tin bài giảng</h3>
         <p>Tên bài giảng <span>*</span></p>
@@ -19,7 +19,7 @@
         <textarea id="mota_baigiang" name="mota_baigiang" class="box">
 
         </textarea>
-        <input type="submit" name="submit" value="Thêm" class="btn">
+        <input type="submit" name="submit" value="Lưu lại" class="btn">
 
         </form>
 

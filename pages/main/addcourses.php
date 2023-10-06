@@ -4,7 +4,7 @@
 
     <section class="form-container">
 
-        <form class="register" action="" method="post" enctype="multipart/form-data">
+        <form class="addcourses" action="" method="post" enctype="multipart/form-data">
         <h3>Thông tin khóa học</h3>
         <div class="flex">
             <div class="col">

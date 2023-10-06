@@ -23,6 +23,14 @@
                     include("main/playlist.php");
                 }else if($tam == "watch-video"){
                     include("main/watch-video.php");
+                }if($tam == "addcourses"){
+                    include("main/addcourses.php");
+                }if($tam == "editcourses"){
+                    include("main/editcourses.php");
+                }if($tam == "addplaylist"){
+                    include("main/addplaylist.php");
+                }if($tam == "editplaylist"){
+                    include("main/editplaylist.php");
                 }
                 
             }else{

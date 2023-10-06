@@ -708,7 +708,7 @@ section{
    position: relative;
 }
 
-.playlist-videos .box-container .box i{
+.playlist-videos .box-container .box .fa-play{
    position: absolute;
    top: 2rem; left: 2rem; right: 2rem;
    height: 20rem;
@@ -722,7 +722,7 @@ section{
    display: none;
 }
 
-.playlist-videos .box-container .box:hover i{
+.playlist-videos .box-container .box:hover .fa-play{
    display: flex;
 }
 
@@ -1456,4 +1456,19 @@ section{
 .icon_courses a {
    padding: .5rem 1.5rem;
    font-size: 1.5rem;
+}
+.form-container .addcourses {
+   width: 80rem;
+}
+.form-container .editcourses {
+   width: 80rem;
+}
+.form-container .addplaylist {
+   width: 80rem;
+}
+.flex-option a{
+   margin: 5px;
+}
+.flex-option button{
+   margin: 5px;
 }

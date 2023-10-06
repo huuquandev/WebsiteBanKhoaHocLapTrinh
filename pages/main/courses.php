@@ -4,15 +4,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;">
-    our courses       
-      <a href="home.php?title=register" class="btn" style="width: auto; background: green;">Thêm khóa học</a>
+    Khóa học       
+    <div class="flex-option" style="display: flex;" >
+         <button href="home.php?title=editcourses" class="btn" id="btnEdit" style="width: auto; background: orange;">Chỉnh sửa</button>
+         <a href="home.php?title=addcourses" class="btn" id="btnAdd" style="width: auto; background: green;">Thêm</a>
+      </div> 
    </h1>
    
    <div class="box-container">  
       <div class="box">
-            <div class="icon_courses">
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
+            <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+               <a href="" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">  
             <img src="images/pic-2.jpg" alt="">
@@ -34,8 +37,8 @@
       </div>
 
       <div class="box">
-         <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+         <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -54,8 +57,8 @@
       </div>
 
       <div class="box">
-         <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+         <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -74,8 +77,8 @@
       </div>
 
       <div class="box">
-         <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+         <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -94,8 +97,8 @@
       </div>
 
       <div class="box"> 
-         <div class="icon_courses" >
-                  <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+         <div class="icon_courses" style="display: none;">
+                  <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                   <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
                </div>
             <div class="tutor">
@@ -114,8 +117,8 @@
          </div>
 
       <div class="box">
-         <div class="icon_courses" >
-                  <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+         <div class="icon_courses" style="display: none;">
+                  <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                   <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
                </div>
             <div class="tutor">
@@ -133,9 +136,9 @@
             <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
          </div>
 
-      <div class="box">
-      <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+      <div class="box" style="display: none;">
+         <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -154,8 +157,8 @@
       </div>
 
       <div class="box">
-      <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+      <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -174,8 +177,8 @@
       </div>
 
       <div class="box">
-      <div class="icon_courses" >
-               <a href="#" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+      <div class="icon_courses" style="display: none;">
+               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
          <div class="tutor">
@@ -196,3 +199,40 @@
    </div>
 
 </section>
+<script>
+   //Hiển thị thêm sửa xóa
+   var btnEdit = document.getElementById("btnEdit");
+   var btnAdd = document.getElementById("btnAdd");
+   var iconCourses = document.querySelectorAll(".icon_courses");
+   var isEditing = false;
+
+   function toggleEditState() {
+      if (isEditing) {
+         btnAdd.style.display = "block";
+         // Duyệt qua từng phần tử trong danh sách iconCourses
+         iconCourses.forEach(function (course) {
+            course.style.display = "none";
+         });
+         btnEdit.textContent = "Chỉnh sửa";
+         btnEdit.style.background = "orange";
+      } else {
+         btnAdd.style.display = "none";
+         // Duyệt qua từng phần tử trong danh sách iconCourses
+         iconCourses.forEach(function (course) {
+            course.style.display = "block";
+         });
+         btnEdit.textContent = "Hủy";
+         btnEdit.style.background = "red";
+      }
+      isEditing = !isEditing;
+   }
+
+   btnEdit.addEventListener("click", toggleEditState);
+</script>
+
+
+
+
+
+
+
