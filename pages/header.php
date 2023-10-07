@@ -3,9 +3,9 @@
    
    <section class="flex">
 
-      <a href="home.html" class="logo">Educa.</a>
+      <a href="home.php" class="logo">Educa.</a>
 
-      <form action="search.html" method="post" class="search-form">
+      <form action="home.php?title=search" method="post" class="search-form">
          <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
          <button type="submit" class="fas fa-search"></button>
       </form>

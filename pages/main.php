@@ -31,6 +31,14 @@
                     include("main/addplaylist.php");
                 }if($tam == "editplaylist"){
                     include("main/editplaylist.php");
+                }if($tam == "search"){
+                    include("main/search.php");
+                }if($tam == "search_post"){
+                    include("main/search_post.php");
+                }if($tam == "search_video"){
+                    include("main/search_video.php");
+                }if($tam == "search_courses"){
+                    include("main/search_courses.php");
                 }
                 
             }else{
