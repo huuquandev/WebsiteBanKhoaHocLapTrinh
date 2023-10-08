@@ -19,7 +19,7 @@
                     include("main/profile.php");
                 }else if($tam == "teacher_profile"){
                     include("main/teacher_profile.php");
-                }else if($tam == "playlist"){
+                }else if($tam == "detail"){
                     include("main/playlist.php");
                 }else if($tam == "watch-video"){
                     include("main/watch-video.php");
@@ -39,6 +39,8 @@
                     include("main/search_video.php");
                 }if($tam == "search_courses"){
                     include("main/search_courses.php");
+                }if($tam == "post"){
+                    include("main/post.php");
                 }
                 
             }else{

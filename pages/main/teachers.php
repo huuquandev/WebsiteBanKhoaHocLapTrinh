@@ -1,7 +1,7 @@
 
 <section class="teachers">
 
-   <h1 class="heading">expert teachers</h1>
+   <h1 class="heading">Người đăng</h1>
 
    <form action="" method="post" class="search-tutor">
       <input type="text" name="search_box" placeholder="search tutors..." required maxlength="100">

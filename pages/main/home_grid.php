@@ -21,10 +21,10 @@
             }else{ 
          ?>
          <div class="box" style="text-align: center;">
-            <h3 class="title">please login or register</h3>
+            <h3 class="title">Vui lòng đăng nhập hoặc đăng ký</h3>
             <div class="flex-btn" style="padding-top: .5rem;">
-               <a href="home.php?title=login" class="option-btn">login</a>
-               <a href="home.php?title=register" class="option-btn">register</a>
+               <a href="home.php??title=login" class="option-btn">Đăng nhập</a>
+               <a href="home.php??title=register" class="option-btn">Đăng kí</a>
             </div>
          </div>
          <?php
@@ -66,10 +66,66 @@
    </div>
 
 </section>
+<section class="courses">
+
+<h1 class="heading">Khoá học Pro</h1>
+
+<div class="box-container">
+
+   <div class="box">
+      <div class="tutor">
+         <img src="images/pic-2.jpg" alt="">
+         <div class="info">
+            <h3>john deo</h3>
+            <span>21-10-2022</span>
+         </div>
+      </div>
+      <div class="thumb">
+         <img src="images/thumb-1.png" alt="">
+         <span>10 videos</span>
+      </div>
+      <h3 class="title">complete HTML tutorial</h3>
+      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
+   </div>
+
+   <div class="box">
+      <div class="tutor">
+         <img src="images/pic-3.jpg" alt="">
+         <div class="info">
+            <h3>john deo</h3>
+            <span>21-10-2022</span>
+         </div>
+      </div>
+      <div class="thumb">
+         <img src="images/thumb-2.png" alt="">
+         <span>10 videos</span>
+      </div>
+      <h3 class="title">complete CSS tutorial</h3>
+      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
+   </div>
+
+   <div class="box">
+      <div class="tutor">
+         <img src="images/pic-4.jpg" alt="">
+         <div class="info">
+            <h3>john deo</h3>
+            <span>21-10-2022</span>
+         </div>
+      </div>
+      <div class="thumb">
+         <img src="images/thumb-3.png" alt="">
+         <span>10 videos</span>
+      </div>
+      <h3 class="title">complete JS tutorial</h3>
+      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
+   </div>
+
+</div>
+</section>
 
 <section class="courses">
 
-   <h1 class="heading">our courses</h1>
+   <h1 class="heading">Khoá học miễn phí</h1>
 
    <div class="box-container">
 
@@ -86,7 +142,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete HTML tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
       </div>
 
       <div class="box">
@@ -102,7 +158,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete CSS tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
       </div>
 
       <div class="box">
@@ -118,7 +174,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete JS tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
       </div>
 
       <div class="box">
@@ -134,7 +190,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
       </div>
 
       <div class="box">
@@ -150,38 +206,137 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete JQuery tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
       </div>
 
-      <div class="box">
+
+   </div>
+
+
+</section>
+<section class="courses">
+
+   <h1 class="heading">Bài viết nổi bật</h1>
+
+   <div class="box-container">
+   <div class="box">
          <div class="tutor">
-            <img src="images/pic-7.jpg" alt="">
+            <img src="images/pic-2.jpg" alt="">
             <div class="info">
                <h3>john deo</h3>
                <span>21-10-2022</span>
             </div>
          </div>
          <div class="thumb">
-            <img src="images/thumb-6.png" alt="">
+            <img src="images/thumb-1.png" alt="">
             <span>10 videos</span>
          </div>
-         <h3 class="title">complete SASS tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
+         <h3 class="title">complete HTML tutorial</h3>
+         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
       </div>
 
-   </div>
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-3.jpg" alt="">
+            <div class="info">
+               <h3>john deo</h3>
+               <span>21-10-2022</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/thumb-2.png" alt="">
+            <span>10 videos</span>
+         </div>
+         <h3 class="title">complete CSS tutorial</h3>
+         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
+      </div>
 
-   <div class="more-btn">
-      <a href="home.php?title=courses" class="inline-option-btn">view all courses</a>
-      <?php
-            if(isset($_GET['title'])){
-                $tam = $_GET['title'];
-                if($tam == "courses"){ 
-                    include("main/courses.php");
-                }
-            }
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-4.jpg" alt="">
+            <div class="info">
+               <h3>john deo</h3>
+               <span>21-10-2022</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/thumb-3.png" alt="">
+            <span>10 videos</span>
+         </div>
+         <h3 class="title">complete JS tutorial</h3>
+         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-5.jpg" alt="">
+            <div class="info">
+               <h3>john deo</h3>
+               <span>21-10-2022</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/thumb-4.png" alt="">
+            <span>10 videos</span>
+         </div>
+         <h3 class="title">complete Boostrap tutorial</h3>
+         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="images/pic-6.jpg" alt="">
+            <div class="info">
+               <h3>john deo</h3>
+               <span>21-10-2022</span>
+            </div>
+         </div>
+         <div class="thumb">
+            <img src="images/thumb-5.png" alt="">
+            <span>10 videos</span>
+         </div>
+         <h3 class="title">complete JQuery tutorial</h3>
+         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
+      </div>
       
-        ?> 
    </div>
+</section>
+<section class="playlist-videos">
 
+   <h1 class="heading">Video nổi bật</h1>
+
+   <div class="box-container">
+      <div class="box">
+            <a href="home.php??title=watch-video">   
+               <i class="fas fa-play"></i>
+               <img src="images/post-1-1.png" alt="">
+               <h3>complete HTML tutorial (part 01)</h3>
+            </a>
+         
+      </div>
+      <div class="box">
+            <a href="home.php??title=watch-videol">
+               <i class="fas fa-play"></i>
+               <img src="images/post-1-2.png" alt="">
+               <h3>complete HTML tutorial (part 02)</h3>
+            </a>   
+         
+      </div>
+      <div class="box">
+            <a href="home.php??title=watch-video">
+               <i class="fas fa-play"></i>
+               <img src="images/post-1-3.png" alt="">
+               <h3>complete HTML tutorial (part 03)</h3>
+            </a> 
+         
+      </div>
+      <div class="box">
+            <a href="home.php??title=watch-video">
+               <i class="fas fa-play"></i>
+               <img src="images/post-1-4.png" alt="">
+               <h3>complete HTML tutorial (part 04)</h3>
+            </a>
+         
+      </div>     
+   </div>
 </section>
