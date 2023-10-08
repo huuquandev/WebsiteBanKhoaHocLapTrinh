@@ -69,7 +69,7 @@ if(isset($message)){
       <input type="date" name="bdate" maxlength="20" required class="box">
       <p>Ảnh đại diện <span>*</span></p>
       <input type="file" name="image" accept="image/*" class="box">
-      <p class="link">Bạn đã có tài khoản? <a href="login.php">Đăng nhập ngay</a></p>
+      <p class="link">Bạn đã có tài khoản? <a href="home.php?title=login">Đăng nhập ngay</a></p>
       <input type="submit" name="submit" value="Đăng ký ngay" class="btn">
    </form>
 

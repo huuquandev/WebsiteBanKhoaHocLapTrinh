@@ -6,7 +6,7 @@
     justify-content: space-between;">
     Khóa học       
     <div class="flex-option" style="display: flex;" >
-         <button href="home.php?title=editcourses" class="btn" id="btnEdit" style="width: auto; background: orange;">Chỉnh sửa</button>
+         <button class="btn" id="btnEdit" style="width: auto; background: orange;">Chỉnh sửa</button>
          <a href="home.php?title=addcourses" class="btn" id="btnAdd" style="width: auto; background: green;">Thêm</a>
       </div> 
    </h1>

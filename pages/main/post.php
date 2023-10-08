@@ -1,12 +1,16 @@
 
 <section class="posts">
 
-   <h1 class="heading">Bài viết</h1>
-
-   <form action="" method="post" class="search-tutor">
-      <input type="text" name="search_box" placeholder="Tìm kiếm bài viết..." required maxlength="100">
-      <button type="submit" class="fas fa-search" name="search_tutor"></button>
-   </form>
+<h1 class="heading" style="
+   position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;">
+    Khóa học       
+    <div class="flex-option" style="display: flex;" >
+         <a href="home.php?title=addpost" class="btn" id="btnAdd" style="width: auto; background: green;">Đăng bài viết</a>
+      </div> 
+   </h1>
 
    <div class="box-container">
         <div class="box">
@@ -32,13 +36,13 @@
             </div>
             <div class="footer_post">
                 <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-                <div class="icon_post" style="display: flex;">
-                    <div>
-                        <button><i class="fa-solid fa-thumbs-up"></i></button>
+                <div class=" icon_post title title" style="display: flex; font-size: 1.3rem;">
+                    <div >
+                        <a><i class="fa-solid fa-thumbs-up"></i></a>
                         <span>25.124</span>
                     </div>
                     <div>
-                        <button><i class="fa-solid fa-comment"></i></button>
+                        <a><i class="fa-solid fa-comment"></i></a>
                         <span>25.124</span>
                     </div>
                 </div>
@@ -69,13 +73,13 @@
             </div>
             <div class="footer_post">
                 <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-                <div class="icon_post" style="display: flex;">
+                <div class=" icon_post title" style="display: flex; font-size: 1.3rem;">
                     <div>
-                        <button><i class="fa-solid fa-thumbs-up"></i></button>
+                        <a><i class="fa-solid fa-thumbs-up"></i></a>
                         <span>25.124</span>
                     </div>
                     <div>
-                        <button><i class="fa-solid fa-comment"></i></button>
+                        <a><i class="fa-solid fa-comment"></i></a>
                         <span>25.124</span>
                     </div>
                 </div>
@@ -106,13 +110,13 @@
             </div>
             <div class="footer_post">
                 <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-                <div class="icon_post" style="display: flex;">
+                <div class=" icon_post title" style="display: flex; font-size: 1.3rem;">
                     <div>
-                        <button><i class="fa-solid fa-thumbs-up"></i></button>
+                        <a><i class="fa-solid fa-thumbs-up"></i></a>
                         <span>25.124</span>
                     </div>
                     <div>
-                        <button><i class="fa-solid fa-comment"></i></button>
+                        <a><i class="fa-solid fa-comment"></i></a>
                         <span>25.124</span>
                     </div>
                 </div>
@@ -143,13 +147,13 @@
             </div>
             <div class="footer_post">
                 <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-                <div class="icon_post" style="display: flex;">
+                <div class=" icon_post title" style="display: flex; font-size: 1.3rem;">
                     <div>
-                        <button><i class="fa-solid fa-thumbs-up"></i></button>
+                        <a><i class="fa-solid fa-thumbs-up"></i></a>
                         <span>25.124</span>
                     </div>
                     <div>
-                        <button><i class="fa-solid fa-comment"></i></button>
+                        <a><i class="fa-solid fa-comment"></i></a>
                         <span>25.124</span>
                     </div>
                 </div>
@@ -180,13 +184,13 @@
             </div>
             <div class="footer_post">
                 <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-                <div class="icon_post" style="display: flex;">
+                <div class=" icon_post title" style="display: flex; font-size: 1.3rem;">
                     <div>
-                        <button><i class="fa-solid fa-thumbs-up"></i></button>
+                        <a><i class="fa-solid fa-thumbs-up"></i></a>
                         <span>25.124</span>
                     </div>
                     <div>
-                        <button><i class="fa-solid fa-comment"></i></button>
+                        <a><i class="fa-solid fa-comment"></i></a>
                         <span>25.124</span>
                     </div>
                 </div>
