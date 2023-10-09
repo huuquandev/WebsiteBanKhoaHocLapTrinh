@@ -41,6 +41,10 @@
                     include("main/search_courses.php");
                 }if($tam == "post"){
                     include("main/post.php");
+                }else if($tam == "postdetail"){
+                    include("main/postdetail.php");
+                }else if($tam == "addpost"){
+                    include("main/addpost.php");
                 }
                 
             }else{
