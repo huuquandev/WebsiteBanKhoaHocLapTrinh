@@ -1,6 +1,6 @@
 <section class="playlist-details">
 
-   <h1 class="heading">Chi tiết bài giảng</h1>
+   <h1 class="heading">Chi tiết Khóa học</h1>
 
    <div class="row">
 
@@ -53,7 +53,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-         <a href="home.php?title=watch-video">   
+         <a href="home.php?title=detaillesson">   
             <i class="fas fa-play"></i>
             <img src="images/post-1-1.png" alt="">
             <h3>complete HTML tutorial (part 01)</h3>
@@ -65,7 +65,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-         <a href="home.php?title=watch-videol">
+         <a href="home.php?title=detaillessonl">
             <i class="fas fa-play"></i>
             <img src="images/post-1-2.png" alt="">
             <h3>complete HTML tutorial (part 02)</h3>
@@ -77,7 +77,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-         <a href="home.php?title=watch-video">
+         <a href="home.php?title=detaillesson">
             <i class="fas fa-play"></i>
             <img src="images/post-1-3.png" alt="">
             <h3>complete HTML tutorial (part 03)</h3>
@@ -89,7 +89,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-         <a href="home.php?title=watch-video">
+         <a href="home.php?title=detaillesson">
             <i class="fas fa-play"></i>
             <img src="images/post-1-4.png" alt="">
             <h3>complete HTML tutorial (part 04)</h3>
@@ -101,7 +101,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-         <a href="home.php?title=watch-video">
+         <a href="home.php?title=detaillesson">
             <i class="fas fa-play"></i>
             <img src="images/post-1-5.png" alt="">
             <h3>complete HTML tutorial (part 05)</h3>
@@ -113,7 +113,7 @@
                <a href="home.php?title=editplaylist" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
          </div>
-            <a href="home.php?title=watch-video">
+            <a href="home.php?title=detaillesson">
             <i class="fas fa-play"></i>
             <img src="images/post-1-6.png" alt="">
             <h3>complete HTML tutorial (part 06)</h3>

@@ -31,7 +31,7 @@
          </div>
          <h3 class="title">complete HTML tutorial</h3>
          <div class="flex-content">
-            <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
          </div>
 
       </div>
@@ -53,7 +53,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete CSS tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
       <div class="box">
@@ -73,7 +73,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete JS tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
       <div class="box">
@@ -93,7 +93,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
       <div class="box"> 
@@ -113,7 +113,7 @@
                <span>10 videos</span>
             </div>
             <h3 class="title">complete JQuery tutorial</h3>
-            <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
          </div>
 
       <div class="box">
@@ -133,7 +133,7 @@
                <span>10 videos</span>
             </div>
             <h3 class="title">complete SASS tutorial</h3>
-            <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
          </div>
 
       <div class="box" style="display: none;">
@@ -153,7 +153,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete PHP tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
       <div class="box">
@@ -173,7 +173,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete MySQL tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
       <div class="box">
@@ -193,7 +193,7 @@
             <span>10 videos</span>
          </div>
          <h3 class="title">complete react tutorial</h3>
-         <a href="home.php?title=playlist" class="inline-btn">view playlist</a>
+         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
       </div>
 
    </div>

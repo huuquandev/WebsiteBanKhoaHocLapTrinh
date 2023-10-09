@@ -19,10 +19,10 @@
                     include("main/profile.php");
                 }else if($tam == "teacher_profile"){
                     include("main/teacher_profile.php");
-                }else if($tam == "detail"){
-                    include("main/playlist.php");
-                }else if($tam == "watch-video"){
-                    include("main/watch-video.php");
+                }else if($tam == "lesson"){
+                    include("main/lesson.php");
+                }else if($tam == "detaillesson"){
+                    include("main/detaillesson.php");
                 }if($tam == "addcourses"){
                     include("main/addcourses.php");
                 }if($tam == "editcourses"){
