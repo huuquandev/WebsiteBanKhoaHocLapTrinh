@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
    $doi_tuong = 1;
    $gioi_tinh = $_POST['sex'];
 
-   if(register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh) == false){
+   if(!register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
       $message[] = 'Tài khoản đã tồn tại!';
    }else if($pass != $cfpass){
       $message[] = 'Mật khẩu không trùng nhau!';

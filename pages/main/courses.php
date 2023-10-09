@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;">
-    Khóa học       
+    Khóa học Pro      
     <div class="flex-option" style="display: flex;" >
          <button class="btn" id="btnEdit" style="width: auto; background: orange;">Chỉnh sửa</button>
          <a href="home.php?title=addcourses" class="btn" id="btnAdd" style="width: auto; background: green;">Thêm</a>
@@ -12,191 +12,78 @@
    </h1>
    
    <div class="box-container">  
-      <div class="box">
+      <?php 
+         include_once './function.php';
+      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
+      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+         if(!empty($row['gia_khoahoc']))
+         {
+      ?>
+         <div class="box">
             <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">  
-            <img src="images/pic-2.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-            
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-1.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete HTML tutorial</h3>
-         <div class="flex-content">
-            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-         </div>
-
-      </div>
-
-      <div class="box">
-         <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-3.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-2.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete CSS tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-4.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-3.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JS tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-5.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-4.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box"> 
-         <div class="icon_courses" style="display: none;">
-                  <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                  <a href="home.php?title=editcourses&id_khoahoc=<?php echo $row['id_khoahoc']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
                   <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-               </div>
+            </div>
             <div class="tutor">
-               <img src="images/pic-6.jpg" alt="">
-               <div class="info">
-                  <h3>john deo</h3>
-                  <span>21-10-2022</span>
-               </div>
+                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <div class="info">
+                     <h3><?php echo $row['ten_hien_thi']; ?></h3>
+                     <span><?php echo $row['ngaydang_khoahoc']; ?></span>
+                  </div>
             </div>
             <div class="thumb">
-               <img src="images/thumb-5.png" alt="">
-               <span>10 videos</span>
+            <img src="<?php echo "images/images_courses/" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
             </div>
-            <h3 class="title">complete JQuery tutorial</h3>
-            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
+            <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>
+            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
-
-      <div class="box">
-         <div class="icon_courses" style="display: none;">
-                  <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                  <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-               </div>
-            <div class="tutor">
-               <img src="images/pic-7.jpg" alt="">
-               <div class="info">
-                  <h3>john deo</h3>
-                  <span>21-10-2022</span>
-               </div>
-            </div>
-            <div class="thumb">
-               <img src="images/thumb-6.png" alt="">
-               <span>10 videos</span>
-            </div>
-            <h3 class="title">complete SASS tutorial</h3>
-            <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-         </div>
-
-      <div class="box" style="display: none;">
-         <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-8.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-7.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete PHP tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-      <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-9.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-8.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete MySQL tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-      <div class="icon_courses" style="display: none;">
-               <a href="home.php?title=editcourses" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-               <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
-         <div class="tutor">
-            <img src="images/pic-1.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-9.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete react tutorial</h3>
-         <a href="home.php?title=lesson" class="inline-btn">view playlist</a>
-      </div>
-
+      <?php 
+         }
+      }; 
+      ?>
    </div>
+</div>
+</section>
+<section class="courses">
+
+   <h1 class="heading">Khoá học miễn phí</h1>
+
+   <div class="box-container">  
+      <?php 
+      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
+      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+         if(empty($row['gia_khoahoc']))
+         {
+      ?>
+         <div class="box">
+            <div class="icon_courses" style="display: none;">
+                  <a href="home.php?title=editcourses&id_khoahoc=<?php echo $row['id_khoahoc']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                  <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
+            </div>
+            <div class="tutor">
+                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <div class="info">
+                     <h3><?php echo $row['ten_hien_thi']; ?></h3>
+                     <span><?php echo $row['ngaydang_khoahoc']; ?></span>
+                  </div>
+            </div>
+            <div class="thumb">
+            <img src="<?php echo "images/images_courses/". $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+            </div>
+            <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
+         </div>
+      <?php 
+         }
+      }; 
+      ?>
+   </div>
+
 
 </section>
 <script>

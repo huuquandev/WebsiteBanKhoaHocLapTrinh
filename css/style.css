@@ -527,6 +527,7 @@ section{
    border-radius: .5rem;
    background-color: var(--white);
    padding: 2rem;
+   width: 370px;
 }
 
 .courses .box-container .box .tutor{

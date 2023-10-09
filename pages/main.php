@@ -19,8 +19,8 @@
                     include("main/profile.php");
                 }else if($tam == "teacher_profile"){
                     include("main/teacher_profile.php");
-                }else if($tam == "lesson"){
-                    include("main/lesson.php");
+                }else if($tam == "detailcourses"){
+                    include("main/detailcourses.php");
                 }else if($tam == "detaillesson"){
                     include("main/detaillesson.php");
                 }if($tam == "addcourses"){

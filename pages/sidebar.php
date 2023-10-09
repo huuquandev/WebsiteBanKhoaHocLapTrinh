@@ -12,7 +12,7 @@
             $row = mysqli_fetch_assoc($query);
             if($row > 0){
          ?>
-         <img src="uploaded_files/<?= $row['hinh_anh']; ?>" alt="">
+         <img src="images/images_user/<?= $row['hinh_anh']; ?>" alt="">
          <h3><?= $row['ten_hien_thi']; ?></h3>
          <span>student</span>
          <a href="home.php?title=profile" class="btn">view profile</a>

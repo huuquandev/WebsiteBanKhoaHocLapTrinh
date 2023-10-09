@@ -67,149 +67,71 @@
 
 </section>
 <section class="courses">
-
-<h1 class="heading">Khoá học Pro</h1>
-
-<div class="box-container">
-
-   <div class="box">
-      <div class="tutor">
-         <img src="images/pic-2.jpg" alt="">
-         <div class="info">
-            <h3>john deo</h3>
-            <span>21-10-2022</span>
+         
+   <h1 class="heading">Khoá học Pro</h1>
+   <div class="box-container">  
+      <?php 
+         include_once './function.php';
+      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
+      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+         if(!empty($row['gia_khoahoc']))
+         {
+      ?>
+         <div class="box">
+            <div class="tutor">
+                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <div class="info">
+                     <h3><?php echo $row['ten_hien_thi']; ?></h3>
+                     <span><?php echo $row['ngaydang_khoahoc']; ?></span>
+                  </div>
+            </div>
+            <div class="thumb">
+            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+            </div>
+            <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>
+            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
-      </div>
-      <div class="thumb">
-         <img src="images/thumb-1.png" alt="">
-         <span>10 videos</span>
-      </div>
-      <h3 class="title">complete HTML tutorial</h3>
-      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
+      <?php 
+         }
+      }; 
+      ?>
    </div>
 
-   <div class="box">
-      <div class="tutor">
-         <img src="images/pic-3.jpg" alt="">
-         <div class="info">
-            <h3>john deo</h3>
-            <span>21-10-2022</span>
-         </div>
-      </div>
-      <div class="thumb">
-         <img src="images/thumb-2.png" alt="">
-         <span>10 videos</span>
-      </div>
-      <h3 class="title">complete CSS tutorial</h3>
-      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-   </div>
-
-   <div class="box">
-      <div class="tutor">
-         <img src="images/pic-4.jpg" alt="">
-         <div class="info">
-            <h3>john deo</h3>
-            <span>21-10-2022</span>
-         </div>
-      </div>
-      <div class="thumb">
-         <img src="images/thumb-3.png" alt="">
-         <span>10 videos</span>
-      </div>
-      <h3 class="title">complete JS tutorial</h3>
-      <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-   </div>
-
-</div>
 </section>
-
 <section class="courses">
 
    <h1 class="heading">Khoá học miễn phí</h1>
 
-   <div class="box-container">
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-2.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+   <div class="box-container">  
+      <?php 
+      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
+      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+         if(empty($row['gia_khoahoc']))
+         {
+      ?>
+         <div class="box">
+            <div class="tutor">
+                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <div class="info">
+                     <h3><?php echo $row['ten_hien_thi']; ?></h3>
+                     <span><?php echo $row['ngaydang_khoahoc']; ?></span>
+                  </div>
             </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-1.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete HTML tutorial</h3>
-         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-3.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+            <div class="thumb">
+            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
             </div>
+            <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
-         <div class="thumb">
-            <img src="images/thumb-2.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete CSS tutorial</h3>
-         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-4.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-3.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JS tutorial</h3>
-         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-5.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-4.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-6.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-5.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JQuery tutorial</h3>
-         <a href="home.php?title=detail" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-
+      <?php 
+         }
+      }; 
+      ?>
    </div>
 
 
@@ -218,87 +140,34 @@
 
    <h1 class="heading">Bài viết nổi bật</h1>
 
-   <div class="box-container">
-   <div class="box">
-         <div class="tutor">
-            <img src="images/pic-2.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+   <div class="box-container">  
+      <?php 
+      $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_bai_viet
+      JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+      ?>
+         <div class="box">
+            <div class="icon_courses" style="display: none;">
+                  <a href="home.php?title=editcourses&id_baivet=<?php echo $row['id_baivet']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
+                  <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-1.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete HTML tutorial</h3>
-         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-3.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+            <div class="tutor">
+                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <div class="info">
+                     <h3><?php echo $row['ten_hien_thi']; ?></h3>
+                     <span><?php echo $row['ngaydang_baiviet']; ?></span>
+                  </div>
             </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-2.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete CSS tutorial</h3>
-         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-4.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
+            <div class="thumb">
+                  <img src="<?php echo "images/" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
             </div>
+            <h3 class="title" style="min-height: 50px"><?php echo $row['tieude_baiviet']; ?></h3>
+            <a href="home.php?title=courses_content&id_baivet=<?php echo $row['id_baivet']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
-         <div class="thumb">
-            <img src="images/thumb-3.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JS tutorial</h3>
-         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-5.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-4.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="images/pic-6.jpg" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="images/thumb-5.png" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JQuery tutorial</h3>
-         <a href="playlist.html" class="inline-btn">Xem chi tiết</a>
-      </div>
-      
+      <?php 
+      }; 
+      ?>
    </div>
 </section>
 <section class="playlist-videos">
@@ -306,37 +175,23 @@
    <h1 class="heading">Video nổi bật</h1>
 
    <div class="box-container">
+   <?php 
+      $sql = "SELECT * FROM tb_hoc_lieu";
+      $query = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($query)) {
+      ?>
+
       <div class="box">
-            <a href="home.php??title=watch-video">   
+            <a href="home.php?title=lesson&id_hoclieu=<?php echo $row['id_hoclieu']; ?>">   
                <i class="fas fa-play"></i>
-               <img src="images/post-1-1.png" alt="">
-               <h3>complete HTML tutorial (part 01)</h3>
+               <img src="<?php echo "images/video_lesson" . $row['file_hoclieu']; ?> " alt="">
+               <h3><?php echo $row['ten_hoclieu']; ?></h3>
             </a>
          
-      </div>
-      <div class="box">
-            <a href="home.php??title=watch-videol">
-               <i class="fas fa-play"></i>
-               <img src="images/post-1-2.png" alt="">
-               <h3>complete HTML tutorial (part 02)</h3>
-            </a>   
-         
-      </div>
-      <div class="box">
-            <a href="home.php??title=watch-video">
-               <i class="fas fa-play"></i>
-               <img src="images/post-1-3.png" alt="">
-               <h3>complete HTML tutorial (part 03)</h3>
-            </a> 
-         
-      </div>
-      <div class="box">
-            <a href="home.php??title=watch-video">
-               <i class="fas fa-play"></i>
-               <img src="images/post-1-4.png" alt="">
-               <h3>complete HTML tutorial (part 04)</h3>
-            </a>
-         
-      </div>     
+      </div>   
+
+      <?php 
+      }; 
+      ?>
    </div>
 </section>

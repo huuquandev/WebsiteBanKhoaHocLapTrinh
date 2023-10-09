@@ -4,10 +4,10 @@
    if(isset($_POST['submit'])){
       $username = trim($_POST['username']);
       $password = trim($_POST['pass']);
-      if(login($username, $password)){   
-         header('location:home.php');
+      if(!login($username, $password)){   
+         $message[] = 'Sai mật khẩu hoặc tài khoản!';
       }else{
-         $message[] = 'incorrect email or password!';
+         header('location:home.php');
       }
    }
    if(isset($message)){
