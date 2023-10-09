@@ -9,11 +9,7 @@
         $tenKH = trim($_POST['new_ten_khoahoc']);
         $gia = $_POST['new_gia_khoahoc'];
         $motaKH = $_POST['new_mota_khoahoc'];
-        if (!editcourses($tenKH, $motaKH, $gia, $idKH)) {
-            $message[] = 'File ảnh bìa chỉ nhận đuôi .jpg .jpeg .png .gif';
-        } else if (editcourses($tenKH, $motaKH, $gia, $idKH)){          
-            echo '<script>alert("Sửa thành công"); window.location.href = "home.php?title=courses";</script>';
-        }
+        editcourses($tenKH, $motaKH, $gia, $idKH);
     }
     if(isset($message)){
         foreach($message as $message){
