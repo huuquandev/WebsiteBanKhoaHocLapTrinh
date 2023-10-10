@@ -1632,3 +1632,15 @@ section{
    cursor: pointer;
    background-color: var(--light-bg);
 }
+.comments .box-container .box .flex-btn{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1.5rem;
+}
+.option-btn, .btnlike {
+   background-color: #babdad;
+   padding: 1rem 1.5rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+}

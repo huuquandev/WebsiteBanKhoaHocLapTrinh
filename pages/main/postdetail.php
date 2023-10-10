@@ -66,7 +66,18 @@
             </div>
          </div>
          <div class="comment-box">awesome tutorial!
-            keep going!</div>
+            keep going!
+         </div>
+            <form action="" class="flex-btn description">
+               <div class="option_before">
+                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
+               </div>
+               <div class="option_after" style="display: none;">
+                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
+                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
+               </div>
+               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            </form>
       </div>
 
       <div class="box">
@@ -80,6 +91,16 @@
          <div class="comment-box">amazing way of teaching!
             thank you so much!
          </div>
+         <form action="" class="flex-btn description">
+               <div class="option_before">
+                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
+               </div>
+               <div class="option_after" style="display: none;">
+                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
+                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
+               </div>
+               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            </form>
       </div>
 
       <div class="box">
@@ -91,6 +112,16 @@
             </div>
          </div>
          <div class="comment-box">loved it, thanks for the tutorial!</div>
+         <form action="" class="flex-btn description">
+               <div class="option_before">
+                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
+               </div>
+               <div class="option_after" style="display: none;">
+                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
+                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
+               </div>
+               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            </form>
       </div>
 
       <div class="box">
@@ -102,6 +133,16 @@
             </div>
          </div>
          <div class="comment-box">this is what I have been looking for! thank you so much!</div>
+         <form action="" class="flex-btn description">
+               <div class="option_before">
+                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
+               </div>
+               <div class="option_after" style="display: none;">
+                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
+                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
+               </div>
+               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            </form>
       </div>
 
       <div class="box">
@@ -116,6 +157,16 @@
 
             how to download source code file?
          </div>
+         <form action="" class="flex-btn description">
+               <div class="option_before">
+                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
+               </div>
+               <div class="option_after" style="display: none;">
+                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
+                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
+               </div>
+               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            </form>
       </div>
 
    </div>
