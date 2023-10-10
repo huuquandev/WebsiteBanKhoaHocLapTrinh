@@ -44,7 +44,7 @@
             </div>
          </div>
          <div class="comment-box">this is a comment form shaikh anas</div>
-         <form action="" class="flex-btn">
+         <form action="" class="flex-btn description">
             <div class="option_before">
                <input type="button" value="Chỉnh sửa" name="edit_comment" class="inline-option-btn btnEdit">
                <input type="button" value="Xóa" name="delete_comment" class="inline-delete-btn btnDelete">
@@ -53,6 +53,7 @@
                <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
                <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
             </div>
+            <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
          </form>
       </div>
 
@@ -130,47 +131,58 @@
    var optionBefore = document.querySelector(".option_before");
    var optionAfter = document.querySelector(".option_after");
    var commentBox = document.querySelector('.comment-box');
+
    var isEditing = false;
-   var inputElement = document.querySelector('input');; 
+   var textareaElement; // Khai báo biến textareaElement ở đây
+   var originalComment; // Lưu trạng thái ban đầu của comment
 
    function toggleEditState() {
-      if (isEditing) {  
-         if (inputElement) {
-               // Lưu giá trị mới từ input
-               // Tạo một div mới chứa giá trị chỉnh sửa
-               var newCommentBox = document.createElement('div');
-               newCommentBox.className = 'comment-box';
-
-               if (commentBox && commentBox.parentNode) {
-                  // Thay thế div hiện tại bằng div mới
-                  commentBox.parentNode.replaceChild(newCommentBox, commentBox);
-               }
-         }
-      } else {
-         // Tạo một input mới để chỉnh sửa
-         inputElement = document.createElement('input');
-         inputElement.type = 'text';
-         inputElement.className = 'comment-box';
-         inputElement.value = commentBox.textContent;
+      if (isEditing) {
+         // Tạo một div mới chứa giá trị chỉnh sửa
+         var newCommentBox = document.createElement('div');
+         newCommentBox.className = 'comment-box';
 
          if (commentBox && commentBox.parentNode) {
-               // Thay thế div hiện tại bằng input
-               commentBox.parentNode.replaceChild(inputElement, commentBox);
+            // Thay thế textarea hiện tại bằng div mới
+               commentBox.parentNode.replaceChild(newCommentBox, textareaElement);
          }
-      }
-
-      if (isEditing) {
          optionBefore.style.display = "block";
          optionAfter.style.display = "none";
       } else {
+         textareaElement = document.createElement('textarea');
+         textareaElement.className = 'comment-box';
+         textareaElement.value = commentBox.textContent;
+
+         if (commentBox && commentBox.parentNode) {
+               // Thay thế div hiện tại bằng textarea
+               commentBox.parentNode.replaceChild(textareaElement, commentBox);
+         }
          optionBefore.style.display = "none";
          optionAfter.style.display = "block";
+         // Lưu trạng thái ban đầu của comment
+         originalComment = commentBox.textContent;
       }
 
       isEditing = !isEditing;
    }
 
-
    editButton.addEventListener("click", toggleEditState);
-   cancelButton.addEventListener("click", toggleEditState);
+   document.addEventListener("DOMContentLoaded", (event) => {
+      textareaElement = document.querySelector('.comment-box');
+      console.log(textareaElement);
+      cancelButton.addEventListener("click", function () {
+         // Khôi phục giá trị ban đầu của comment
+         textareaElement.value = originalComment;
+         // Thay thế textarea bằng lại div
+         textareaElement.parentNode.replaceChild(commentBox, textareaElement);
+         optionBefore.style.display = "block";
+         optionAfter.style.display = "none";
+
+         isEditing = false;
+      });
+  });
 </script>
+
+
+
+

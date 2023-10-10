@@ -112,7 +112,10 @@ section{
 .inline-option-btn{
    background-color:var(--orange);
 }
-
+.option-btn,
+   .btnSave{
+   background-color:green;
+}
 .delete-btn,
 .inline-delete-btn{
    background-color: var(--red);
@@ -527,7 +530,6 @@ section{
    border-radius: .5rem;
    background-color: var(--white);
    padding: 2rem;
-   width: 370px;
 }
 
 .courses .box-container .box .tutor{
@@ -917,6 +919,7 @@ section{
 }
 
 .comments .box-container .box .comment-box{
+   width: 100%;
    border-radius: .5rem;
    background-color: var(--light-bg);
    padding:1rem 1.5rem;
@@ -1621,4 +1624,11 @@ section{
 }
 .form-container .addpost {
    width: 100%;
+}
+.comments .box-container .box .flex-btn .btnlike{
+   border-radius: 0.5rem;
+   padding: 1rem 1.5rem;
+   font-size: 1.8rem;
+   cursor: pointer;
+   background-color: var(--light-bg);
 }
