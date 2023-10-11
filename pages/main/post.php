@@ -1,7 +1,7 @@
 
 <section class="posts">
 
-<h1 class="heading" style="
+    <h1 class="heading" style="
    position: relative;
     display: flex;
     align-items: center;

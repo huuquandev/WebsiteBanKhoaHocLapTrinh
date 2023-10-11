@@ -45,10 +45,13 @@
                     include("main/postdetail.php");
                 }else if($tam == "addpost"){
                     include("main/addpost.php");
+                }else if($tam == "searchtag"){
+                    include("main/search_tag.php");
                 }
                 
             }else{
                 $tam = '';
+                $pageTitle = "Trang chủ";
                 include("main/home_grid.php");
             }
             

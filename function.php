@@ -143,12 +143,64 @@
     function GetCoursesById($id_Khoahoc) {
         GLOBAL $conn;
         $filter_id_khoahoc = mysqli_real_escape_string($conn, $id_Khoahoc);
-        $sql = "SELECT * FROM tb_khoa_hoc WHERE id_khoahoc = '".$filter_id_khoahoc."'";
+        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc WHERE id_khoahoc = '".$filter_id_khoahoc."'";
         $query = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($query) > 0){
-            $row = mysqli_fetch_assoc($query);
-            return $row;
-        }
+        $row = mysqli_fetch_assoc($query);
+        return $row;
     }
+    //---Tìm kiêm khóa học theo từ khóa---
+    //---Quân---
+    function Search_Courses($key_word) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+                FROM tb_khoa_hoc 
+                JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan
+                WHERE ten_khoahoc LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql);
+        return $query;
+    }
+    //---Tìm kiếm bài viết theo từ khóa---
+    //---Quân---
+    function Search_Post($key_word) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+                FROM tb_bai_viet 
+                JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan
+                WHERE ten_baiviet LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql); 
+        return $query;
 
+    }
+    //---Lấy danh thẻ tag bởi id bài viết---
+    //---Quân---
+    function GetTagByIdPost($id_post) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $id_post);
+        $sql = "SELECT tb_tag.ten_tag, tb_tag.id_tag
+        FROM tb_bai_viet 
+        INNER JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
+        INNER JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
+        WHERE tb_bai_viet.id_baiviet = $id_post";
+        
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
+    }
+    //---Tìm kiếm bài viết theo tag---
+    //---Quân---
+    function Search_Tag($key_word) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+                FROM tb_bai_viet 
+                JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan
+                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet_tag
+                JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
+                WHERE tb_tag.ten_tag LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql); 
+        return $query;
+
+    }
 ?>

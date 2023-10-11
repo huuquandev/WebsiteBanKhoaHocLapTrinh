@@ -5,10 +5,16 @@
     align-items: center;
     justify-content: space-between;">
     Khóa học Pro      
-    <div class="flex-option" style="display: flex;" >
+    <?php
+            if($_SESSION['doi_tuong'] == 0){
+         ?>
+      <div class="flex-option" style="display: flex;" >
          <button class="btn" id="btnEdit" style="width: auto; background: orange;">Chỉnh sửa</button>
          <a href="home.php?title=addcourses" class="btn" id="btnAdd" style="width: auto; background: green;">Thêm</a>
       </div> 
+      <?php
+            }
+         ?>
    </h1>
    
    <div class="box-container">  
@@ -17,7 +23,7 @@
       $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
       JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
       $query = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($query)) {
+         while ($row = mysqli_fetch_assoc($query)) {
          if(!empty($row['gia_khoahoc']))
          {
       ?>
@@ -76,6 +82,7 @@
             <img src="<?php echo "images/images_courses/". $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <h5 class="title">Miễn phí</h5>
             <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
       <?php 

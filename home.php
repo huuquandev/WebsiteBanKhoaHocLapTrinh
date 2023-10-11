@@ -7,7 +7,7 @@
     }else{
        $id_taikhoan = '';
     }
-    
+    include("pages/tittle.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>home</title>
+   <title><?php echo $pageTitle ?></title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
@@ -39,6 +39,8 @@
 <script src="js/script.js"></script>
 <script src="js/admin_script.js"></script>
 <script src="admin/ckeditor/ckeditor.js"></script>
-
+<script>
+      CKEDITOR.replace( 'noidung_baiviet' );
+</script>
 </body>
 </html>

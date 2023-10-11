@@ -41,10 +41,16 @@
     align-items: center;
     justify-content: space-between;">  
     Bài giảng 
+    <?php
+            if($id_taikhoan != ''){
+         ?>
       <div class="flex-option" style="display: flex;" >
          <button class="btn" style="width: auto; background: orange;" id="btnEdit">Chỉnh sửa</button>
          <button class="btn" style="width: auto; background: green;" id="btnAdd">Thêm bài</button>
-      </div>     
+      </div>    
+      <?php
+            }
+         ?> 
    </h1>
    <div class="box-container">
       

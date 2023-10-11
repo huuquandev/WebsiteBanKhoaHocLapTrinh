@@ -148,10 +148,6 @@
       while ($row = mysqli_fetch_assoc($query)) {
       ?>
          <div class="box">
-            <div class="icon_courses" style="display: none;">
-                  <a href="home.php?title=editcourses&id_baivet=<?php echo $row['id_baivet']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                  <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-            </div>
             <div class="tutor">
                   <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
                   <div class="info">
@@ -160,36 +156,11 @@
                   </div>
             </div>
             <div class="thumb">
-                  <img src="<?php echo "images/" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+                  <img src="<?php echo "images/images_post" . $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="Course Image">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['tieude_baiviet']; ?></h3>
             <a href="home.php?title=courses_content&id_baivet=<?php echo $row['id_baivet']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
-      <?php 
-      }; 
-      ?>
-   </div>
-</section>
-<section class="playlist-videos">
-
-   <h1 class="heading">Video nổi bật</h1>
-
-   <div class="box-container">
-   <?php 
-      $sql = "SELECT * FROM tb_hoc_lieu";
-      $query = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($query)) {
-      ?>
-
-      <div class="box">
-            <a href="home.php?title=lesson&id_hoclieu=<?php echo $row['id_hoclieu']; ?>">   
-               <i class="fas fa-play"></i>
-               <img src="<?php echo "images/video_lesson" . $row['file_hoclieu']; ?> " alt="">
-               <h3><?php echo $row['ten_hoclieu']; ?></h3>
-            </a>
-         
-      </div>   
-
       <?php 
       }; 
       ?>

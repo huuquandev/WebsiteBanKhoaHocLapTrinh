@@ -5,7 +5,8 @@
 
       <a href="home.php" class="logo">Educa.</a>
 
-      <form action="home.php?title=search" method="post" class="search-form">
+      <form action="home.php?" method="get" class="search-form">
+         <input type="hidden" name="title" required placeholder="Tìm kiếm..." maxlength="100" value="search">
          <input type="text" name="search_box" required placeholder="Tìm kiếm..." maxlength="100">
          <button type="submit" class="fas fa-search"></button>
       </form>
