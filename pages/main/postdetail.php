@@ -1,5 +1,12 @@
 <section class="watch-video">
-
+   <?php 
+      if(isset($_GET['id_baiviet'])){
+         $id_baiviet = $_GET['id_baiviet'];
+      }
+      $sql = "SELECT * FROM tb_bai_viet WHERE id_baiviet = $id_baiviet";
+      $query = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_array($query);
+   ?>
    <div class="video-container">
       
       <div class="tutor info">
@@ -11,8 +18,7 @@
       </div>
       
       <p class="description">
-         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque labore ratione, hic exercitationem mollitia obcaecati culpa dolor placeat provident porro.
-         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid iure autem non fugit sint. A, sequi rerum architecto dolor fugiat illo, iure velit nihil laboriosam cupiditate voluptatum facere cumque nemo!
+         <?php echo $row['noidung_baivet']; ?>
       </p>
       <form action="" method="post" class="flex description">
         <h4 style="font-size: 1.2rem;">5 Bình luận</h4>

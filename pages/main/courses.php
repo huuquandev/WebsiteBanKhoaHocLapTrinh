@@ -30,7 +30,7 @@
          <div class="box">
             <div class="icon_courses" style="display: none;">
                   <a href="home.php?title=editcourses&id_khoahoc=<?php echo $row['id_khoahoc']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                  <a href="#" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
+                  <a href="home.php?title=deletecourses&id_khoahoc=<?php echo $row['id_khoahoc'];?>" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
             </div>
             <div class="tutor">
                   <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
@@ -44,7 +44,7 @@
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>
-            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
+            <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
       <?php 
          }
@@ -55,7 +55,7 @@
 </section>
 <section class="courses">
 
-   <h1 class="heading">Khoá học miễn phí</h1>
+   <!-- <h1 class="heading">Khoá học miễn phí</h1>
 
    <div class="box-container">  
       <?php 
@@ -83,13 +83,13 @@
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <h5 class="title">Miễn phí</h5>
-            <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
+            <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
       <?php 
          }
       }; 
       ?>
-   </div>
+   </div> -->
 
 
 </section>

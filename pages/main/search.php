@@ -11,7 +11,7 @@ if(isset($_GET['search_box'])){
 <section class="courses">
     <h1 class="heading">Kết quả tìm kiếm '<?php echo $keyword ?>'</h1>
     <?php
-    if (mysqli_num_rows($row_courses) < 1 && mysqli_num_rows($row_post) < 1) {
+    if (mysqli_num_rows($row_courses) < 1 && mysqli_num_rows($row_posts) < 1) {
          echo '<p class="empty">Không có kết quả!</p>';
     } else {
     ?>

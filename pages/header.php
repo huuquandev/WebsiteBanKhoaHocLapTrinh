@@ -30,7 +30,7 @@
          <img src="images/images_user/<?= $row['hinh_anh']; ?>" alt="">
          <h3><?= $row['ten_hien_thi']; ?></h3>
          <span>student</span>
-         <a href="home.php?title=profile" class="btn">view profile</a>
+         <a href="home.php?title=profile" class="btn">Hồ sơ</a>
          
          <a href="components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">Đăng xuất</a>
          <?php

@@ -41,7 +41,7 @@
 
             <p>Hình ảnh <span>*</span></p>
 
-            <input type="file" name="new_image" accept="image/*" class="box" id="imageInput">
+            <input type="file" name="new_image" accept="image/*" class="box">
             <p id="selectedFile"><?php echo $row['anh_khoahoc']; ?></p>
             <input type="submit" name="saveKH" value="Lưu lại" class="btn" required>
         </form>

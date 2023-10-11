@@ -143,7 +143,10 @@
     function GetCoursesById($id_Khoahoc) {
         GLOBAL $conn;
         $filter_id_khoahoc = mysqli_real_escape_string($conn, $id_Khoahoc);
-        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc WHERE id_khoahoc = '".$filter_id_khoahoc."'";
+        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi 
+        FROM tb_khoa_hoc 
+        JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan
+        WHERE id_khoahoc = '".$filter_id_khoahoc."'";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
         return $row;
@@ -202,5 +205,18 @@
         $query = mysqli_query($conn, $sql); 
         return $query;
 
+    }
+
+    function GetLessonById($id_lesson){
+        GLOBAL $conn;
+        $filter_id_lesson = mysqli_real_escape_string($conn, $id_lesson);
+        $sql = "SELECT *
+        FROM tb_hoc_lieu
+        JOIN tb_khoa_hoc ON tb_khoa_hoc.id_khoahoc = tb_hoc_lieu.id_khoahoc
+        WHERE id_hoclieu = '".$filter_id_lesson."'";
+
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
     }
 ?>

@@ -2,6 +2,21 @@
 
    <h1 class="heading">Thêm bài viết</h1>
 
+   <?php 
+        if (isset($_POST['submit'])) {
+    $tieu_de = $_POST["ten_baiviet"];
+    $mo_ta = $_POST["mota_baiviet"];
+    $noi_dung = $_POST["noidung_baiviet"];
+    
+    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, luot_thich) VALUES ('$tieu_de', '$mo_ta', '$noi_dung', 0)";
+    
+    if ($conn->query($sql) === TRUE) {
+        echo '<script>alert("Thêm bài viết thành công");</script>';
+    } else {
+        echo "Lỗi: " . $sql . "<br>" . $conn->error;
+    }
+}
+    ?>
     <section class="form-container">
 
         <form class="addpost" action="" method="post" enctype="multipart/form-data">

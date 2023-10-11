@@ -27,6 +27,8 @@
                     include("main/addcourses.php");
                 }if($tam == "editcourses"){
                     include("main/editcourses.php");
+                }if($tam == "deletecourses"){
+                    include("main/deletecourses.php");
                 }if($tam == "addplaylist"){
                     include("main/addplaylist.php");
                 }if($tam == "editplaylist"){
@@ -47,6 +49,8 @@
                     include("main/addpost.php");
                 }else if($tam == "searchtag"){
                     include("main/search_tag.php");
+                }else if($tam == "delete_material"){
+                    include("main/deleteplaylist.php");
                 }
                 
             }else{
