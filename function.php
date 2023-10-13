@@ -180,13 +180,11 @@
     //---Quân---
     function GetTagByIdPost($id_post) {
         GLOBAL $conn;
-        $key_word = mysqli_real_escape_string($conn, $id_post);
         $sql = "SELECT tb_tag.ten_tag, tb_tag.id_tag
         FROM tb_bai_viet 
         INNER JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
         INNER JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
-        WHERE tb_bai_viet.id_baiviet = $id_post";
-        
+        WHERE tb_bai_viet.id_baiviet = $id_post";     
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
         return $row;
@@ -218,5 +216,32 @@
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
         return $row;
+    }
+    function GetCountLessonByCourses($id_Khoahoc){
+        GLOBAL $conn;
+        $filter_id_courses= mysqli_real_escape_string($conn, $id_Khoahoc);
+        $sql = "SELECT * FROM tb_hoc_lieu WHERE id_khoahoc = '$filter_id_courses'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_num_rows($query);
+        return $row;
+    }
+    function GetCountLikeByPost($id_post){
+        GLOBAL $conn;
+        $filter_id_post= mysqli_real_escape_string($conn, $id_post);
+        $sql = "SELECT * FROM tb_thichbaiviet 
+        JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_thichbaiviet.id_baiviet
+        WHERE tb_bai_viet.id_baiviet = '$filter_id_post'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_num_rows($query);
+        return $row;
+    }
+    function GetComentByPost($id_post){
+        GLOBAL $conn;
+        $filter_id_post= mysqli_real_escape_string($conn, $id_post);
+        $sql = "SELECT * FROM tb_binh_luan
+        JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_binh_luan.id_baiviet
+        WHERE tb_bai_viet.id_baiviet = '$filter_id_post'";
+        $query = mysqli_query($conn, $sql);
+        return $query;
     }
 ?>

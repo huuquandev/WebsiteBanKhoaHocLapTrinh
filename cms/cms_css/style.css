@@ -519,9 +519,10 @@ section{
 
 .courses .box-container{
    display: grid;
-   grid-template-columns: repeat(auto-fit, 35rem);
+   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+   gap:1.5rem;
+   justify-content: center;
    align-items: flex-start;
-   gap: 1.5rem;
 }
 
 .courses .box-container .box{
@@ -583,6 +584,7 @@ section{
    padding-bottom: .5rem;
    padding-top: 1rem;
 }
+
 .courses .more-btn{
    text-align: center;
    margin-top: 2rem;
@@ -695,10 +697,10 @@ section{
 }
 
 .playlist-videos .box-container{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, 35rem);
-   align-items: flex-start;
-   gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 35rem);
+      align-items: flex-start;
+      gap: 1.5rem;
 }
 
 .playlist-videos .box-container .box{
@@ -1580,9 +1582,6 @@ section{
 }
 .posts .box-container .box .post .about_post .content {
    font-size: 1.4rem;
-}
-.posts .box-container .box .post .about_post .content::after {
-   content: "...";
 }
 .posts .box-container .box .post .about_post {
    width: 600px;
