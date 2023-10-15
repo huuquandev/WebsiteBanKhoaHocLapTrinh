@@ -6,13 +6,13 @@
    
       <div class="box" style="text-align: center;">
          <h3 class="title" style="margin-bottom: .5rem;">Thêm khóa học mới</h3>
-         <a href="add_playlist.php" class="btn">Thêm</a>
+         <a href="cms_dashboard.php?title=add_courses" class="btn">Thêm</a>
       </div>
 
       <?php
    include_once '../function.php';
-   $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
-         JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
+   $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
+         JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan";
          $query = mysqli_query($conn, $sql);
 
          if(mysqli_num_rows($query) > 0){
@@ -29,9 +29,7 @@
          <div class="thumb">
             <?php
                $idKH = $row['id_khoahoc'];
-               $sqllesson  = "SELECT * FROM tb_hoc_lieu WHERE id_khoahoc = '$idKH'";
-               $querylesson  = mysqli_query($conn, $sql);
-               $countlesson = mysqli_num_rows($query);
+               $countlesson = GetCountLessonByCourses($idKH);
             ?>
             <span><?= $countlesson; ?></span>
             <img src="<?php echo "../../../../images/images_courses/" . $row['anh_khoahoc']; ?>" alt="">
@@ -48,7 +46,7 @@
       <?php
          } 
       }else{
-         echo '<p class="empty">no playlist added yet!</p>';
+         echo '<p class="empty">Không có khóa học!</p>';
       }
       ?>
 

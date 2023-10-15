@@ -45,6 +45,8 @@
                     $pageTitle = "Đăng bài viết";
                 }else if($tam == "searchtag"){
                     $pageTitle = "Tìm kiếm theo tag";
+                }else if($tam == "edit_profile"){
+                    $pageTitle = "Chỉnh sửa hồ sơ";
                 }
                 
             }else{

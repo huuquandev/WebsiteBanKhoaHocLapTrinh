@@ -1,30 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Đăng ký</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="../cms_css/style.css">
+   <link rel="stylesheet" href="../cms_css/admin_style.css">
+
+</head>
+<body style="padding-left: 0;">
+
 <?php
+   session_start(); 
+   include "../../components/connect.php";
+   include_once '../../function.php';
 
-include_once './function.php';
+   if(isset($_POST['submit'])){
 
-if(isset($_POST['submit'])){
+    $id = unique_id();
+    $name = trim($_POST['name']);
+    $username =  trim($_POST['username']);
+    $pass = trim($_POST['pass']);
+    $cfpass = trim($_POST['cfpass']);
+    $phone = $_POST['phone'];
+    $bdate = $_POST['bdate'];
+    $doi_tuong = 1;
+    $gioi_tinh = $_POST['sex'];
+ 
+    if(!registerCMS($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
+       $message[] = 'Tài khoản đã tồn tại!';
+    }else if($pass != $cfpass){
+       $message[] = 'Mật khẩu không trùng nhau!';
+    }else{
+       if(loginCMS($username, $pass)){   
+          header('Location: /cms/cms_dashboard.php');
+       }
+    }
+ 
+ }
 
-   $id = unique_id();
-   $name = trim($_POST['name']);
-   $username =  trim($_POST['username']);
-   $pass = trim($_POST['pass']);
-   $cfpass = trim($_POST['cfpass']);
-   $phone = $_POST['phone'];
-   $bdate = $_POST['bdate'];
-   $doi_tuong = 1;
-   $gioi_tinh = $_POST['sex'];
-
-   if(!register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
-      $message[] = 'Tài khoản đã tồn tại!';
-   }else if($pass != $cfpass){
-      $message[] = 'Mật khẩu không trùng nhau!';
-   }else{
-      if(login($username, $pass)){   
-         header('location:home.php');
-      }
-   }
-
-}
 if(isset($message)){
    foreach($message as $message){
       echo '
@@ -37,10 +58,12 @@ if(isset($message)){
 }
 ?>
 
+<!-- register section starts  -->
+
 <section class="form-container">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>create account</h3>
+      <h3>Đăng ký tài khoản</h3>
       <div class="flex">
          <div class="col">
             <p>Tên người dùng <span>*</span></p>
@@ -54,7 +77,6 @@ if(isset($message)){
             <p>Xác nhận mật khẩu <span>*</span></p>
             <input type="password" name="cfpass" placeholder="Xác nhận mật khẩu" maxlength="20" required class="box">
          </div>
-         
       </div>
       <p>Giới tính <span>*</span></p>
             <select name="sex" class="box" required>
@@ -74,3 +96,42 @@ if(isset($message)){
    </form>
 
 </section>
+
+<!-- registe section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+let darkMode = localStorage.getItem('dark-mode');
+let body = document.body;
+
+const enabelDarkMode = () =>{
+   body.classList.add('dark');
+   localStorage.setItem('dark-mode', 'enabled');
+}
+
+const disableDarkMode = () =>{
+   body.classList.remove('dark');
+   localStorage.setItem('dark-mode', 'disabled');
+}
+
+if(darkMode === 'enabled'){
+   enabelDarkMode();
+}else{
+   disableDarkMode();
+}
+
+</script>
+   
+</body>
+</html>

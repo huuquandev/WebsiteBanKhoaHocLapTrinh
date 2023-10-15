@@ -2,15 +2,15 @@
     session_start(); 
     include "../components/connect.php";
  
-    if(isset($_SESSION['id_taikhoan'])){
-       $id_taikhoan = $_SESSION['id_taikhoan'];
+    if(isset($_SESSION['cms_id_tai_khoan'])){
+       $id_taikhoan = $_SESSION['cms_id_tai_khoan'];
     }else{
        $id_taikhoan = '';
-      //  header('location:cmspages/cms_login.php');
-    }
+       header('location:../cms/cmspages/cms_login.php');
+      }
     include("cmspages/cms_title.php");
 ?>
-
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,6 +38,9 @@
 
 
 <script src="../js/admin_script.js"></script>
-
+<script src="../admin/ckeditor/ckeditor.js"></script>
+<script>
+      CKEDITOR.replace( 'noidung_baiviet' );
+</script>
 </body>
 </html>

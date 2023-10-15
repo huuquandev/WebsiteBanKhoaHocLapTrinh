@@ -9,6 +9,7 @@
    --light-color:#888;
    --light-bg:#eee;
    --border:.1rem solid rgba(0,0,0,.2);
+   --green: rgb(17, 177, 17);
 }
 
 *{
@@ -104,7 +105,6 @@ section{
 .inline-delete-btn{
    background-color: var(--red);
 }
-
 .btn:hover,
 .option-btn:hover,
 .delete-btn:hover,
@@ -662,6 +662,9 @@ section{
    line-height: 2;
    font-size: 1.7rem;
    color: var(--light-color);
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .playlists .box-container .box .description::after{
@@ -722,9 +725,8 @@ section{
    display: flex;
    gap: 2.5rem;
    flex-wrap: wrap;
-   align-items: flex-start;
+   align-items: center;
    background-color: var(--white);
-   border-radius: .5rem;
    padding: 2rem;
 }
 
@@ -1098,4 +1100,54 @@ section{
       height: auto;
    }
 
+}
+.watch-video .video-container .postItem_info{
+   margin-top: 10px;
+   font-size: 1.5rem;
+}
+.watch-video .video-container .postItem_info .postItem_tags{
+   color: black;
+   background-color: rgba(117, 112, 112, 0.3);
+   border-radius: 0.5rem;
+   padding: 0.5rem 1.5rem;
+}
+.comments .show-comments .box .tutor{
+   display: flex;
+   align-items: center;
+   gap: 2rem;
+   margin-bottom: 1.5rem;
+}
+.comments .show-comments .box .tutor img{
+   height: 5rem;
+   width: 5rem;
+   border-radius: 50%;
+}
+.comments .show-comments .box .tutor .info .title{
+   font-size: 2rem;
+   color: var(--black);
+   padding-bottom: 0.5rem;
+   padding-top: 1rem;
+}
+.comments .show-comments .box .description {
+   line-height: 1.5;
+   font-size: 1.7rem;
+   color: var(--light-color);
+   margin-top: 2rem;
+}
+.comments .show-comments .box .flex {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1.5rem;
+}
+.comments .show-comments .box .flex button{
+   border-radius: 0.5rem;
+   padding: 1rem 1.5rem;
+   font-size: 1.8rem;
+   cursor: pointer;
+   background-color: var(--light-bg);
+}
+.comments .show-comments .flex button i {
+   margin-left: 1rem;
+   color: var(--black);
 }

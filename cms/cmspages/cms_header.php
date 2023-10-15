@@ -15,7 +15,7 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="dashboard.php" class="logo">CMS.</a>
+      <a href="dashboard.php" class="logo">Educa.</a>
 
       <form action="search_page.php" method="post" class="search-form">
          <input type="text" name="search" placeholder="search here..." required maxlength="100">
@@ -32,7 +32,7 @@ if(isset($message)){
       <div class="profile">
          
          <?php
-            $sql = "select * from tb_tai_khoan where id_taikhoan = '$id_taikhoan'";
+            $sql = "select * from tb_cms_tai_khoan where id_cms_taikhoan = '$id_taikhoan'";
             $query = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($query);
             if($row > 0){
@@ -43,14 +43,14 @@ if(isset($message)){
          <span>student</span>
          <a href="home.php?title=profile" class="btn">Hồ sơ</a>
          
-         <a href="components/user_logout.php" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?');" class="delete-btn">Đăng xuất</a>
+         <a href="../../components/cms_logout.php" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?');" class="delete-btn">Đăng xuất</a>
          <?php
             }else{
          ?>
          <h3>Vui lòng đăng nhập hoặc đăng ký</h3>
           <div class="flex-btn">
-            <a href="home.php?title=login" class="option-btn">Đăng nhập</a>
-            <a href="home.php?title=register" class="option-btn">Đăng kí</a>
+            <a href="cmspages/cms_login.php" class="option-btn">Đăng nhập</a>
+            <a href="cmspages/cms_register.php" class="option-btn">Đăng kí</a>
          </div>
          <?php
             }

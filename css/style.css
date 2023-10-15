@@ -590,11 +590,10 @@ section{
 
 .playlist-details .row{
    display: flex;
-   align-items: flex-end;
-   gap:3rem;
+   align-items: center;
+   gap: 2.5rem;
    flex-wrap: wrap;
    background-color: var(--white);
-   padding: 2rem;
 }
 
 .playlist-details .row .column{

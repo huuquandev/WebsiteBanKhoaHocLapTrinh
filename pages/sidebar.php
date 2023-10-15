@@ -7,14 +7,14 @@
 
    <div class="profile">
          <?php
-            $sql = "select * from tb_tai_khoan where id_taikhoan = '$id_taikhoan'";
+            $sql = "SELECT * FROM tb_tai_khoan WHERE id_taikhoan = '$id_taikhoan'";
             $query = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($query);
             if($row > 0){
          ?>
          <img src="images/images_user/<?= $row['hinh_anh']; ?>" alt="">
          <h3><?= $row['ten_hien_thi']; ?></h3>
-         <span>student</span>
+         <span>Học viên</span>
          <a href="home.php?title=profile" class="btn">Hồ sơ</a>
          <?php
             }else{

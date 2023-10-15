@@ -51,6 +51,8 @@
                     include("main/search_tag.php");
                 }else if($tam == "delete_material"){
                     include("main/deleteplaylist.php");
+                }else if($tam == "edit_profile"){
+                    include("main/editprofile.php");
                 }
                 
             }else{

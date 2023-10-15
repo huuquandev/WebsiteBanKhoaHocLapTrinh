@@ -1,7 +1,25 @@
+<?php
+         include_once './function.php';
+
+         if($id_taikhoan != ""){
+            $sqlCountComennt  = "SELECT * FROM tb_binh_luan 
+            WHERE tb_binh_luan.id_taikhoan = $id_taikhoan";
+            $queryCountComennt = mysqli_query($conn, $sqlCountComennt);
+
+            $sqlCountLike  = "SELECT * FROM tb_thichbinhluan
+            WHERE tb_thichbinhluan.id_taikhoan = $id_taikhoan";
+            $queryCountLike = mysqli_query($conn, $sqlCountLike);
+
+            $sqlCountByCourses  = "SELECT * FROM tb_khoahoc_damua
+            WHERE tb_khoahoc_damua.id_taikhoan = $id_taikhoan";
+            $queryCountByCourses = mysqli_query($conn, $sqlCountByCourses);
+         }
+
+?>
 
 <section class="quick-select">
 
-   <h1 class="heading">quick options</h1>
+   <h1 class="heading">Tùy chọn nhanh</h1>
 
 <div class="box-container">
 
@@ -9,13 +27,13 @@
             if($id_taikhoan != ''){
          ?>
          <div class="box">
-            <h3 class="title">likes and comments</h3>
-            <p>total likes : <span><?= $total_likes = 0; ?></span></p>
-            <a href="likes.php" class="inline-btn">view likes</a>
-            <p>total comments : <span><?= $total_comments = 0; ?></span></p>
-            <a href="comments.php" class="inline-btn">view comments</a>
-            <p>saved playlist : <span><?= $total_bookmarked = 0; ?></span></p>
-            <a href="bookmark.php" class="inline-btn">view bookmark</a>
+            <h3 class="title">Lượt thích và bình luận</h3>
+            <p>Số lượt thích : <span><?php echo mysqli_num_rows($queryCountLike) ; ?></span></p>
+            <a href="likes.php" class="inline-btn">Xem lượt thích</a>
+            <p>Số lượng bình luận : <span><?php echo mysqli_num_rows($queryCountComennt); ?></span></p>
+            <a href="comments.php" class="inline-btn">Xem bình luận</a>
+            <p>Khóa học đã mua : <span><?php echo mysqli_num_rows($queryCountByCourses); ?></span></p>
+            <a href="bookmark.php" class="inline-btn">Xem khóa học</a>
          </div>
          <?php
             }else{ 
@@ -32,7 +50,7 @@
          ?>
 
       <div class="box">
-         <h3 class="title">top categories</h3>
+         <h3 class="title">Danh mục</h3>
          <div class="flex">
             <a href="#"><i class="fas fa-code"></i><span>development</span></a>
             <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a>
@@ -46,7 +64,7 @@
       </div>
 
       <div class="box">
-         <h3 class="title">popular topics</h3>
+         <h3 class="title">Phổ biến</h3>
          <div class="flex">
             <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
             <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
@@ -66,18 +84,22 @@
    </div>
 
 </section>
+<?php 
+         include_once './function.php';
+      $sqlcourses = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+      FROM tb_khoa_hoc
+      JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+      WHERE tb_khoa_hoc.gia_khoahoc IS NOT NULL";
+      $querycourses = mysqli_query($conn, $sqlcourses);
+      if(mysqli_num_rows($querycourses) > 0)
+ {
+?>
 <section class="courses">
          
    <h1 class="heading">Khoá học Pro</h1>
    <div class="box-container">  
       <?php 
-         include_once './function.php';
-      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
-      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
-      $query = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($query)) {
-         if(!empty($row['gia_khoahoc']))
-         {
+      while ($row = mysqli_fetch_assoc($querycourses)) {
       ?>
          <div class="box">
             <div class="tutor">
@@ -88,7 +110,7 @@
                   </div>
             </div>
             <div class="thumb">
-            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>
@@ -96,23 +118,28 @@
          </div>
       <?php 
          }
-      }; 
       ?>
    </div>
 
 </section>
+<?php 
+ }
+ $sqlcoursesfree = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+ FROM tb_khoa_hoc
+ JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+ WHERE tb_khoa_hoc.gia_khoahoc IS NULL";  
+ $querycoursesfree = mysqli_query($conn, $sqlcoursesfree);
+ if(mysqli_num_rows($querycoursesfree) > 0)
+ {
+?>
+
 <section class="courses">
 
    <h1 class="heading">Khoá học miễn phí</h1>
 
    <div class="box-container">  
       <?php 
-      $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
-      JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan";
-      $query = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($query)) {
-         if(empty($row['gia_khoahoc']))
-         {
+      while ($row = mysqli_fetch_assoc($querycoursesfree)) {
       ?>
          <div class="box">
             <div class="tutor">
@@ -123,29 +150,33 @@
                   </div>
             </div>
             <div class="thumb">
-            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>
       <?php 
          }
-      }; 
       ?>
    </div>
 
 
 </section>
+<?php 
+      }; 
+      $sqlpost = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet
+      JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan";
+      $querypost = mysqli_query($conn, $sqlpost);
+      if(mysqli_num_rows($querypost) > 0){
+?>
 <section class="courses">
 
    <h1 class="heading">Bài viết nổi bật</h1>
 
    <div class="box-container">  
       <?php 
-      $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi FROM tb_bai_viet
-      JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan";
-      $query = mysqli_query($conn, $sql);
-      while ($row = mysqli_fetch_assoc($query)) {
+
+      while ($row = mysqli_fetch_assoc($querypost)) {
       ?>
          <div class="box">
             <div class="tutor">
@@ -156,13 +187,17 @@
                   </div>
             </div>
             <div class="thumb">
-                  <img src="<?php echo "images/images_post" . $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="Course Image">
+                  <img src="<?php echo "images/images_post" . $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_baiviet']; ?></h3>
-            <a href="home.php?title=courses_content&id_baivet=<?php echo $row['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
+            <a href="home.php?title=courses_content&id_baivet=<?php echo $row['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
       <?php 
-      }; 
+      }
       ?>
    </div>
 </section>
+<?php 
+}
+
+?>

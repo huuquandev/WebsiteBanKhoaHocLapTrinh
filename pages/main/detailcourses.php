@@ -17,9 +17,22 @@
    <div class="row">
 
       <div class="column">
-         <!-- <form action="" method="post" class="save-playlist">
-            <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
-         </form> -->
+         <form action="" method="post" class="save-playlist">
+         <?php 
+          $sqlByCourses = "SELECT * FROM tb_khoahoc_damua WHERE tb_khoahoc_damua.id_khoahoc = $idKH  AND tb_khoahoc_damua.id_taikhoan = $id_taikhoan";
+          $queryByCourses = mysqli_query($conn, $sqlByCourses);
+          if(mysqli_num_fields($queryByCourses) > 0){
+            
+         ?>
+            <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đã Mua</span></button>
+            <?php
+            }else{
+            ?>
+             <button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
+            <?php 
+                        } 
+            ?>
+         </form>
    
          <div class="thumb">
             <img src="<?php echo 'images/images_courses/'.$coursesdetail['anh_khoahoc'];?>" alt="">
@@ -37,7 +50,6 @@
          <div class="details">
             <h3><?php echo $coursesdetail['ten_khoahoc']?></h3>
             <p><?php echo $coursesdetail['mota_khoahoc']; ?></p>
-            <!-- <a href="home.php?title=profile" class="inline-btn">view profile</a> -->
          </div>
       </div>
    </div>

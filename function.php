@@ -31,6 +31,30 @@
         }
         return false;
     }
+    //---Đăng nhập CMS---
+    //---Ngọc---
+    function loginCMS($username, $password){
+        GLOBAL $conn;
+        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_password = mysqli_real_escape_string($conn, $password);
+
+        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE tai_khoan = '$filter_username' AND mat_khau = '$filter_password'";
+        $query = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($query) > 0){
+            $row = mysqli_fetch_assoc($query);
+            $_SESSION['cms_id_tai_khoan'] = $row['id_cms_taikhoan'];
+            $_SESSION['cms_tai_khoan'] = $row['tai_khoan'];
+            $_SESSION['cms_ten_hien_thi'] = $row['ten_hien_thi'];
+            $_SESSION['cms_mat_khau'] = $row['mat_khau'];
+            $_SESSION['cms_doi_tuong'] = $row['doi_tuong'];
+            $_SESSION['cms_ngay_sinh'] = $row['ngay_sinh'];
+            $_SESSION['cms_gioi_tinh'] = $row['gioi_tinh'];
+            $_SESSION['cms_sdt'] = $row['sdt'];
+            $_SESSION['cms_hinh_anh'] = $row['hinh_anh'];
+            return true;
+        }
+        return false;
+    }
     //---Đăng kí---
     //---Ngọc---
     function register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
@@ -58,6 +82,39 @@
             return false;
         } else{
             $sql = "INSERT INTO tb_tai_khoan (tai_khoan, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
+            VALUES('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
+            $query = mysqli_query($conn, $sql);
+            move_uploaded_file($image_tmp_name, $image_folder);
+            return true;
+        }
+    }
+    //---Đăng kí CMS---
+    //---Ngọc---
+    function registerCMS($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
+        GLOBAL $conn;
+        $filter_id = unique_id();
+        $filter_name = mysqli_real_escape_string($conn, $name);
+        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_pass = mysqli_real_escape_string($conn, $pass);
+        $filter_phone = mysqli_real_escape_string($conn, $phone);
+        $filter_bdate = mysqli_real_escape_string($conn, $bdate);
+        $filter_doi_tuong = mysqli_real_escape_string($conn, $doi_tuong);
+        $filter_gioi_tinh = mysqli_real_escape_string($conn, $gioi_tinh);
+        
+        $image = $_FILES['image']['name'];
+        $image = mysqli_real_escape_string($conn, $image);
+        $ext = pathinfo($image, PATHINFO_EXTENSION);
+        $rename = $filter_id.'.'.$ext;
+        $image_size = $_FILES['image']['size'];
+        $image_tmp_name = $_FILES['image']['tmp_name'];
+        $image_folder = '../../images/images_user/'.$rename;
+
+        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE tai_khoan = '".$username."'";
+        $query = mysqli_query($conn, $sql);
+        if(mysqli_num_rows($query) > 0){
+            return false;
+        } else{
+            $sql = "INSERT INTO tb_cms_tai_khoan (tai_khoan, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
             VALUES('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
             $query = mysqli_query($conn, $sql);
             move_uploaded_file($image_tmp_name, $image_folder);
@@ -143,9 +200,9 @@
     function GetCoursesById($id_Khoahoc) {
         GLOBAL $conn;
         $filter_id_khoahoc = mysqli_real_escape_string($conn, $id_Khoahoc);
-        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi 
+        $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi 
         FROM tb_khoa_hoc 
-        JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan
+        JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
         WHERE id_khoahoc = '".$filter_id_khoahoc."'";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
@@ -204,19 +261,23 @@
         return $query;
 
     }
-
+    //---Lấy bài giảng theo id---
+    //---Quân---
     function GetLessonById($id_lesson){
         GLOBAL $conn;
         $filter_id_lesson = mysqli_real_escape_string($conn, $id_lesson);
-        $sql = "SELECT *
+        $sql = "SELECT tb_hoc_lieu.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi 
         FROM tb_hoc_lieu
         JOIN tb_khoa_hoc ON tb_khoa_hoc.id_khoahoc = tb_hoc_lieu.id_khoahoc
-        WHERE id_hoclieu = '".$filter_id_lesson."'";
+        JOIN tb_cms_tai_khoan ON tb_cms_tai_khoan.id_cms_taikhoan = tb_khoa_hoc.id_taikhoan
+        WHERE id_hoclieu = $filter_id_lesson";
 
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
         return $row;
     }
+    //---Lấy số lượng bài giảng trong khóa học theo id---
+    //---Quân---
     function GetCountLessonByCourses($id_Khoahoc){
         GLOBAL $conn;
         $filter_id_courses= mysqli_real_escape_string($conn, $id_Khoahoc);
@@ -225,6 +286,8 @@
         $row = mysqli_num_rows($query);
         return $row;
     }
+    //---Lấy số lượng lượt thích trong khóa học theo id---
+    //---Quân---
     function GetCountLikeByPost($id_post){
         GLOBAL $conn;
         $filter_id_post= mysqli_real_escape_string($conn, $id_post);
@@ -235,7 +298,21 @@
         $row = mysqli_num_rows($query);
         return $row;
     }
-    function GetComentByPost($id_post){
+    //---Lấy số lượng lượt thích trong bình luận theo id---
+    //---Quân---
+    function GetCountLikeByComment($id_comment){
+        GLOBAL $conn;
+        $filter_id_comment = mysqli_real_escape_string($conn, $id_comment);
+        $sql = "SELECT * FROM tb_thichbinhluan 
+        JOIN tb_binh_luan ON tb_binh_luan.id_binhluan = tb_thichbinhluan.id_binhluan
+        WHERE tb_binh_luan.id_binhluan = '$filter_id_comment'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_num_rows($query);
+        return $row;
+    }
+    //---Lấy số lượng bình luận trong bài viết theo id---
+    //---Quân---
+    function GetCommentByPost($id_post){
         GLOBAL $conn;
         $filter_id_post= mysqli_real_escape_string($conn, $id_post);
         $sql = "SELECT * FROM tb_binh_luan
@@ -243,5 +320,15 @@
         WHERE tb_bai_viet.id_baiviet = '$filter_id_post'";
         $query = mysqli_query($conn, $sql);
         return $query;
+    }
+     //---Lấy số lượng bình luận trong bài viết theo id---
+    //---Quân---
+    function GetPostById($id_post){
+        GLOBAL $conn;
+        $filter_id_post= mysqli_real_escape_string($conn, $id_post);
+        $sql = "SELECT * FROM tb_bai_viet WHERE tb_bai_viet.id_baiviet = '$filter_id_post'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
     }
 ?>

@@ -1,35 +1,64 @@
-<section class="watch-video">
-   <?php 
+<?php 
+         include_once './function.php';
+
       if(isset($_GET['id_baiviet'])){
          $id_baiviet = $_GET['id_baiviet'];
       }
-      $sql = "SELECT * FROM tb_bai_viet WHERE id_baiviet = $id_baiviet";
+      $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet 
+      JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+      WHERE id_baiviet = $id_baiviet";
       $query = mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($query);
    ?>
+
+<section class="watch-video">
+  
    <div class="video-container">
       
       <div class="tutor info">
-         <a href="#"><img src="images/pic-2.jpg" alt=""></a>
+      <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
          <div>
-            <a href="#"><h3>john deo</h3></a>
-            <p class="date"><i class="fas fa-calendar"></i><span>22-10-2022</span></p>
+            <a href="#"><h3><?php echo $row['ten_hien_thi']; ?></h3></a>
+            <p class="date"><i class="fas fa-calendar"></i><span><?php echo $row['ngaydang_baiviet']; ?></span></p>
          </div>
       </div>
       
       <p class="description">
          <?php echo $row['noidung_baivet']; ?>
       </p>
-      <form action="" method="post" class="flex description">
-        <h4 style="font-size: 1.2rem;">5 Bình luận</h4>
-        <button><i class="far fa-heart"></i><span>Thích</span></button>
-      </form>
+      <?php
+                            $total_like = GetCountLikeByPost($id_baiviet);
+                            $total_comment = mysqli_num_rows(GetCommentByPost($id_baiviet));
+                        ?>
+      <div class="flex description">
+        <h4 style="font-size: 1.2rem;"><?php echo $total_comment; ?> Bình luận</h4>
+        <h4 style="font-size: 1.2rem;"><?php echo $total_like; ?> lượt Thích</span></h4>
+      </div>
+      <div class="postItem_info">
+                <?php
+                    $tag_name = GetTagByIdPost($id_baiviet);
+                    if($tag_name != null){
+                ?>
+                    <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
+                    <?php
+                    }
+                    ?>
+      </div>
+      
    </div>
 
 </section>
+<?php
+   $sqlCmt = "SELECT tb_binh_luan.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi 
+   FROM tb_binh_luan
+   JOIN tb_tai_khoan ON tb_tai_khoan.id_taikhoan = tb_binh_luan.id_taikhoan
+   JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_binh_luan.id_baiviet
+   WHERE tb_bai_viet.id_baiviet = '$id_baiviet'";
+   $queryCmt = mysqli_query($conn, $sqlCmt);
+ ?> 
 <section class="comments">
 
-   <h1 class="heading">Bình luận</h1>
+<h1 class="heading"><?php echo mysqli_num_rows($queryCmt) ?> Bình luận</h1>
 
    <form action="" class="add-comment">
       <h3>Thêm bình luận</h3>
@@ -37,20 +66,31 @@
       <input type="submit" value="add comment" class="inline-btn" name="add_comment">
    </form>
 
-   <h1 class="heading">user comments</h1>
+   <h1 class="heading">Bình luận người dùng</h1>
 
    <div class="box-container">
-
+      <?php
+      
+         if(mysqli_num_rows($queryCmt) > 0){
+            while($rowComment = mysqli_fetch_assoc($queryCmt)){
+       ?>
       <div class="box">
          <div class="user">
-            <img src="images/pic-1.jpg" alt="">
+         <img src="../../images/images_user/<?php echo $rowComment['hinh_anh']; ?>" alt="">
             <div>
-               <h3>shaikh anas</h3>
-               <span>22-10-2022</span>
+               <h3><?php echo $rowComment['ten_hien_thi']; ?></h3>
+               <span><?php echo $rowComment['ngay_binhluan']; ?></span>
             </div>
          </div>
-         <div class="comment-box">this is a comment form shaikh anas</div>
-         <form action="" class="flex-btn description">
+         <div class="comment-box"><?php echo $rowComment['noidung_binhluan']; ?></div>
+         <?php
+            $id_binhluan = $rowComment['id_binhluan'];
+            $total_like_comment = GetCountLikeByComment($id_binhluan);
+         ?>
+         <form action="" class="flex-btn description" style="<?php if($rowComment["id_taikhoan"] != $id_taikhoan) echo "float: right;"; else echo ""; ?>">
+            <?php 
+               if($rowComment["id_taikhoan"] == $id_taikhoan){
+            ?>
             <div class="option_before">
                <input type="button" value="Chỉnh sửa" name="edit_comment" class="inline-option-btn btnEdit">
                <input type="button" value="Xóa" name="delete_comment" class="inline-delete-btn btnDelete">
@@ -59,122 +99,19 @@
                <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
                <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
             </div>
-            <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
+            <?php 
+               }
+            ?>
+            <a href="#" class="inline-option-btn btnlike" style="color: var(--light-color);   "><?php echo $total_like_comment; ?> <i class="far fa-heart"></i></a>
+
          </form>
       </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-2.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">awesome tutorial!
-            keep going!
-         </div>
-            <form action="" class="flex-btn description">
-               <div class="option_before">
-                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
-               </div>
-               <div class="option_after" style="display: none;">
-                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
-                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
-               </div>
-               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
-            </form>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-3.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">amazing way of teaching!
-            thank you so much!
-         </div>
-         <form action="" class="flex-btn description">
-               <div class="option_before">
-                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
-               </div>
-               <div class="option_after" style="display: none;">
-                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
-                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
-               </div>
-               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
-            </form>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-4.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">loved it, thanks for the tutorial!</div>
-         <form action="" class="flex-btn description">
-               <div class="option_before">
-                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
-               </div>
-               <div class="option_after" style="display: none;">
-                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
-                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
-               </div>
-               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
-            </form>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-5.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">this is what I have been looking for! thank you so much!</div>
-         <form action="" class="flex-btn description">
-               <div class="option_before">
-                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
-               </div>
-               <div class="option_after" style="display: none;">
-                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
-                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
-               </div>
-               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
-            </form>
-      </div>
-
-      <div class="box">
-         <div class="user">
-            <img src="images/pic-2.jpg" alt="">
-            <div>
-               <h3>john deo</h3>
-               <span>22-10-2022</span>
-            </div>
-         </div>
-         <div class="comment-box">thanks for the tutorial!
-
-            how to download source code file?
-         </div>
-         <form action="" class="flex-btn description">
-               <div class="option_before">
-                  <input type="button" value="Trả lời" name="edit_comment" class="inline-option-btn btnEdit">
-               </div>
-               <div class="option_after" style="display: none;">
-                  <input type="submit" value="Lưu" name="save_comment" class="inline-option-btn btnSave">
-                  <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
-               </div>
-               <button class="inline-option-btn btnlike" style="color: black;"><i class="far fa-heart"></i><span>Thích</span></button>
-            </form>
-      </div>
-
+      <?php
+            }
+      }else{
+         echo '<p class="empty">Không có bình luận!</p>';
+      }
+      ?>
    </div>
 
 </section>

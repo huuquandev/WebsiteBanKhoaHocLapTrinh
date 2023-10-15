@@ -1,5 +1,5 @@
 <?php 
-    include_once '../function.php';
+      include_once '../function.php';
 
     if (isset($_GET['id_khoahoc'])) {
         $idKH = $_GET['id_khoahoc'];
@@ -28,8 +28,8 @@
 <section class="playlist-form">
 
    <h1 class="heading">sửa khóa học</h1>
-   <form action="" method="post" enctype="multipart/form-data">
-    <h3>Thông tin khóa học</h3>
+   <form action="" method="post" enctype="multipart/form-data" class="editcourses">
+    <h3 class="titlecenter">Thông tin khóa học</h3>
       <input type="hidden" name="old_image" value="<?= $row['anh_khoahoc']; ?>">
       <p>Trạng thái <span>*</span></p>
       <select name="new_status" class="box" required>
@@ -49,8 +49,9 @@
       <input type="file" name="new_image" accept="image/*" class="box">
       <input type="submit" value="Lưu lại" name="submit" class="btn">
       <div class="flex-btn">
-         <input type="submit" value="Xóa" class="delete-btn" onclick="return confirm('Bạn có chắc muốn xóa khóa hóc?');" name="delete">
          <a href="cms_dashboard.php?title=detail_courses&idKH=<?= $idKH; ?>" class="option-btn">Chi tiết</a>
+         <input type="submit" value="Xóa" class="delete-btn" onclick="return confirm('Bạn có chắc muốn xóa khóa hóc?');" name="delete">
+
       </div>
    </form>
 </section>

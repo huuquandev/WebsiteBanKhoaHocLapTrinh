@@ -1,3 +1,24 @@
+<?php
+         include_once './function.php';
+
+         if($id_taikhoan != ""){
+            $sqlCountComennt  = "SELECT * FROM tb_binh_luan 
+            WHERE tb_binh_luan.id_taikhoan = $id_taikhoan";
+            $queryCountComennt = mysqli_query($conn, $sqlCountComennt);
+
+            $sqlCountLike  = "SELECT * FROM tb_thichbinhluan
+            WHERE tb_thichbinhluan.id_taikhoan = $id_taikhoan";
+            $queryCountLike = mysqli_query($conn, $sqlCountLike);
+
+            $sqlCountByCourses  = "SELECT * FROM tb_khoahoc_damua
+            WHERE tb_khoahoc_damua.id_taikhoan = $id_taikhoan";
+            $queryCountByCourses = mysqli_query($conn, $sqlCountByCourses);
+         }else{
+            header('location:login.php');
+         }
+
+?>
+
 <section class="user-profile">
 
    <h1 class="heading">Thông tin tài khoản</h1>
@@ -5,20 +26,10 @@
    <div class="info">
 
       <div class="user">
-         <img src="uploaded_files/<?= $row['hinh_anh']; ?>" alt="">
+      <img src="images/images_user/<?= $row['hinh_anh']; ?>" alt="">
          <h3><?= $row['ten_hien_thi']; ?></h3>
-         <?php
-         if($row['doi_tuong'] == 1){
-         ?>
-            <p>Người dùng</p>
-         <?php
-         }else if($row['doi_tuong'] == 0){
-         ?>
-            <p>Quản trị viên</p>
-         <?php
-         }
-         ?>
-         <a href="update.html" class="inline-btn">Chỉnh sửa</a>
+         <p>Người dùng</p>
+         <a href="home.php?title=edit_profile&idU=<?php echo $id_taikhoan ?>" class="inline-btn">Hồ sơ</a>
       </div>
    
       <div class="box-container">
@@ -27,8 +38,8 @@
             <div class="flex">
                <i class="fas fa-bookmark"></i>
                <div>
-                  <span>0</span>
-                  <p>Khóa học đã đăng ký</p>
+                  <span><?php echo mysqli_num_rows($queryCountByCourses); ?></span>
+                  <p>Khóa học đã mua</p>
                </div>
             </div>
             <a href="#" class="inline-btn">Xem khóa học</a>
@@ -38,7 +49,7 @@
             <div class="flex">
                <i class="fas fa-heart"></i>
                <div>
-                  <span>0</span>
+                  <span><?php echo mysqli_num_rows($queryCountLike); ?></span>
                   <p>Lượt thích</p>
                </div>
             </div>
@@ -49,22 +60,11 @@
             <div class="flex">
                <i class="fas fa-comment"></i>
                <div>
-                  <span>12</span>
+                  <span><?php echo mysqli_num_rows($queryCountComennt); ?></span>
                   <p>Bình luận</p>
                </div>
             </div>
             <a href="#" class="inline-btn">Xem bình luận</a>
-         </div>
-
-         <div class="box">
-            <div class="flex">
-               <i class="fas fa-chalkboard-user"></i>
-               <div>
-                  <span>12</span>
-                  <p>Bài viết</p>
-               </div>
-            </div>
-            <a href="#" class="inline-btn">Xem bài viết</a>
          </div>
       </div>
    </div>
