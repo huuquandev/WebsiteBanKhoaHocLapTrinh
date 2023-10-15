@@ -197,6 +197,16 @@
     }
     //---Thông tin khóa học---
     //---Quân---
+    function GetAccountById($id_taikhoan) {
+        GLOBAL $conn;
+        $filter_id_taikhoan = mysqli_real_escape_string($conn, $id_taikhoan);
+        $sql = "SELECT * FROM tb_tai_khoan WHERE tb_tai_khoan.id_taikhoan = $filter_id_taikhoan";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
+    }
+    //---Thông tin khóa học---
+    //---Quân---
     function GetCoursesById($id_Khoahoc) {
         GLOBAL $conn;
         $filter_id_khoahoc = mysqli_real_escape_string($conn, $id_Khoahoc);
@@ -213,10 +223,20 @@
     function Search_Courses($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_khoa_hoc.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
                 FROM tb_khoa_hoc 
-                JOIN tb_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_tai_khoan.id_taikhoan
+                JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
                 WHERE ten_khoahoc LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql);
+        return $query;
+    }
+    function CMS_Search_Courses($key_word, $id_taikhoan) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+                FROM tb_khoa_hoc 
+                JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                WHERE ten_khoahoc LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql);
         return $query;
     }
@@ -225,10 +245,21 @@
     function Search_Post($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
                 FROM tb_bai_viet 
-                JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan
+                JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
                 WHERE ten_baiviet LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql); 
+        return $query;
+
+    }
+    function CMS_Search_Post($key_word, $id_taikhoan) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+                FROM tb_bai_viet 
+                JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                WHERE ten_baiviet LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;
 
@@ -251,12 +282,25 @@
     function Search_Tag($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
                 FROM tb_bai_viet 
-                JOIN tb_tai_khoan ON tb_bai_viet.id_taikhoan = tb_tai_khoan.id_taikhoan
-                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet_tag
+                JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
                 JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
                 WHERE tb_tag.ten_tag LIKE '%{$key_word}%'";
+        $query = mysqli_query($conn, $sql); 
+        return $query;
+
+    }
+    function CMS_Search_Tag($key_word, $id_taikhoan) {
+        GLOBAL $conn;
+        $key_word = mysqli_real_escape_string($conn, $key_word);
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+                FROM tb_bai_viet 
+                JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
+                JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
+                WHERE tb_tag.ten_tag LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;
 
@@ -321,7 +365,7 @@
         $query = mysqli_query($conn, $sql);
         return $query;
     }
-     //---Lấy số lượng bình luận trong bài viết theo id---
+    //---Lấy số lượng bình luận trong bài viết theo id---
     //---Quân---
     function GetPostById($id_post){
         GLOBAL $conn;

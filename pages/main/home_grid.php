@@ -190,7 +190,7 @@
                   <img src="<?php echo "images/images_post" . $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_baiviet']; ?></h3>
-            <a href="home.php?title=courses_content&id_baivet=<?php echo $row['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
+            <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
       <?php 
       }

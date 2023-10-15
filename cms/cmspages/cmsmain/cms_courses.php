@@ -1,3 +1,10 @@
+<?php
+   if($id_taikhoan == ""){
+      header('location:../cms/cmspages/cms_login.php');
+   }
+ ?>
+
+
 <section class="playlists">
 
    <h1 class="heading">Danh sách khóa học</h1>
@@ -12,7 +19,8 @@
       <?php
    include_once '../function.php';
    $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
-         JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan";
+         JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+         WHERE tb_khoa_hoc.id_taikhoan = $id_taikhoan";
          $query = mysqli_query($conn, $sql);
 
          if(mysqli_num_rows($query) > 0){

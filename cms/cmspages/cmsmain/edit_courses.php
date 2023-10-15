@@ -1,4 +1,7 @@
 <?php 
+   if($id_taikhoan == ""){
+      header('location:../cms/cmspages/cms_login.php');
+   }
       include_once '../function.php';
 
     if (isset($_GET['id_khoahoc'])) {

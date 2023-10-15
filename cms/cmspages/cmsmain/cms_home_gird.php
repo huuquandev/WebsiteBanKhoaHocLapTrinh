@@ -1,4 +1,7 @@
 <?php
+   if($id_taikhoan == ""){
+      header('location:../cms/cmspages/cms_login.php');
+   }
          include_once '../function.php';
 
          if($id_taikhoan != ""){
@@ -25,13 +28,13 @@
 
 <section class="dashboard">
 
-   <h1 class="heading">dashboard</h1>
+   <h1 class="heading">Tùy chọn nhanh</h1>
 
    <div class="box-container">
 
       <div class="box">
          <h3>Xin chào!</h3>
-         <p>0</p>
+         <p><?php echo $_SESSION['cms_ten_hien_thi'] ?></p>
          <a href="profile.php" class="btn">Hồ sơ</a>
       </div>
 

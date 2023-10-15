@@ -1,11 +1,13 @@
 <?php
-
-include_once './function.php';
+if($id_taikhoan == ""){
+    header('location:../cms/cmspages/cms_login.php');
+}
+include_once '../function.php';
 
 if(isset($_GET['search_box'])){
     $keyword = $_GET['search_box'];
-    $row_courses = Search_Courses($keyword);
-    $row_posts = Search_Post($keyword);
+    $row_courses = CMS_Search_Courses($keyword, $id_taikhoan);
+    $row_posts = CMS_Search_Post($keyword, $id_taikhoan);
 }
 ?>
 
@@ -27,7 +29,7 @@ if(isset($_GET['search_box'])){
             padding-top: 15px;">
                 Khóa học
                 <div class="flex-option" style="display: flex;">
-                    <a href="home.php?title=search_courses&search_box=<?php echo $keyword; ?>" style="font-size: 15px;">Xem thêm</a>
+                    <a href="cms_dashboard.php?title=cms_search_courses&search_box=<?php echo $keyword; ?>" style="font-size: 15px;">Xem thêm</a>
                 </div>
             </h3>
 
@@ -58,7 +60,7 @@ if(isset($_GET['search_box'])){
                         <?php
                         }
                         ?>
-                        <a href="home.php?title=detailcourses&idKH=<?php echo $row_course['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
+                        <a href="cms_dashboard.php?title=detail_courses&idKH=<?php echo $row_course['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
                     </div>
                 <?php
                 }
@@ -78,7 +80,7 @@ if(isset($_GET['search_box'])){
             padding-top: 15px;">
                 Bài viết
                 <div class="flex-option" style="display: flex;">
-                    <a href="home.php?title=search_post&search_box=<?php echo $keyword; ?>" style="font-size: 15px;">Xem thêm</a>
+                    <a href="cms_dashboard.php?title=cms_search_post&search_box=<?php echo $keyword; ?>" style="font-size: 15px;">Xem thêm</a>
                 </div>
             </h3>
             <div class="box-container">
@@ -97,7 +99,7 @@ if(isset($_GET['search_box'])){
                             <img src="<?php echo "images/images_post/" . $row_post['anh_baiviet']; ?>" class=" card-img-top" height="200vh" alt="">
                         </div>
                         <h3 class="title" style="min-height: 50px"><?php echo $row_post['ten_baiviet']; ?></h3>
-                        <a href="home.php?title=postdetail&id_baiviet=<?php echo $row_post['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
+                        <a href="cms_dashboard.php?title=cms_post_detail&id_baiviet=<?php echo $row_post['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
                     </div>
                 <?php
                 }

@@ -21,36 +21,37 @@
                     $pageTitle = "Chi tiết khóa học";
                 }else if($tam == "detaillesson"){
                     $pageTitle = "Chi tiết bài giảng";
-                }if($tam == "addcourses"){
-                    $pageTitle = "Thêm khóa học";
-                }if($tam == "editcourses"){
-                    $pageTitle = "Sửa khóa học";
-                }if($tam == "addplaylist"){
-                    $pageTitle = "Thêm bài giảng";
-                }if($tam == "editplaylist"){
-                    $pageTitle = "Sửa bài giảng";
                 }if($tam == "search"){
-                    $pageTitle = "Tìm kiếm";
+                    $keyword = $_GET['search_box'];
+                    $pageTitle = 'Tìm kiếm \''. $keyword.'\'';
                 }if($tam == "search_post"){
-                    $pageTitle = "Tìm kiếm bài viết";
-                }if($tam == "search_video"){
-                    $pageTitle = "Tìm kiếm video";
+                    $keyword = $_GET['search_box'];
+                    $pageTitle = 'Tìm kiếm bài viết \''.$keyword.'\'';
                 }if($tam == "search_courses"){
-                    $pageTitle = "Tìm kiếm Khóa học";
+                    $keyword = $_GET['search_box'];
+                    $pageTitle = 'Tìm kiếm khóa học \''.$keyword.'\'';
                 }if($tam == "post"){
                     $pageTitle = "Bài viết";
                 }else if($tam == "postdetail"){
                     $pageTitle = "Chi tiết bài viết";
-                }else if($tam == "addpost"){
-                    $pageTitle = "Đăng bài viết";
                 }else if($tam == "searchtag"){
-                    $pageTitle = "Tìm kiếm theo tag";
+                    $keyword = $_GET['tag'];
+                    $pageTitle = 'Tìm kiếm theo tag \''.$keyword.'\'';
                 }else if($tam == "edit_profile"){
                     $pageTitle = "Chỉnh sửa hồ sơ";
+                }else if($tam == "change_password"){
+                    $pageTitle = "Đổi mật khẩu";
+                }else if($tam == "comment"){
+                    $pageTitle = "Bình luận";
+                }else if($tam == "like"){
+                    $pageTitle = "Lượt thích";
+                }else if($tam == "coursesbuy"){
+                    $pageTitle = "Khóa học đã mua";
                 }
                 
             }else{
                 $tam = '';
                 $pageTitle = "Trang chủ";
             }
+?>
             

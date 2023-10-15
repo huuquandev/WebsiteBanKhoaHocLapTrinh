@@ -1,12 +1,14 @@
 <?php 
+if($id_taikhoan == ""){
+   header('location:../cms/cmspages/cms_login.php');
+}
       include_once '../function.php';
 
    // unset($_SESSION['idKH']);
    if (isset($_GET['idKH'])) {
         $idKH = $_GET['idKH'];
         $coursesdetail = GetCoursesById($idKH);
-
-    }
+   }
     
 ?>
 

@@ -1,15 +1,17 @@
 <?php
+if($id_taikhoan == ""){
+    header('location:../cms/cmspages/cms_login.php');
+}
+   include_once '../function.php';
 
-   include_once './function.php';
-
-   if(isset($_GET['search_box'])){
-      $keyword = $_GET['search_box'];
-      $row_posts = CMS_Search_Post($keyword, $id_taikhoan);
-    }
+   if(isset($_GET['tag'])){
+      $keyword = $_GET['tag'];
+      $row_posts = Search_Tag($keyword);
+   }
 ?>
 
 <section class="posts">
-   <h1 class="heading">Bài viết '<?php echo $keyword ?>'</h1>
+   <h1 class="heading">Tag '<?php echo $keyword ?>'</h1>
 
    <div class="box-container">
    <?php    
@@ -31,13 +33,6 @@
                 <div class="thumb">
                 <img src="<?php echo "images/images_post/" . $row_post['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
                 </div>
-            </div>
-            <div class="postItem_info">
-               <?php
-                  $tag_name = GetTagByIdPost($row_post['id_baiviet'])
-               ?>
-                <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
-                
             </div>
             <div class="footer_post">
                 <a href="home.php?title=postdetail&id_baiviet=<?php echo $row_post['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>

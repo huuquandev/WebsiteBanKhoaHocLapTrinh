@@ -1,5 +1,8 @@
 <?php 
-
+    if($id_taikhoan == ""){
+        header('location:../cms/cmspages/cms_login.php');
+    }
+    
    if (isset($_GET['idKH'])) {
         $idKH = $_GET['idKH'];
     }

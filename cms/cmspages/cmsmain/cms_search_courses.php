@@ -1,10 +1,12 @@
 <?php
-
-   include_once './function.php';
+if($id_taikhoan == ""){
+   header('location:../cms/cmspages/cms_login.php');
+}
+   include_once '../function.php';
 
    if(isset($_GET['search_box'])){
       $keyword = $_GET['search_box'];
-      $row_courses = CMS_Search_Courses($keyword, $id_taikhoan);
+      $row_courses = Search_Courses($keyword);
    }
 ?>
 <section class="courses">

@@ -1,3 +1,10 @@
+
+<?php 
+    if($id_taikhoan == ""){
+        header('location:../cms/cmspages/cms_login.php');
+    }
+?>
+
 <section class="playlist-form">
 
    <h1 class="heading">Thêm khóa học</h1>

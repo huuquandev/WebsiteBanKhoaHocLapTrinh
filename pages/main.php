@@ -23,16 +23,6 @@
                     include("main/detailcourses.php");
                 }else if($tam == "detaillesson"){
                     include("main/detaillesson.php");
-                }if($tam == "addcourses"){
-                    include("main/addcourses.php");
-                }if($tam == "editcourses"){
-                    include("main/editcourses.php");
-                }if($tam == "deletecourses"){
-                    include("main/deletecourses.php");
-                }if($tam == "addplaylist"){
-                    include("main/addplaylist.php");
-                }if($tam == "editplaylist"){
-                    include("main/editplaylist.php");
                 }if($tam == "search"){
                     include("main/search.php");
                 }if($tam == "search_post"){
@@ -45,14 +35,18 @@
                     include("main/post.php");
                 }else if($tam == "postdetail"){
                     include("main/postdetail.php");
-                }else if($tam == "addpost"){
-                    include("main/addpost.php");
                 }else if($tam == "searchtag"){
                     include("main/search_tag.php");
-                }else if($tam == "delete_material"){
-                    include("main/deleteplaylist.php");
                 }else if($tam == "edit_profile"){
                     include("main/editprofile.php");
+                }else if($tam == "change_password"){
+                    include("main/changepass.php");
+                }else if($tam == "comment"){
+                    include("main/comment.php");
+                }else if($tam == "like"){
+                    include("main/like.php");
+                }else if($tam == "coursesbuy"){
+                    include("main/coursesbuy.php");
                 }
                 
             }else{

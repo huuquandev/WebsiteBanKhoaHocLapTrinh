@@ -7,10 +7,10 @@
     }else{
        $id_taikhoan = '';
        header('location:../cms/cmspages/cms_login.php');
-      }
+    }
     include("cmspages/cms_title.php");
 ?>
-   
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +38,6 @@
 
 
 <script src="../js/admin_script.js"></script>
-<script src="../admin/ckeditor/ckeditor.js"></script>
-<script>
-      CKEDITOR.replace( 'noidung_baiviet' );
-</script>
+
 </body>
 </html>

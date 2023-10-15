@@ -29,10 +29,6 @@
             while ($row = mysqli_fetch_assoc($query)) {      
          ?>
             <div class="box">
-               <div class="icon_courses" style="display: none;">
-                     <a href="home.php?title=editcourses&id_khoahoc=<?php echo $row['id_khoahoc']; ?>" class="inline-btn" style="background-color: orange;"> <i class="fa-solid fa-pen-to-square"></i> </a>
-                     <a href="home.php?title=deletecourses&id_khoahoc=<?php echo $row['id_khoahoc'];?>" class="inline-btn" style="background-color: red;"> <i class="fa-solid fa-trash"></i> </a>
-               </div>
                <div class="tutor">
                      <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
                      <div class="info">

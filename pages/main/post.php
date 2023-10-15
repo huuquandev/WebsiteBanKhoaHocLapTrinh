@@ -36,13 +36,13 @@
                     $tag_name = GetTagByIdPost($row['id_baiviet']);
                     if($tag_name != null){
                 ?>
-                    <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
+                    <a class="postItem_tags" href="home.php?title=cms_search_tag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
                     <?php
                     }
                     ?>
             </div>
             <div class="footer_post">
-            <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
+                <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
                     <?php
                             $total_like = GetCountLikeByPost($row['id_baiviet']);
                             $total_comment = mysqli_num_rows(GetCommentByPost($row['id_baiviet']));

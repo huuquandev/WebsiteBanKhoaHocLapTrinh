@@ -1,4 +1,8 @@
-
+<?php
+if($id_taikhoan == ""){
+    header('location:../cms/cmspages/cms_login.php');
+}
+ ?>
 <section class="posts">
 
     <h1 class="heading" style="
@@ -17,7 +21,8 @@
       include_once '../function.php';
 
            $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet 
-            JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan";
+           JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+           WHERE tb_bai_viet.id_taikhoan = $id_taikhoan";
            $query = mysqli_query($conn, $sql);
            if(mysqli_num_rows($query) > 0){
            while ($row = mysqli_fetch_array($query)) {
@@ -44,7 +49,7 @@
                     $tag_name = GetTagByIdPost($row['id_baiviet']);
                     if($tag_name != null){
                 ?>
-                    <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
+                    <a class="postItem_tags" href="cms_dashboard.php?title=cms_search_tag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
                     <?php
                     }
                     ?>

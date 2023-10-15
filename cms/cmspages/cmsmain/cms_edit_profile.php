@@ -1,8 +1,7 @@
 <?php
    if($id_taikhoan == ""){
-      header('location:home.php?title=login');
+      header('location:../cms/cmspages/cms_login.php');
    }
-
    include_once './function.php';
 
    if (isset($_GET['idU'])) {
@@ -15,8 +14,6 @@
       $id = unique_id();
       $name = trim($_POST['name']);
       $username =  trim($_POST['username']);
-      $pass = trim($_POST['pass']);
-      $cfpass = trim($_POST['cfpass']);
       $phone = $_POST['phone'];
       $bdate = $_POST['bdate'];
       $doi_tuong = 1;

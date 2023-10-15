@@ -1,3 +1,8 @@
+<?php 
+    if($id_taikhoan == ""){
+        header('location:../cms/cmspages/cms_login.php');
+    }
+?>
 <section class="addpost">
 
    <h1 class="heading">Thêm bài viết</h1>

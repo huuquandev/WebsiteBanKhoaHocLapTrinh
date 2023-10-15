@@ -29,6 +29,24 @@
                     include("cmsmain/detail_lesson.php");
                 }if($tam == "edit_post"){
                     include("cmsmain/edit_post.php");
+                }if($tam == "cms_profile"){
+                    include("cmsmain/cms_profile.php");
+                }if($tam == "cms_detail"){
+                    include("cmsmain/cms_profile.php");
+                }if($tam == "edit_cms_profile"){
+                    include("cmsmain/cms_edit_profile.php");
+                }if($tam == "cms_edit_profile"){
+                    include("cmsmain/cms_edit_profile.php");
+                }if($tam == "cms_change_password"){
+                    include("cmsmain/cms_change_pass.php");
+                }if($tam == "cms_search"){
+                    include("cmsmain/cms_search.php");
+                }if($tam == "cms_search_courses"){
+                    include("cmsmain/cms_search_courses.php");
+                }if($tam == "cms_search_post"){
+                    include("cmsmain/cms_search_post.php");
+                }if($tam == "cms_search_tag"){
+                    include("cmsmain/cms_search_tag.php");
                 }
                 
             }else{

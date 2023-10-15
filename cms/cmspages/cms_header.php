@@ -15,11 +15,12 @@ if(isset($message)){
 
    <section class="flex">
 
-      <a href="dashboard.php" class="logo">Educa.</a>
+      <a href="cms_dashboard.php" class="logo">Educa.</a>
 
-      <form action="search_page.php" method="post" class="search-form">
-         <input type="text" name="search" placeholder="search here..." required maxlength="100">
-         <button type="submit" class="fas fa-search" name="search_btn"></button>
+      <form action="cms_dashboard.php?" method="get" class="search-form">
+         <input type="hidden" name="title" required placeholder="Tìm kiếm..." maxlength="100" value="cms_search">
+         <input type="text" name="search_box" required placeholder="Tìm kiếm..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
       </form>
 
       <div class="icons">

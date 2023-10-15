@@ -1,8 +1,8 @@
-<?php
-  if($id_taikhoan == ""){
-    header('location:../cms/cmspages/cms_login.php');
-  }
- ?>
+<?php 
+if($id_taikhoan == ""){
+    header('location:home.php?title=login');
+}
+?>
 <section class="comments">
 
    <h1 class="heading">Danh sách lượt thích</h1>
@@ -14,7 +14,7 @@
         FROM tb_thichbaiviet
         JOIN tb_tai_khoan ON tb_thichbaiviet.id_taikhoan = tb_tai_khoan.id_taikhoan 
         JOIN tb_bai_viet ON tb_thichbaiviet.id_baiviet = tb_bai_viet.id_baiviet
-        WHERE tb_bai_viet.id_taikhoan = $id_taikhoan";
+        WHERE tb_thichbaiviet.id_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql);
         if(mysqli_num_rows($query) > 0){
             while ($row = mysqli_fetch_array($query)) {

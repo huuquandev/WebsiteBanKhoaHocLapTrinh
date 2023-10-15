@@ -27,7 +27,7 @@
       if(!loginCMS($username, $password)){   
          $message[] = 'Sai mật khẩu hoặc tài khoản!';
       }else{
-         header('Location: /cms/cms_dashboard.php');
+         header('Location:../cms_dashboard.php');
       }
    }
 if(isset($message)){
