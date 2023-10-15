@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 13, 2023 lúc 04:35 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 15, 2023 at 08:29 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `websitelaptrinh`
+-- Database: `websitelaptrinh`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_baiviet_tags`
+-- Table structure for table `tb_baiviet_tags`
 --
 
 CREATE TABLE `tb_baiviet_tags` (
@@ -34,7 +34,7 @@ CREATE TABLE `tb_baiviet_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_baiviet_tags`
+-- Dumping data for table `tb_baiviet_tags`
 --
 
 INSERT INTO `tb_baiviet_tags` (`id_baiviet_tag`, `id_baiviet`, `id_tag`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `tb_baiviet_tags` (`id_baiviet_tag`, `id_baiviet`, `id_tag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_bai_viet`
+-- Table structure for table `tb_bai_viet`
 --
 
 CREATE TABLE `tb_bai_viet` (
@@ -52,41 +52,49 @@ CREATE TABLE `tb_bai_viet` (
   `noidung_baivet` text DEFAULT NULL,
   `ten_baiviet` text DEFAULT NULL,
   `mota_baiviet` text DEFAULT NULL,
-  `ngaydang_baiviet` date DEFAULT NULL,
+  `ngaydang_baiviet` datetime DEFAULT NULL,
   `anh_baiviet` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_bai_viet`
+-- Dumping data for table `tb_bai_viet`
 --
 
 INSERT INTO `tb_bai_viet` (`id_baiviet`, `id_taikhoan`, `noidung_baivet`, `ten_baiviet`, `mota_baiviet`, `ngaydang_baiviet`, `anh_baiviet`) VALUES
-(7, 1, 'huylohb123', 'huylohb123', 'huylohb123', '2023-10-06', 'huylohb123');
+(7, 1, 'huylohb123', 'huylohb123', 'huylohb123', '2023-10-06 00:00:00', 'huylohb123'),
+(8, 6, 'ƯQEQWEQW', 'EQWEQWEQW', 'EQWEQWQWCDSEQW', '2023-10-25 23:39:20', 'EQWEWQEQW');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_binh_luan`
+-- Table structure for table `tb_binh_luan`
 --
 
 CREATE TABLE `tb_binh_luan` (
   `id_binhluan` int(100) NOT NULL,
-  `id_baiviet` int(100) NOT NULL,
+  `id_baiviet` int(100) DEFAULT NULL,
+  `id_hoclieu` int(11) DEFAULT NULL,
   `id_taikhoan` int(100) NOT NULL,
-  `noidung_binhluan` text NOT NULL
+  `noidung_binhluan` text NOT NULL,
+  `ngay_binhluan` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_binh_luan`
+-- Dumping data for table `tb_binh_luan`
 --
 
-INSERT INTO `tb_binh_luan` (`id_binhluan`, `id_baiviet`, `id_taikhoan`, `noidung_binhluan`) VALUES
-(1, 7, 2, 'eqweqwe');
+INSERT INTO `tb_binh_luan` (`id_binhluan`, `id_baiviet`, `id_hoclieu`, `id_taikhoan`, `noidung_binhluan`, `ngay_binhluan`) VALUES
+(5, NULL, 8, 2, 'eqweqwe', '2023-10-14 21:40:20'),
+(6, 7, NULL, 22, 'eqwe321321', '2023-10-14 21:40:32'),
+(7, 8, NULL, 22, 'eqweqweqweqw312', '2023-10-14 21:40:41'),
+(8, 7, NULL, 20, 'eqweqweqw', '2023-10-14 21:40:54'),
+(9, NULL, 8, 20, 'eqweqweqw321', '2023-10-14 21:41:05'),
+(10, 7, NULL, 22, 'eqweqweqw213123', '2023-10-14 21:41:19');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_cms_tai_khoan`
+-- Table structure for table `tb_cms_tai_khoan`
 --
 
 CREATE TABLE `tb_cms_tai_khoan` (
@@ -102,28 +110,17 @@ CREATE TABLE `tb_cms_tai_khoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_cms_tai_khoan`
+-- Dumping data for table `tb_cms_tai_khoan`
 --
 
 INSERT INTO `tb_cms_tai_khoan` (`id_cms_taikhoan`, `tai_khoan`, `ten_hien_thi`, `mat_khau`, `ngay_sinh`, `doi_tuong`, `gioi_tinh`, `sdt`, `hinh_anh`) VALUES
-(1, 'huylohb123', 'huylohb123', 'huylohb123', '2023-10-03', 0, 1, 378452231, 'eqweqweqw');
+(1, 'huylohb123', 'huylohb123', 'huylohb123', '2023-10-03', 0, 1, 378452231, 'eqweqweqw'),
+(6, 'huylohb1234', 'pham huu quan', 'huylohb123', '2001-11-11', 1, 1, 21321321, 'enwRZWMlgAU1gBvTAF9g.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_dangky_khoahoc`
---
-
-CREATE TABLE `tb_dangky_khoahoc` (
-  `id_dangky` int(100) NOT NULL,
-  `id_khoahoc` int(100) NOT NULL,
-  `id_taikhoan` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tb_hoc_lieu`
+-- Table structure for table `tb_hoc_lieu`
 --
 
 CREATE TABLE `tb_hoc_lieu` (
@@ -132,22 +129,42 @@ CREATE TABLE `tb_hoc_lieu` (
   `ten_hoclieu` varchar(50) NOT NULL,
   `anh_hoclieu` text DEFAULT NULL,
   `file_hoclieu` text CHARACTER SET utf32 COLLATE utf32_unicode_520_ci DEFAULT NULL,
-  `ngay_dang` date NOT NULL,
-  `mota_hoclieu` text DEFAULT NULL
+  `ngaydang_hoclieu` datetime NOT NULL,
+  `mota_hoclieu` text DEFAULT NULL,
+  `trangthai_hoclieu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_hoc_lieu`
+-- Dumping data for table `tb_hoc_lieu`
 --
 
-INSERT INTO `tb_hoc_lieu` (`id_hoclieu`, `id_khoahoc`, `ten_hoclieu`, `anh_hoclieu`, `file_hoclieu`, `ngay_dang`, `mota_hoclieu`) VALUES
-(4, 3, 'video1', '1697016106609.png', '1697016106609.mp4', '0000-00-00', 'đây là video 1\r\n        '),
-(7, 3, 'eqweqw', 'qưeqwe', 'eqweqw', '2023-10-11', 'qưeqwewqeqw');
+INSERT INTO `tb_hoc_lieu` (`id_hoclieu`, `id_khoahoc`, `ten_hoclieu`, `anh_hoclieu`, `file_hoclieu`, `ngaydang_hoclieu`, `mota_hoclieu`, `trangthai_hoclieu`) VALUES
+(8, 5, 'ưqeqweqw', 'eqweqwe', 'eqweqw', '2023-10-24 01:00:00', 'qưeqwe', 'Mở khóa');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_khoa_hoc`
+-- Table structure for table `tb_khoahoc_damua`
+--
+
+CREATE TABLE `tb_khoahoc_damua` (
+  `id_khoahoc_damua` int(11) NOT NULL,
+  `id_khoahoc` int(11) NOT NULL,
+  `id_taikhoan` int(11) NOT NULL,
+  `ngay_mua` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_khoahoc_damua`
+--
+
+INSERT INTO `tb_khoahoc_damua` (`id_khoahoc_damua`, `id_khoahoc`, `id_taikhoan`, `ngay_mua`) VALUES
+(1, 6, 2, '2023-10-04 00:14:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_khoa_hoc`
 --
 
 CREATE TABLE `tb_khoa_hoc` (
@@ -162,16 +179,17 @@ CREATE TABLE `tb_khoa_hoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_khoa_hoc`
+-- Dumping data for table `tb_khoa_hoc`
 --
 
 INSERT INTO `tb_khoa_hoc` (`id_khoahoc`, `id_taikhoan`, `ten_khoahoc`, `anh_khoahoc`, `mota_khoahoc`, `gia_khoahoc`, `ngaydang_khoahoc`, `trangthai_khoahoc`) VALUES
-(3, 2, 'HTML Cơ bản', '1697009446588.png', 'HTML\r\n            ', 1234, '2023-10-11 14:30:46', 'Mở khóa');
+(5, 6, 'CSS cở bản', '1697009446588.png', 'Sau series HTML cơ bản dành cho người mới thì bây giờ mình lại tiếp tục tới một series cơ bản khác đó chính là CSS cơ bản.', NULL, '2023-10-19 18:37:23', 'Mở khóa'),
+(6, 1, 'HTML cơ bản', 'ưqeqwe', '2321qwe12312', 100000, '2023-10-25 23:26:34', 'Mở khóa');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_tag`
+-- Table structure for table `tb_tag`
 --
 
 CREATE TABLE `tb_tag` (
@@ -180,7 +198,7 @@ CREATE TABLE `tb_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_tag`
+-- Dumping data for table `tb_tag`
 --
 
 INSERT INTO `tb_tag` (`id_tag`, `ten_tag`) VALUES
@@ -189,7 +207,7 @@ INSERT INTO `tb_tag` (`id_tag`, `ten_tag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_tai_khoan`
+-- Table structure for table `tb_tai_khoan`
 --
 
 CREATE TABLE `tb_tai_khoan` (
@@ -205,7 +223,7 @@ CREATE TABLE `tb_tai_khoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_tai_khoan`
+-- Dumping data for table `tb_tai_khoan`
 --
 
 INSERT INTO `tb_tai_khoan` (`id_taikhoan`, `tai_khoan`, `ten_hien_thi`, `mat_khau`, `doi_tuong`, `ngay_sinh`, `gioi_tinh`, `sdt`, `hinh_anh`) VALUES
@@ -217,7 +235,7 @@ INSERT INTO `tb_tai_khoan` (`id_taikhoan`, `tai_khoan`, `ten_hien_thi`, `mat_kha
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_thanhtoan`
+-- Table structure for table `tb_thanhtoan`
 --
 
 CREATE TABLE `tb_thanhtoan` (
@@ -231,40 +249,66 @@ CREATE TABLE `tb_thanhtoan` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_thichbaiviet`
+-- Table structure for table `tb_thichbaiviet`
 --
 
 CREATE TABLE `tb_thichbaiviet` (
   `id_thichbaiviet` int(11) NOT NULL,
   `id_baiviet` int(11) NOT NULL,
-  `id_taikhoan` int(11) NOT NULL
+  `id_taikhoan` int(11) NOT NULL,
+  `ngay_thich_baiviet` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tb_thichbaiviet`
+-- Dumping data for table `tb_thichbaiviet`
 --
 
-INSERT INTO `tb_thichbaiviet` (`id_thichbaiviet`, `id_baiviet`, `id_taikhoan`) VALUES
-(1, 7, 22);
+INSERT INTO `tb_thichbaiviet` (`id_thichbaiviet`, `id_baiviet`, `id_taikhoan`, `ngay_thich_baiviet`) VALUES
+(5, 7, 2, '2023-10-04 16:55:38'),
+(6, 8, 2, '2023-10-03 16:55:44'),
+(7, 7, 20, '2023-10-11 16:55:44'),
+(8, 7, 21, '2023-10-12 16:56:03');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tb_thichbinhluan`
+-- Table structure for table `tb_thichbinhluan`
 --
 
 CREATE TABLE `tb_thichbinhluan` (
   `id_thichbinhluan` int(11) NOT NULL,
   `id_binhluan` int(11) NOT NULL,
+  `id_taikhoan` int(11) NOT NULL,
+  `ngay_thich_binhluan` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_thichhoclieu`
+--
+
+CREATE TABLE `tb_thichhoclieu` (
+  `id_thichhoclieu` int(11) NOT NULL,
+  `id_hoclieu` int(11) NOT NULL,
   `id_taikhoan` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Dumping data for table `tb_thichhoclieu`
+--
+
+INSERT INTO `tb_thichhoclieu` (`id_thichhoclieu`, `id_hoclieu`, `id_taikhoan`) VALUES
+(1, 8, 2),
+(2, 8, 22),
+(3, 8, 21);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `tb_baiviet_tags`
+-- Indexes for table `tb_baiviet_tags`
 --
 ALTER TABLE `tb_baiviet_tags`
   ADD PRIMARY KEY (`id_baiviet_tag`),
@@ -272,62 +316,63 @@ ALTER TABLE `tb_baiviet_tags`
   ADD KEY `baiviettag_tag` (`id_tag`);
 
 --
--- Chỉ mục cho bảng `tb_bai_viet`
+-- Indexes for table `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
   ADD PRIMARY KEY (`id_baiviet`),
   ADD KEY `baiviet_taikhoan` (`id_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_binh_luan`
+-- Indexes for table `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   ADD PRIMARY KEY (`id_binhluan`),
   ADD KEY `binhluan_baiviet` (`id_baiviet`),
-  ADD KEY `binhluan_taikhoan` (`id_taikhoan`);
+  ADD KEY `binhluan_taikhoan` (`id_taikhoan`),
+  ADD KEY `binhluan_hoclieu` (`id_hoclieu`);
 
 --
--- Chỉ mục cho bảng `tb_cms_tai_khoan`
+-- Indexes for table `tb_cms_tai_khoan`
 --
 ALTER TABLE `tb_cms_tai_khoan`
   ADD PRIMARY KEY (`id_cms_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_dangky_khoahoc`
---
-ALTER TABLE `tb_dangky_khoahoc`
-  ADD PRIMARY KEY (`id_dangky`),
-  ADD KEY `dangky_khoahoc` (`id_khoahoc`),
-  ADD KEY `dangky_taikhoan` (`id_taikhoan`);
-
---
--- Chỉ mục cho bảng `tb_hoc_lieu`
+-- Indexes for table `tb_hoc_lieu`
 --
 ALTER TABLE `tb_hoc_lieu`
   ADD PRIMARY KEY (`id_hoclieu`),
   ADD KEY `hoclieu_khoahoc` (`id_khoahoc`);
 
 --
--- Chỉ mục cho bảng `tb_khoa_hoc`
+-- Indexes for table `tb_khoahoc_damua`
+--
+ALTER TABLE `tb_khoahoc_damua`
+  ADD PRIMARY KEY (`id_khoahoc_damua`),
+  ADD KEY `khoahocdamua_khoahoc` (`id_khoahoc`),
+  ADD KEY `khoahocdamua_taikhoan` (`id_taikhoan`);
+
+--
+-- Indexes for table `tb_khoa_hoc`
 --
 ALTER TABLE `tb_khoa_hoc`
   ADD PRIMARY KEY (`id_khoahoc`),
   ADD KEY `khoahoc_taikhoan` (`id_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_tag`
+-- Indexes for table `tb_tag`
 --
 ALTER TABLE `tb_tag`
   ADD PRIMARY KEY (`id_tag`);
 
 --
--- Chỉ mục cho bảng `tb_tai_khoan`
+-- Indexes for table `tb_tai_khoan`
 --
 ALTER TABLE `tb_tai_khoan`
   ADD PRIMARY KEY (`id_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_thanhtoan`
+-- Indexes for table `tb_thanhtoan`
 --
 ALTER TABLE `tb_thanhtoan`
   ADD PRIMARY KEY (`id_thanhtoan`),
@@ -335,7 +380,7 @@ ALTER TABLE `tb_thanhtoan`
   ADD KEY `thanhtoan_taikhoan` (`id_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_thichbaiviet`
+-- Indexes for table `tb_thichbaiviet`
 --
 ALTER TABLE `tb_thichbaiviet`
   ADD PRIMARY KEY (`id_thichbaiviet`),
@@ -343,151 +388,174 @@ ALTER TABLE `tb_thichbaiviet`
   ADD KEY `thichbaiviet_taikhoan` (`id_taikhoan`);
 
 --
--- Chỉ mục cho bảng `tb_thichbinhluan`
+-- Indexes for table `tb_thichbinhluan`
 --
 ALTER TABLE `tb_thichbinhluan`
   ADD PRIMARY KEY (`id_thichbinhluan`),
-  ADD KEY `thichbinhluan_binhluan` (`id_binhluan`);
+  ADD KEY `thichbinhluan_binhluan` (`id_binhluan`),
+  ADD KEY `thichbinhluan_taikhoan` (`id_taikhoan`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- Indexes for table `tb_thichhoclieu`
+--
+ALTER TABLE `tb_thichhoclieu`
+  ADD PRIMARY KEY (`id_thichhoclieu`),
+  ADD KEY `thichhoclieu_hoclieu` (`id_hoclieu`),
+  ADD KEY `thichhoclieu_taikhoan` (`id_taikhoan`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `tb_baiviet_tags`
+-- AUTO_INCREMENT for table `tb_baiviet_tags`
 --
 ALTER TABLE `tb_baiviet_tags`
   MODIFY `id_baiviet_tag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `tb_bai_viet`
+-- AUTO_INCREMENT for table `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tb_binh_luan`
+-- AUTO_INCREMENT for table `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
-  MODIFY `id_binhluan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_binhluan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `tb_cms_tai_khoan`
+-- AUTO_INCREMENT for table `tb_cms_tai_khoan`
 --
 ALTER TABLE `tb_cms_tai_khoan`
-  MODIFY `id_cms_taikhoan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cms_taikhoan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `tb_dangky_khoahoc`
---
-ALTER TABLE `tb_dangky_khoahoc`
-  MODIFY `id_dangky` int(100) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `tb_hoc_lieu`
+-- AUTO_INCREMENT for table `tb_hoc_lieu`
 --
 ALTER TABLE `tb_hoc_lieu`
-  MODIFY `id_hoclieu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_hoclieu` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tb_khoa_hoc`
+-- AUTO_INCREMENT for table `tb_khoahoc_damua`
+--
+ALTER TABLE `tb_khoahoc_damua`
+  MODIFY `id_khoahoc_damua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tb_khoa_hoc`
 --
 ALTER TABLE `tb_khoa_hoc`
-  MODIFY `id_khoahoc` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_khoahoc` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `tb_tag`
+-- AUTO_INCREMENT for table `tb_tag`
 --
 ALTER TABLE `tb_tag`
   MODIFY `id_tag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `tb_tai_khoan`
+-- AUTO_INCREMENT for table `tb_tai_khoan`
 --
 ALTER TABLE `tb_tai_khoan`
   MODIFY `id_taikhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT cho bảng `tb_thanhtoan`
+-- AUTO_INCREMENT for table `tb_thanhtoan`
 --
 ALTER TABLE `tb_thanhtoan`
   MODIFY `id_thanhtoan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `tb_thichbaiviet`
+-- AUTO_INCREMENT for table `tb_thichbaiviet`
 --
 ALTER TABLE `tb_thichbaiviet`
-  MODIFY `id_thichbaiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_thichbaiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `tb_thichbinhluan`
+-- AUTO_INCREMENT for table `tb_thichbinhluan`
 --
 ALTER TABLE `tb_thichbinhluan`
-  MODIFY `id_thichbinhluan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_thichbinhluan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- AUTO_INCREMENT for table `tb_thichhoclieu`
+--
+ALTER TABLE `tb_thichhoclieu`
+  MODIFY `id_thichhoclieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `tb_baiviet_tags`
+-- Constraints for table `tb_baiviet_tags`
 --
 ALTER TABLE `tb_baiviet_tags`
   ADD CONSTRAINT `baiviettag_baiviet` FOREIGN KEY (`id_baiviet`) REFERENCES `tb_bai_viet` (`id_baiviet`),
   ADD CONSTRAINT `baiviettag_tag` FOREIGN KEY (`id_tag`) REFERENCES `tb_tag` (`id_tag`);
 
 --
--- Các ràng buộc cho bảng `tb_bai_viet`
+-- Constraints for table `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
   ADD CONSTRAINT `baiviet_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_cms_tai_khoan` (`id_cms_taikhoan`);
 
 --
--- Các ràng buộc cho bảng `tb_binh_luan`
+-- Constraints for table `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   ADD CONSTRAINT `binhluan_baiviet` FOREIGN KEY (`id_baiviet`) REFERENCES `tb_bai_viet` (`id_baiviet`),
+  ADD CONSTRAINT `binhluan_hoclieu` FOREIGN KEY (`id_hoclieu`) REFERENCES `tb_hoc_lieu` (`id_hoclieu`),
   ADD CONSTRAINT `binhluan_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 
 --
--- Các ràng buộc cho bảng `tb_dangky_khoahoc`
---
-ALTER TABLE `tb_dangky_khoahoc`
-  ADD CONSTRAINT `dangky_khoahoc` FOREIGN KEY (`id_khoahoc`) REFERENCES `tb_khoa_hoc` (`id_khoahoc`),
-  ADD CONSTRAINT `dangky_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
-
---
--- Các ràng buộc cho bảng `tb_hoc_lieu`
+-- Constraints for table `tb_hoc_lieu`
 --
 ALTER TABLE `tb_hoc_lieu`
   ADD CONSTRAINT `hoclieu_khoahoc` FOREIGN KEY (`id_khoahoc`) REFERENCES `tb_khoa_hoc` (`id_khoahoc`);
 
 --
--- Các ràng buộc cho bảng `tb_khoa_hoc`
+-- Constraints for table `tb_khoahoc_damua`
 --
-ALTER TABLE `tb_khoa_hoc`
-  ADD CONSTRAINT `khoahoc_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
+ALTER TABLE `tb_khoahoc_damua`
+  ADD CONSTRAINT `khoahocdamua_khoahoc` FOREIGN KEY (`id_khoahoc`) REFERENCES `tb_khoa_hoc` (`id_khoahoc`),
+  ADD CONSTRAINT `khoahocdamua_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 
 --
--- Các ràng buộc cho bảng `tb_thanhtoan`
+-- Constraints for table `tb_khoa_hoc`
+--
+ALTER TABLE `tb_khoa_hoc`
+  ADD CONSTRAINT `khoahoc_cms` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_cms_tai_khoan` (`id_cms_taikhoan`);
+
+--
+-- Constraints for table `tb_thanhtoan`
 --
 ALTER TABLE `tb_thanhtoan`
   ADD CONSTRAINT `thanhtoan_khoahoc` FOREIGN KEY (`id_khoahoc`) REFERENCES `tb_khoa_hoc` (`id_khoahoc`),
   ADD CONSTRAINT `thanhtoan_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 
 --
--- Các ràng buộc cho bảng `tb_thichbaiviet`
+-- Constraints for table `tb_thichbaiviet`
 --
 ALTER TABLE `tb_thichbaiviet`
   ADD CONSTRAINT `thichbaiviet_baiviet` FOREIGN KEY (`id_baiviet`) REFERENCES `tb_bai_viet` (`id_baiviet`),
   ADD CONSTRAINT `thichbaiviet_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 
 --
--- Các ràng buộc cho bảng `tb_thichbinhluan`
+-- Constraints for table `tb_thichbinhluan`
 --
 ALTER TABLE `tb_thichbinhluan`
   ADD CONSTRAINT `thichbinhluan_binhluan` FOREIGN KEY (`id_binhluan`) REFERENCES `tb_binh_luan` (`id_binhluan`),
-  ADD CONSTRAINT `thichbinhluan_taikhoan` FOREIGN KEY (`id_thichbinhluan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
+  ADD CONSTRAINT `thichbinhluan_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
+
+--
+-- Constraints for table `tb_thichhoclieu`
+--
+ALTER TABLE `tb_thichhoclieu`
+  ADD CONSTRAINT `thichhoclieu_hoclieu` FOREIGN KEY (`id_hoclieu`) REFERENCES `tb_hoc_lieu` (`id_hoclieu`),
+  ADD CONSTRAINT `thichhoclieu_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
