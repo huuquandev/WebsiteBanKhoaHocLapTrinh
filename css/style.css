@@ -1643,3 +1643,41 @@ section{
     font-size: 1.8rem;
     cursor: pointer;
 }
+.fb {
+   background-color: #3B5998;
+   color: white;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 35px;
+}
+.google {
+   background-color: #dd4b39;
+   color: white;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 35px;
+ }
+ .form-container .signin-options{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+.form-container .signin-options button{
+   width: 55px;
+   height: 55px;
+   border-radius: 50%;
+   border: 1px solid;
+   font-size: 28px;
+   margin: 0 10px;
+   transition: all 300ms;
+}
+.form-container .signin-options button i{
+   transition: all 300ms;
+}
+.switch-type-login{
+   width: 100%;
+   margin-bottom: 20px;
+   text-align: center;
+}

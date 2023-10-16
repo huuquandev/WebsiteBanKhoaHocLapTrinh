@@ -40,7 +40,7 @@ if(isset($message)){
 <section class="form-container">
 
    <form class="register" action="" method="post" enctype="multipart/form-data">
-      <h3>create account</h3>
+      <h3>Đăng ký tài khoản</h3>
       <div class="flex">
          <div class="col">
             <p>Tên người dùng <span>*</span></p>
