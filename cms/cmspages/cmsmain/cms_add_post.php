@@ -66,5 +66,3 @@
     </section>
 
 </section>
-
-   

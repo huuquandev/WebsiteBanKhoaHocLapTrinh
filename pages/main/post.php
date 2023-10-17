@@ -28,7 +28,7 @@
                     <p class="content"><?php echo $row['mota_baiviet']; ?></p>
                 </div>
                 <div class="thumb">
-                    <img src="images/thumb-1.png" alt="">
+                    <img src="<?php echo $row['anh_baiviet']; ?>" alt="">
                 </div>
             </div>
             <div class="postItem_info">

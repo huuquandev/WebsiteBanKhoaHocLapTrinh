@@ -9,17 +9,17 @@
     }
     //---Đăng nhập---
     //---Ngọc---
-    function login($username, $password){
+    function login($email, $password){
         GLOBAL $conn;
-        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_email = mysqli_real_escape_string($conn, $email);
         $filter_password = mysqli_real_escape_string($conn, $password);
 
-        $sql = "SELECT * FROM tb_tai_khoan WHERE tai_khoan = '$filter_username' AND mat_khau = '$filter_password'";
+        $sql = "SELECT * FROM tb_tai_khoan WHERE email = '$filter_email' AND mat_khau = '$filter_password'";
         $query = mysqli_query($conn, $sql);
         if(mysqli_num_rows($query) > 0){
             $row = mysqli_fetch_assoc($query);
             $_SESSION['id_taikhoan'] = $row['id_taikhoan'];
-            $_SESSION['tai_khoan'] = $row['tai_khoan'];
+            $_SESSION['email'] = $row['email'];
             $_SESSION['ten_hien_thi'] = $row['ten_hien_thi'];
             $_SESSION['mat_khau'] = $row['mat_khau'];
             $_SESSION['doi_tuong'] = $row['doi_tuong'];
@@ -33,17 +33,17 @@
     }
     //---Đăng nhập CMS---
     //---Ngọc---
-    function loginCMS($username, $password){
+    function loginCMS($email, $password){
         GLOBAL $conn;
-        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_email = mysqli_real_escape_string($conn, $email);
         $filter_password = mysqli_real_escape_string($conn, $password);
 
-        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE tai_khoan = '$filter_username' AND mat_khau = '$filter_password'";
+        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE email = '$filter_email' AND mat_khau = '$filter_password'";
         $query = mysqli_query($conn, $sql);
         if(mysqli_num_rows($query) > 0){
             $row = mysqli_fetch_assoc($query);
             $_SESSION['cms_id_tai_khoan'] = $row['id_cms_taikhoan'];
-            $_SESSION['cms_tai_khoan'] = $row['tai_khoan'];
+            $_SESSION['cms_email'] = $row['email'];
             $_SESSION['cms_ten_hien_thi'] = $row['ten_hien_thi'];
             $_SESSION['cms_mat_khau'] = $row['mat_khau'];
             $_SESSION['cms_doi_tuong'] = $row['doi_tuong'];
@@ -57,11 +57,11 @@
     }
     //---Đăng kí---
     //---Ngọc---
-    function register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
+    function register($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
         GLOBAL $conn;
         $filter_id = unique_id();
         $filter_name = mysqli_real_escape_string($conn, $name);
-        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_email = mysqli_real_escape_string($conn, $email);
         $filter_pass = mysqli_real_escape_string($conn, $pass);
         $filter_phone = mysqli_real_escape_string($conn, $phone);
         $filter_bdate = mysqli_real_escape_string($conn, $bdate);
@@ -76,13 +76,13 @@
         $image_tmp_name = $_FILES['image']['tmp_name'];
         $image_folder = 'images/images_user/'.$rename;
 
-        $sql = "SELECT * FROM tb_tai_khoan WHERE tai_khoan = '".$username."'";
+        $sql = "SELECT * FROM tb_tai_khoan WHERE email = '".$filter_email."'";
         $query = mysqli_query($conn, $sql);
         if(mysqli_num_rows($query) > 0){
             return false;
         } else{
-            $sql = "INSERT INTO tb_tai_khoan (tai_khoan, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
-            VALUES('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
+            $sql = "INSERT INTO tb_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
+            VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
             $query = mysqli_query($conn, $sql);
             move_uploaded_file($image_tmp_name, $image_folder);
             return true;
@@ -90,11 +90,11 @@
     }
     //---Đăng kí CMS---
     //---Ngọc---
-    function registerCMS($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
+    function registerCMS($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh){
         GLOBAL $conn;
         $filter_id = unique_id();
         $filter_name = mysqli_real_escape_string($conn, $name);
-        $filter_username = mysqli_real_escape_string($conn, $username);
+        $filter_email = mysqli_real_escape_string($conn, $email);
         $filter_pass = mysqli_real_escape_string($conn, $pass);
         $filter_phone = mysqli_real_escape_string($conn, $phone);
         $filter_bdate = mysqli_real_escape_string($conn, $bdate);
@@ -109,13 +109,13 @@
         $image_tmp_name = $_FILES['image']['tmp_name'];
         $image_folder = '../../images/images_user/'.$rename;
 
-        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE tai_khoan = '".$username."'";
+        $sql = "SELECT * FROM tb_cms_tai_khoan WHERE email = '".$filter_email."'";
         $query = mysqli_query($conn, $sql);
         if(mysqli_num_rows($query) > 0){
             return false;
         } else{
-            $sql = "INSERT INTO tb_cms_tai_khoan (tai_khoan, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
-            VALUES('$filter_username','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
+            $sql = "INSERT INTO tb_cms_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
+            VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
             $query = mysqli_query($conn, $sql);
             move_uploaded_file($image_tmp_name, $image_folder);
             return true;

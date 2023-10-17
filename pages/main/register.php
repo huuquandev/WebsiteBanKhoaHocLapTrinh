@@ -6,7 +6,7 @@ if(isset($_POST['submit'])){
 
    $id = unique_id();
    $name = trim($_POST['name']);
-   $username =  trim($_POST['username']);
+   $email =  trim($_POST['email']);
    $pass = trim($_POST['pass']);
    $cfpass = trim($_POST['cfpass']);
    $phone = $_POST['phone'];
@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
    $doi_tuong = 1;
    $gioi_tinh = $_POST['sex'];
 
-   if(!register($username, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
+   if(!register($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
       $message[] = 'Tài khoản đã tồn tại!';
    }else if($pass != $cfpass){
       $message[] = 'Mật khẩu không trùng nhau!';
@@ -45,8 +45,8 @@ if(isset($message)){
          <div class="col">
             <p>Tên người dùng <span>*</span></p>
             <input type="text" name="name" placeholder="Nhập tên người dùng" maxlength="50" required class="box">
-            <p>Tài khoản <span>*</span></p>
-            <input type="text" name="username" placeholder="Nhập tài khoản" maxlength="20" required class="box">
+            <p>Email <span>*</span></p>
+            <input type="email" name="email" placeholder="Nhập Email" maxlength="20" required class="box">
          </div>
          <div class="col">
             <p>Mật khẩu <span>*</span></p>

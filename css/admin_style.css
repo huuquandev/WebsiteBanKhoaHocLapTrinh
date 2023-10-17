@@ -405,7 +405,7 @@ section{
 
 .form-container form p{
    padding-top: 1rem;
-   font-size: 1.7rem;
+   font-size: 1.4rem;
    color: var(--light-color);
 }
 
@@ -416,7 +416,7 @@ section{
 .form-container .link{
    padding-bottom: 1rem;
    text-align: center;
-   font-size: 1rem;
+   font-size: 1.4rem;
 }
 
 .form-container .link a{

@@ -22,9 +22,9 @@
    include_once '../../function.php';
 
    if(isset($_POST['submit'])){
-      $username = trim($_POST['username']);
+      $email = trim($_POST['email']);
       $password = trim($_POST['pass']);
-      if(!loginCMS($username, $password)){   
+      if(!loginCMS($email, $password)){   
          $message[] = 'Sai mật khẩu hoặc tài khoản!';
       }else{
          header('Location:../cms_dashboard.php');
@@ -48,8 +48,8 @@ if(isset($message)){
 
    <form action="" method="post" enctype="multipart/form-data" class="login">
       <h3>Mừng trở lại!</h3>
-      <p>Tài khoản <span>*</span></p>
-      <input type="text" name="username" placeholder="Nhập tài khoản" maxlength="20" required class="box">
+      <p>Email <span>*</span></p>
+      <input type="email" name="email" placeholder="Nhập Email" maxlength="20" required class="box">
       <p>Mật khẩu <span>*</span></p>
       <input type="password" name="pass" placeholder="Nhập mật khẩu" maxlength="20" required class="box">
       <p class="link">Bạn chưa có tài khoản? <a href="cms_register.php">Đăng ký ngay</a></p>
