@@ -28,7 +28,11 @@
                     <p class="content"><?php echo $row['mota_baiviet']; ?></p>
                 </div>
                 <div class="thumb">
+                    <?php if(!empty($row['anh_baiviet'])) {  ?>
                     <img src="<?php echo $row['anh_baiviet']; ?>" alt="">
+                        <?php 
+                        }
+                        ?>
                 </div>
             </div>
             <div class="postItem_info">

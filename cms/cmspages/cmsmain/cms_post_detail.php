@@ -26,9 +26,9 @@ if($id_taikhoan == ""){
          </div>
       </div>
       
-      <p class="description">
+      <div class="description">
          <?php echo $row['noidung_baivet']; ?>
-      </p>
+      </div>
       <?php
                             $total_like = GetCountLikeByPost($id_baiviet);
                             $total_comment = mysqli_num_rows(GetCommentByPost($id_baiviet));
