@@ -3,6 +3,7 @@
       header('location:../cms/cmspages/cms_login.php');
    }
    include_once ("../function.php");
+   $idKH = $_GET['idKH'];
  ?>
 
 <head>
@@ -76,10 +77,6 @@
          font-weight: bold;
          line-height: 120px;
       }
-      #managePlaylist{
-         background-color: green;
-         padding: 10px 15px;
-      }
 
    </style>
 </head>
@@ -90,9 +87,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;">
-    Danh sách khóa học    
+    Danh sách học liệu   
     <div class="flex-option" style="display: flex;" >
-         <button class="btn" id="btnAdd" onclick="toggleAdd()" style="width: auto; background: green;">Thêm khóa học</button>
+         <button class="btn" id="btnAdd" onclick="toggleAdd()" style="width: auto; background: green;">Thêm học liệu</button>
       </div> 
    </h1>
 
@@ -105,9 +102,7 @@
       <div class="cms_box">
       <?php
    include_once '../function.php';
-   $sql = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_khoa_hoc 
-         JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-         WHERE tb_khoa_hoc.id_taikhoan = $id_taikhoan";
+   $sql = "SELECT * FROM tb_hoc_lieu WHERE id_khoahoc = '$idKH'";
          $query = mysqli_query($conn, $sql);
 
          if(mysqli_num_rows($query) > 0){
@@ -115,25 +110,24 @@
       ?>
          <div class="cms_items description">
             <span class="titleContainer">
-               <span class="idKH"><?php echo $row['id_khoahoc'] ?></span>
+               <span class="idKH"><?php echo $row['id_hoclieu'] ?></span>
                <img class="course_img"src="
                   <?php 
-                  if($row['anh_khoahoc']!=null){
-                     echo "../../../images/images_courses/" . $row['anh_khoahoc'];
+                  if($row['anh_hoclieu']!=null){
+                     echo "../../../../images/images_courses/" . $row['anh_hoclieu'];
                   }else{
-                     echo "../../../images/images_courses/post-1-1.png";
+                     echo "../../../../images/images_courses/post-1-1.png";
                   }
                   ?>
                " alt="course_img">
-               <span class="course_name"><?= $row['ten_khoahoc']; ?></span>
-               <span class="course_des"><?= $row['mota_khoahoc']; ?></span>
+               <span class="course_name"><?= $row['ten_hoclieu']; ?></span>
+               <span class="course_des"><?= $row['mota_hoclieu']; ?></span>
             </span>
             <span class="buttonContainer">
-               <button class="Button edit" onclick="toggleEdit(<?php echo $row['id_khoahoc']; ?>)">Sửa khóa học</button>
-                  <form method="post" onsubmit="return confirm_delete()" action="cmspages/cmsmain/delete-course.php?idKH=<?php echo $row['id_khoahoc']; ?>" >
-                     <button class="Button delete" type="submit">Xóa khóa học</button>
-                  </form>
-                  <a href="cms_dashboard.php?title=cms_playlist&idKH=<?php echo $row['id_khoahoc']; ?>" class="Button" id="managePlaylist">Quản lý học liệu</a> 
+               <button class="Button edit" onclick="toggleEdit(<?php echo $row['id_hoclieu']; ?>)">Sửa học liệu</button>
+                  <form method="post" onsubmit="return confirm_delete()" action="cmspages/cmsmain/delete-playlist.php?idHL=<?php echo $row['id_hoclieu']; ?>" >
+                     <button class="Button delete" type="submit">Xóa học liệu</button>
+                  </form> 
             </span>
             
            
@@ -166,7 +160,7 @@
       <?php
          } 
       }else{
-         echo '<p class="empty">Không có khóa học!</p>';
+         echo '<p class="empty">Không có học liệu!</p>';
       }
       ?>
       </div>
@@ -179,57 +173,57 @@
                $image = $_FILES['image'];
                $extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
                $tenFile = floor(microtime(true) * 1000) . "." .$extension;
-               move_uploaded_file($image['tmp_name'], "images/" . $tenFile);
-               $sql = "INSERT INTO tb_khoa_hoc(ten_khoahoc, id_taikhoan, anh_khoahoc, mota_khoahoc, trangthai_khoahoc, ngaydang_khoahoc) 
-            VALUES('$tenKH', '$id_taikhoan', '$tenFile', '$motaKH', '$trangthai_khoahoc', NOW())";
+               move_uploaded_file($image['tmp_name'], "../../../../images/images_courses/" . $tenFile);
+               $sql = "INSERT INTO tb_hoc_lieu(ten_hoclieu, anh_hoclieu, mota_hoclieu, trangthai_hoclieu, id_khoahoc) 
+            VALUES('$tenKH', '$tenFile', '$motaKH', '$trangthai_khoahoc', '$idKH')";
             mysqli_query($conn, $sql);
-            echo '<script>alert("Thêm thành công"); window.location.href = "cms_dashboard.php?title=cms_courses";</script>';
+            echo '<script>alert("Thêm thành công"); window.location.href = "cms_dashboard.php?title=cms_playlist&idKH='.$idKH.'";</script>';
             }
           ?>
-         <h1 class="heading">Thêm khóa học</h1>
+         <h1 class="heading">Thêm học liệu</h1>
 
          <form action="" method="post" enctype="multipart/form-data">
-            <p>Trạng thái khóa học <span>*</span></p>
+            <p>Trạng thái học liệu <span>*</span></p>
             <select name="status" class="box" required>
                <option value="" selected disabled>-- Chọn trạng thái</option>
                <option value="Mở khóa">Mở khóa</option>
                <option value="Chưa mở Khóa">Chưa mở Khóa</option>
             </select>
-            <p>Tiêu đề khóa học <span>*</span></p>
+            <p>Tiêu đề học liệu <span>*</span></p>
             <input type="text" name="title" maxlength="100" required placeholder="Tiêu đề khóa học" class="box">
-            <p>Mô tả khóa học <span>*</span></p>
+            <p>Mô tả học liệu <span>*</span></p>
             <textarea name="description" class="box" required placeholder="Mô tả khóa học" maxlength="1000" cols="30" rows="10"></textarea>
-            <p>Ảnh khóa học <span>*</span></p>
+            <p>Ảnh học liệu <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
-            <input type="submit" value="create playlist" name="submitAdd" class="btn">
+            <input type="submit" value="Thêm học liệu" name="submitAdd" class="btn">
          </form>
 
       </section>
       <section class="playlist-form" id="editForm">
          <?php
-         $id_Khoahoc = $_POST['idEdit'];
-         echo $id_Khoahoc;
+         // $id_Khoahoc = $_POST['idEdit'];
+         // echo $id_Khoahoc;
             if (isset($_POST['submitEdit'])) {
                $id_Khoahoc = $_POST['idEdit'];
                $tenKH = $_POST['titleEdit'];
                $motaKH = $_POST['descriptionEdit'];
                $trangthai_khoahoc = $_POST['new_status'];
                $image = $_FILES['new_image'];
-               echo $id_Khoahoc;
+               // echo $id_Khoahoc;
                $extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
                $tenFile = floor(microtime(true) * 1000) . "." .$extension;
-               move_uploaded_file($image['tmp_name'], "images/" . $tenFile);
-               $sql = "UPDATE tb_khoa_hoc SET ten_khoahoc='$tenKH',id_taikhoan='$id_taikhoan', anh_khoahoc='$tenFile', mota_khoahoc='$motaKH', trangthai_khoahoc='$trangthai_khoahoc'
-                                , ngaydang_khoahoc=NOW() WHERE id_Khoahoc=$id_Khoahoc";
+               move_uploaded_file($image['tmp_name'], "../../../../images/images_courses/" . $tenFile);
+               $sql = "UPDATE tb_hoc_lieu SET ten_hoclieu='$tenKH', anh_hoclieu='$tenFile', mota_hoclieu='$motaKH', trangthai_hoclieu='$trangthai_khoahoc'
+                                , id_khoahoc='$idKH' WHERE id_hoclieu=$id_Khoahoc";
                   mysqli_query($conn, $sql);
-                  echo '<script>alert("Sửa thành công"); window.location.href = "cms_dashboard.php?title=cms_courses";</script>';
+                  echo '<script>alert("Sửa thành công"); window.location.href = "cms_dashboard.php?title=cms_playlist&idKH='.$idKH.'";</script>';
             }
           ?>
-         <h1 class="heading">Sửa khóa học</h1>
+         <h1 class="heading">Sửa học liệu</h1>
          <form action="" method="post" enctype="multipart/form-data">
-          <h3 class="titlecenter">Thông tin khóa học</h3>
+          <h3 class="titlecenter">Thông tin học liệu</h3>
             <input type="hidden" name="old_image" value="">
-            <p>ID Khóa học</p>
+            <p>ID học liệu</p>
             <input type="text" name="idEdit" id="idKHEdit" class="box "style="" value="">
             <p>Trạng thái <span>*</span></p>
             <select name="new_status" class="box" required>
@@ -237,11 +231,11 @@
                <option value="Mở khóa">Mở khóa</option>
                <option value="Chưa mở khóa">Chưa mở khóa</option>
             </select>
-            <p>Tên khóa học <span>*</span></p>
-            <input type="text" name="titleEdit" maxlength="100" required placeholder="Nhập tên khóa học" value="" class="box">
-            <p>Mô tả khóa học <span>*</span></p>
+            <p>Tên học liệu <span>*</span></p>
+            <input type="text" name="titleEdit" maxlength="100" required placeholder="Nhập tên học liệu" value="" class="box">
+            <p>Mô tả học liệu <span>*</span></p>
             <textarea name="descriptionEdit" class="box" required placeholder="Nhập mô tả khóa" maxlength="1000" cols="30" rows="10"></textarea>
-            <p>Ảnh khóa học <span>*</span></p>
+            <p>Ảnh học liệu <span>*</span></p>
             <!--  <div class="thumb">
                <span></span>
                <img src="../../../../images/images_courses/<?= $row['anh_khoahoc']; ?>" alt="">
@@ -283,4 +277,4 @@
       
       return false;
    }
-</script>
+</script>      

@@ -15,11 +15,11 @@ if(isset($_POST['submit'])){
    $gioi_tinh = $_POST['sex'];
 
    if(!register($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
-      $message[] = 'Tài khoản đã tồn tại!';
+      $message[] = 'Email đã tồn tại!';
    }else if($pass != $cfpass){
       $message[] = 'Mật khẩu không trùng nhau!';
    }else{
-      if(login($username, $pass)){   
+      if(login($email, $pass)){   
          header('location:home.php');
       }
    }

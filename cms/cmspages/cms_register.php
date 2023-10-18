@@ -39,7 +39,7 @@
     }else if($pass != $cfpass){
        $message[] = 'Mật khẩu không trùng nhau!';
     }else{
-       if(loginCMS($username, $pass)){   
+       if(loginCMS($email, $pass)){   
           header('Location: /cms/cms_dashboard.php');
        }
     }

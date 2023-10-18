@@ -9,6 +9,17 @@
       WHERE id_baiviet = $id_baiviet";
       $query = mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($query);
+      $sqlLike = "SELECT * FROM tb_thichbaiviet WHERE id_taikhoan = '$id_taikhoan'";
+      $queryLike = mysqli_query($conn, $sqlLike);
+      $rowLike = mysqli_fetch_array($queryLike);
+      if (isset($_POST['likepost'])) {
+         $sqllike = "INSERT INTO tb_thichbaiviet (id_baiviet, id_taikhoan, ngay_thich_baiviet) VALUES ('$id_baiviet', '$id_taikhoan', NOW())";
+         $querylike = mysqli_query($conn, $sqllike);
+      }
+      if(isset($_POST['Unlikepost'])){
+         $sqlunlike = "DELETE FROM tb_thichbaiviet WHERE tb_thichbaiviet.id_baiviet = $id_baiviet AND tb_thichbaiviet.id_taikhoan = $id_taikhoan";
+         $querysqlunlike = mysqli_query($conn, $sqlunlike);
+      }
    ?>
 
 <section class="watch-video">
@@ -30,10 +41,6 @@
                             $total_like = GetCountLikeByPost($id_baiviet);
                             $total_comment = mysqli_num_rows(GetCommentByPost($id_baiviet));
                         ?>
-      <div class="flex description">
-        <h4 style="font-size: 1.2rem;"><?php echo $total_comment; ?> Bình luận</h4>
-        <h4 style="font-size: 1.2rem;"><?php echo $total_like; ?> lượt Thích</span></h4>
-      </div>
       <div class="postItem_info">
                 <?php
                     $tag_name = GetTagByIdPost($id_baiviet);
@@ -44,7 +51,26 @@
                     }
                     ?>
       </div>
-      
+      <form action="" method="post" class="flex description">
+      <div class="flex description">
+        <h4 style="font-size: 1.2rem;"><?php echo $total_comment; ?> Bình luận</h4>
+        <h4 style="font-size: 1.2rem;"><?php echo $total_like; ?> lượt Thích</span></h4>
+      </div>
+      <?php
+               $sqlLikePost = "SELECT * FROM tb_thichbaiviet 
+               WHERE tb_thichbaiviet.id_baiviet = $id_baiviet AND tb_thichbaiviet.id_taikhoan = $id_taikhoan";
+               $queryLikePost = mysqli_query($conn, $sqlLikePost);
+               if(mysqli_num_rows($queryLikePost) < 1){
+             ?>
+        <button name="likepost"><i class="far fa-heart"></i><span>Thích</span></button>
+            <?php 
+               }else{
+            ?>            
+        <button name="Unlikepost"><i class="far fa-heart"></i><span>Đã thích</span></button>
+            <?php 
+               }
+            ?>
+      </form>
    </div>
 
 </section>
@@ -58,7 +84,7 @@
  ?> 
 <section class="comments">
 
-<h1 class="heading"><?php echo mysqli_num_rows($queryCmt) ?> Bình luận</h1>
+<h1 class="heading">Bình luận</h1>
 
    <form action="" class="add-comment">
       <h3>Thêm bình luận</h3>
@@ -102,8 +128,8 @@
             <?php 
                }
             ?>
-            <a href="#" class="inline-option-btn btnlike" style="color: var(--light-color);   "><?php echo $total_like_comment; ?> <i class="far fa-heart"></i></a>
-
+            
+            <button href="#" class="inline-option-btn btnlike" style="color: var(--light-color); "><?php echo $total_like_comment; ?> <i class="far fa-heart"></i></button>
          </form>
       </div>
       <?php

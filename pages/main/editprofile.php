@@ -74,7 +74,7 @@
    echo '    if (selectElement.options[i].value == gender) {';
    echo '        selectElement.selectedIndex = i;';
    echo '        break;';
-   echo '    }';
+   echo '    }';  
    echo '}';
    echo '</script>';
 ?>

@@ -14,7 +14,7 @@
       foreach($message as $message){
          echo '
          <div class="message form">
-            <span>'.$message.'</span>
+            <span >'.$message.'</span>
             <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
          </div>
          ';

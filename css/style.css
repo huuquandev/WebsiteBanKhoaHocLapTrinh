@@ -1684,3 +1684,24 @@ section{
 .description p, h1, h2, h3, h4, h5, image {
    padding-bottom: 10px; 
 }
+
+.watch-video .video-container .flex-btn .btnlike {
+   border-radius: 0.5rem;
+   padding: 1rem 1.5rem;
+   font-size: 1.8rem;
+   cursor: pointer;
+   background-color: var(--light-bg);
+}
+.comments .box-container .flex button{
+   border-radius: 0.5rem;
+   padding: 1rem 1.5rem;
+   font-size: 1.8rem;
+   cursor: pointer;
+   background-color: var(--light-bg);
+}
+.comments .box-container .box .flex-btn{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1.5rem;
+}
