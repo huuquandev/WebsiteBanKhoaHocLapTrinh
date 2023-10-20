@@ -6,7 +6,7 @@ if($id_taikhoan == ""){
 
    if(isset($_GET['tag'])){
       $keyword = $_GET['tag'];
-      $row_posts = Search_Tag($keyword);
+      $row_posts = CMS_Search_Tag($keyword, $id_taikhoan);
    }
 ?>
 
@@ -34,7 +34,11 @@ if($id_taikhoan == ""){
                 <img src="<?php echo "images/images_post/" . $row_post['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
                 </div>
             </div>
+            <div class="postItem_info">
+             <a class="postItem_tags" href="cms_dashboard.php?title=cms_search_tag&tag=<?php echo $row_post['ten_tag']; ?>"><?php echo $row_post['ten_tag'] ?></a>
+            </div>
             <div class="footer_post">
+            <a href="cms_dashboard.php?title=cms_post_detail&id_baiviet=<?php echo $row['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
                 <a href="home.php?title=postdetail&id_baiviet=<?php echo $row_post['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
                     <?php
                             $total_like = GetCountLikeByPost($row_post['id_baiviet']);

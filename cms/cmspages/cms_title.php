@@ -43,6 +43,8 @@
                 }if($tam == "cms_search_tag"){
                     $keyword = $_GET['tag'];
                     $pageTitle = 'Tìm kiếm theo tag \''.$keyword.'\'';
+                }if($tam == "cms_tags"){
+                    $pageTitle = "Tags";
                 }
             }else{
                 $tam = '';

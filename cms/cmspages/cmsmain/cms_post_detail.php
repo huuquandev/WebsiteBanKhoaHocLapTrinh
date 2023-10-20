@@ -7,8 +7,10 @@ if($id_taikhoan == ""){
       if(isset($_GET['id_baiviet'])){
          $id_baiviet = $_GET['id_baiviet'];
       }
-      $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet 
+      $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag 
+      FROM tb_bai_viet 
       JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+      JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
       WHERE id_baiviet = $id_baiviet";
       $query = mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($query);
@@ -38,14 +40,8 @@ if($id_taikhoan == ""){
         <h4 style="font-size: 1.2rem;"><?php echo $total_like; ?> lượt Thích</span></h4>
       </div>
       <div class="postItem_info">
-                <?php
-                    $tag_name = GetTagByIdPost($id_baiviet);
-                    if($tag_name != null){
-                ?>
-                    <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
-                    <?php
-                    }
-                    ?>
+      <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $row['ten_tag']; ?>"><?php echo $row['ten_tag'] ?></a>
+
       </div>
       <form action="" method="post">
          <div class="flex-btn">

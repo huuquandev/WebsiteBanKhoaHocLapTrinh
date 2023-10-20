@@ -245,9 +245,10 @@
     function Search_Post($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
                 FROM tb_bai_viet 
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
                 WHERE ten_baiviet LIKE '%{$key_word}%'";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -256,37 +257,24 @@
     function CMS_Search_Post($key_word, $id_taikhoan) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
                 FROM tb_bai_viet 
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
                 WHERE ten_baiviet LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;
 
-    }
-    //---Lấy danh thẻ tag bởi id bài viết---
-    //---Quân---
-    function GetTagByIdPost($id_post) {
-        GLOBAL $conn;
-        $sql = "SELECT tb_tag.ten_tag, tb_tag.id_tag
-        FROM tb_bai_viet 
-        INNER JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
-        INNER JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
-        WHERE tb_bai_viet.id_baiviet = $id_post";     
-        $query = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($query);
-        return $row;
     }
     //---Tìm kiếm bài viết theo tag---
     //---Quân---
     function Search_Tag($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
                 FROM tb_bai_viet 
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
-                JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
                 WHERE tb_tag.ten_tag LIKE '%{$key_word}%'";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -295,11 +283,10 @@
     function CMS_Search_Tag($key_word, $id_taikhoan) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi
+        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
                 FROM tb_bai_viet 
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_baiviet_tags ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
-                JOIN tb_tag ON tb_baiviet_tags.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
                 WHERE tb_tag.ten_tag LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;

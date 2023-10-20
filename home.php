@@ -1,13 +1,12 @@
 <?php
     session_start(); 
     include "components/connect.php";
- 
+    include "pages/tittle.php";
     if(isset($_SESSION['id_taikhoan'])){
        $id_taikhoan = $_SESSION['id_taikhoan'];
     }else{
        $id_taikhoan = '';
     }
-    include("pages/tittle.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +31,6 @@
             include("pages/header.php");
             include("pages/sidebar.php");
             include("pages/main.php");
-            include("pages/footer.php");
         ?>  
 
 <!-- custom js file link  -->

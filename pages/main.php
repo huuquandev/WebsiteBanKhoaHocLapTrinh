@@ -51,10 +51,12 @@
                 
             }else{
                 $tam = '';
-                $pageTitle = "Trang chủ";
                 include("main/home_grid.php");
             }
             
         ?>        
     </div>     
  </div>
+ <?php
+            include("pages/footer.php");
+?>  

@@ -14,7 +14,7 @@ document.querySelector('#search-btn').onclick = () =>{
    profile.classList.remove('active');
 }
 
-let sideBar = document.querySelector('.side-bar');
+let sideBar = document.querySelector('.sidebar_scroll');
 
 document.querySelector('#menu-btn').onclick = () =>{
    sideBar.classList.toggle('active');

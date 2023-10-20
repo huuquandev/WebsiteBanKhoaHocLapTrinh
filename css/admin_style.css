@@ -292,8 +292,7 @@ section{
    width: 30rem;
    background-color: var(--white);
    border-right: var(--border);
-   z-index: 1200;
-}
+   z-index: 1200;}
 
 .side-bar .close-side-bar{
    text-align: right;
@@ -1120,6 +1119,7 @@ section{
 .comments .show-comments .box .tutor img{
    height: 5rem;
    width: 5rem;
+   
    border-radius: 50%;
 }
 .comments .show-comments .box .tutor .info .title{

@@ -14,8 +14,8 @@
     $noi_dung = $_POST["noidung_baiviet"];
     $tag = $_POST['profession'];
     
-    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan) VALUES ('$tieu_de', '$mo_ta', '$noi_dung', NOW(), '$id_taikhoan')";
-    
+    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan, id_tag) VALUES ('$tieu_de', '$mo_ta', '$noi_dung', NOW(), '$id_taikhoan', '$tag')";
+     
     if ($conn->query($sql) === TRUE) {
         echo '<script>alert("Thêm bài viết thành công");</script>';
     } else {

@@ -49,6 +49,8 @@
                     include("cmsmain/cms_search_post.php");
                 }if($tam == "cms_search_tag"){
                     include("cmsmain/cms_search_tag.php");
+                }if($tam == "cms_tags"){
+                    include("cmsmain/cms_tag.php");
                 }
                 
             }else{

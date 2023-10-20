@@ -21,7 +21,7 @@
 
    <h1 class="heading">Tùy chọn nhanh</h1>
 
-<div class="box-container">
+   <div class="box-container">
 
          <?php
             if($id_taikhoan != ''){
