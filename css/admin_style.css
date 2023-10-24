@@ -74,8 +74,8 @@ section{
 .inline-option-btn,
 .inline-delete-btn{
    border-radius: .5rem;
-   padding: 1rem 3rem;
-   font-size: 1.2rem;
+   padding: 1rem 1rem;
+   font-size: 1.7rem;
    color: #fff;
    margin-top: 1rem;
    text-transform: capitalize;
@@ -292,7 +292,8 @@ section{
    width: 30rem;
    background-color: var(--white);
    border-right: var(--border);
-   z-index: 1200;}
+   z-index: 1200;
+}
 
 .side-bar .close-side-bar{
    text-align: right;

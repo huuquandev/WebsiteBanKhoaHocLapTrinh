@@ -7,8 +7,6 @@
 
    <h1 class="heading">Danh sách lượt thích</h1>
    
-   
-   <div class="show-comments">
    <?php
         $sql = "SELECT tb_thichbaiviet.*, tb_bai_viet.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi
         FROM tb_thichbaiviet
@@ -20,6 +18,8 @@
             while ($row = mysqli_fetch_array($query)) {
      
     ?>
+   <div class="show-comments">
+   
       <div class="box">
         
         <div class="tutor">
@@ -38,10 +38,10 @@
             </div>
         </div>
       </div>
-      <?php
+      
+    </div>
+    <?php
             }
         } 
       ?>
-    </div>
-   
 </section>

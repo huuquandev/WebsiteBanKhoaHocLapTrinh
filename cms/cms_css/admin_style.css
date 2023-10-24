@@ -74,8 +74,8 @@ section{
 .inline-option-btn,
 .inline-delete-btn{
    border-radius: .5rem;
-   padding: 1rem 3rem;
-   font-size: 1.2rem;
+   padding: 1rem 1rem;
+   font-size: 1.7rem;
    color: #fff;
    margin-top: 1rem;
    text-transform: capitalize;
@@ -291,28 +291,18 @@ section{
    background: #8e44ad;
    border-radius: 10px;
 }
-.sidebar_scroll{
+
+
+.side-bar{
    position: fixed;
-   top: 0; 
-   left: 0;
+   top: 0; left: 0;
    height: 100vh;
    width: 30rem;
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1200;
-   display: flex;
-   flex-direction: column;    
 }
 
-.sidebar_scroll .active{
-   left: -31rem;
-}
-
-.side-bar{
-   padding-right: 10px;
-   overflow: auto;
-   visibility: hidden;
-}
 .side-bar .close-side-bar{
    text-align: right;
    padding: 2rem;
@@ -362,13 +352,7 @@ section{
 .side-bar .profile .flex-btn{
    margin-top: .5rem;
 }
-.side-bar .close-side-bar, 
-.side-bar .profile,  
-.side-bar .navbar a i,
-.side-bar .navbar a,
-.side-bar:hover {
-   visibility: visible;
-}
+
 .side-bar .navbar a{
    display:block;
    padding: 2rem;
@@ -394,7 +378,9 @@ section{
    margin-right: 2.5rem;
 }
 
-
+.side-bar.active{
+   left: -31rem;
+}
 
 .form-container{
    display: flex;
@@ -1028,6 +1014,8 @@ section{
    text-align: center;
    color: var(--black);
    font-size: 2rem;
+   margin-top: 2rem;
+   z-index: 1000;
 }
 
 .footer span{
@@ -1041,17 +1029,17 @@ section{
       padding-left: 0;
    }
 
-   .sidebar_scroll{
+   .side-bar{
       transition: .2s linear;
       left: -30rem;
    }
 
-   .sidebar_scroll .active{
+   .side-bar.active{
       left: 0;
       box-shadow: 0 0 0 100vw rgba(0,0,0,.7);
    }
 
-   .sidebar_scroll .side-bar .close-side-bar{
+   .side-bar .close-side-bar{
       display: block;
    }
 

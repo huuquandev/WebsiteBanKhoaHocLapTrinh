@@ -1,12 +1,10 @@
-<div class="sidebar_scroll">
-
-   <div class="side-bar">
+<div class="side-bar">
 
       <div class="close-side-bar">
          <i class="fas fa-times"></i>
       </div>
 
-   <div class="profile">
+      <div class="profile">
          <?php
 
             $sql = "SELECT * FROM tb_cms_tai_khoan WHERE id_cms_taikhoan = '$id_taikhoan'";
@@ -39,7 +37,5 @@
          <a href="cms_dashboard.php?title=cms_like"><i class="fas fa-heart"></i><span>Lượt thích</span></a>
          <a href="cms_dashboard.php?title=cms_tags"><i class="fa-solid fa-tag"></i><span>Tags</span></a>
          <a href="../../components/cms_logout.php" onclick="return confirm('Bạn chắc chắn muốn đăng xuất?');"><i class="fas fa-right-from-bracket"></i><span>Đăng xuất</span></a>
-   </nav>
+      </nav>
    </div>
-   </div>  
-</div> 

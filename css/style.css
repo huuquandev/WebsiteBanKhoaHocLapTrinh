@@ -519,7 +519,7 @@ section{
 
 .courses .box-container{
    display: grid;
-   grid-template-columns: repeat(auto-fit, 35rem);
+   grid-template-columns: repeat(auto-fit, minmax(27.5rem, 1fr));
    align-items: flex-start;
    gap: 1.5rem;
 }

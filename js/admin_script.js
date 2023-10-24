@@ -14,7 +14,7 @@ document.querySelector('#search-btn').onclick = () =>{
    profile.classList.remove('active');
 }
 
-let sideBar = document.querySelector('.sidebar_scroll');
+let sideBar = document.querySelector('.side-bar');
 
 document.querySelector('#menu-btn').onclick = () =>{
    sideBar.classList.toggle('active');
@@ -64,4 +64,4 @@ toggleBtn.onclick = (e) =>{
 
 if(darkMode === 'enabled'){
    enabelDarkMode();
-}
+}  

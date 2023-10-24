@@ -7,8 +7,6 @@
 
    <h1 class="heading">Danh sách bình luận</h1>
    
-   
-   <div class="show-comments">
    <?php
         $sql = "SELECT tb_binh_luan.*, tb_tai_khoan.hinh_anh, tb_tai_khoan.ten_hien_thi, tb_bai_viet.* 
         FROM tb_binh_luan 
@@ -21,6 +19,9 @@
 
          
     ?>
+    
+   <div class="show-comments">
+  
       <div class="box">
         
         <div class="tutor">
@@ -39,10 +40,10 @@
          </form>
          
       </div>
-      <?php
+      
+    </div>
+    <?php
             }
         } 
       ?>
-    </div>
-   
 </section>
