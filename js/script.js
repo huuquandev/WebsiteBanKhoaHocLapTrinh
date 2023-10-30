@@ -48,7 +48,7 @@ document.querySelector('#menu-btn').onclick = () =>{
    body.classList.toggle('active');
 }
 
-document.querySelector('#close-btn').onclick = () =>{
+document.querySelector('.close-side-bar').onclick = () =>{
    sideBar.classList.remove('active');
    body.classList.remove('active');
 }

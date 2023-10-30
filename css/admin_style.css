@@ -284,6 +284,13 @@ section{
 .header .flex .profile .flex-btn{
    margin-top: .5rem;
 }
+::-webkit-scrollbar{
+   width: 5px;
+}
+::-webkit-scrollbar-thumb{
+   background: #8e44ad;
+   border-radius: 10px;
+}
 
 .side-bar{
    position: fixed;
@@ -293,8 +300,18 @@ section{
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1200;
+   flex-direction: column;
+   display: flex;
 }
-
+.side-bar-inner{
+   overflow: auto;
+   visibility: hidden;
+}
+.side-bar .side-bar-inner .close-side-bar,
+.side-bar .side-bar-inner .profile,
+.side-bar .side-bar-inner .navbar, .side-bar-inner:hover{
+   visibility: visible;
+}
 .side-bar .close-side-bar{
    text-align: right;
    padding: 2rem;
@@ -405,7 +422,7 @@ section{
 
 .form-container form p{
    padding-top: 1rem;
-   font-size: 1.4rem;
+   font-size: 1.7rem;
    color: var(--light-color);
 }
 
@@ -416,7 +433,7 @@ section{
 .form-container .link{
    padding-bottom: 1rem;
    text-align: center;
-   font-size: 1.4rem;
+   font-size: 1rem;
 }
 
 .form-container .link a{
@@ -725,8 +742,9 @@ section{
    display: flex;
    gap: 2.5rem;
    flex-wrap: wrap;
-   align-items: center;
+   align-items: flex-start;
    background-color: var(--white);
+   border-radius: .5rem;
    padding: 2rem;
 }
 
@@ -1120,7 +1138,6 @@ section{
 .comments .show-comments .box .tutor img{
    height: 5rem;
    width: 5rem;
-   
    border-radius: 50%;
 }
 .comments .show-comments .box .tutor .info .title{
@@ -1151,4 +1168,18 @@ section{
 .comments .show-comments .flex button i {
    margin-left: 1rem;
    color: var(--black);
+}
+.video-form .editplaylist .titlecenter{
+   display: flex;
+   justify-content: center;
+   font-size: 2rem;
+   align-items: center;
+   padding-bottom: 1.5rem;
+}
+.playlist-form .editcourses .titlecenter{
+   display: flex;
+   justify-content: center;
+   font-size: 2rem;
+   align-items: center;
+   padding-bottom: 1.5rem;
 }

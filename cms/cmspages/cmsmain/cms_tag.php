@@ -6,7 +6,17 @@ if($id_taikhoan == ""){
 
 <section class="quick-select">
 
-   <h1 class="heading">Tùy chọn nhanh</h1>
+<h1 class="heading" style="
+   position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;">
+    Danh sách thẻ    
+    <div class="flex-option" style="display: flex;" >
+      <button class="btn" id="btnAdd" style="width: auto; background: green;" >Thêm thẻ</button>
+      </div> 
+   </h1>
+
 
    <div class="box-container">
     

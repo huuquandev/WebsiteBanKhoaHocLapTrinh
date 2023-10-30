@@ -11,7 +11,7 @@ if($id_taikhoan == ""){
 ?>
 
 <section class="posts">
-   <h1 class="heading">Tag '<?php echo $keyword ?>'</h1>
+   <h1 class="heading">Thẻ '<?php echo $keyword ?>'</h1>
 
    <div class="box-container">
    <?php    

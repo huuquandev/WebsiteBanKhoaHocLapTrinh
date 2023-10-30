@@ -44,7 +44,7 @@
                     $keyword = $_GET['tag'];
                     $pageTitle = 'Tìm kiếm theo tag \''.$keyword.'\'';
                 }if($tam == "cms_tags"){
-                    $pageTitle = "Tags";
+                    $pageTitle = "Thẻ";
                 }
             }else{
                 $tam = '';

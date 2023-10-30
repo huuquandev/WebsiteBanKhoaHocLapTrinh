@@ -300,8 +300,18 @@ section{
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1200;
+   flex-direction: column;
+   display: flex;
 }
-
+.side-bar-inner{
+   overflow: auto;
+   visibility: hidden;
+}
+.side-bar .side-bar-inner .close-side-bar,
+.side-bar .side-bar-inner .profile,
+.side-bar .side-bar-inner .navbar, .side-bar-inner:hover{
+   visibility: visible;
+}
 .side-bar .close-side-bar{
    text-align: right;
    padding: 2rem;
