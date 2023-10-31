@@ -21,8 +21,6 @@
    <link rel="stylesheet" href="css/style.css">
    <link rel="stylesheet" href="css/admin_style.css">
 
-   <link rel="stylesheet" href="./components/bootstrap/css/bootstrap.min.css">
-   <link rel="stylesheet" href="./components/bootstrap/css/bootstrap.css">
 
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -38,9 +36,6 @@
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
 <script src="js/admin_script.js"></script>
-<script src="./components/bootstrap/js/bootstrap.min.js"></script>
-<script src="./components/bootstrap/js/bootstrap.js"></script>
-<script src="./components/bootstrap/js/popper.min.js"></script>
 
 </body>
 </html>

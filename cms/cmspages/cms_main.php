@@ -1,6 +1,4 @@
-<div id="main">    
-    <div class="maincontent">
-        <?php
+<?php
             if(isset($_GET['title'])){
                 $tam = $_GET['title'];
                 if($tam == "cms_courses"){
@@ -58,6 +56,4 @@
                 include("cmsmain/cms_home_gird.php");
             }
             
-        ?>        
-    </div>     
- </div>
+        ?>   

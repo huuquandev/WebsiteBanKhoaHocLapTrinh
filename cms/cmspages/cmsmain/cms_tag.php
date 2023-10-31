@@ -13,7 +13,7 @@ if($id_taikhoan == ""){
     justify-content: space-between;">
     Danh sách thẻ    
     <div class="flex-option" style="display: flex;" >
-      <button class="btn" id="btnAdd" style="width: auto; background: green;" >Thêm thẻ</button>
+      <button class="btn btnaddtag" id="btnAddTag" style="width: auto; background: green;" >Thêm thẻ</button>
       </div> 
    </h1>
 
@@ -53,6 +53,18 @@ if($id_taikhoan == ""){
             <a href="#"><span>bootstrap</span></a>
          </div>
       </div>
+
+   </div>
+   <div class="addtag">
+      <div class="close-side-bar">
+            <i class="fas fa-times"></i>
+         </div>
+      <h3>Thêm thẻ</h3>
+      <form action="" method="post" enctype="multipart/form-data">
+         <p>Tên thẻ <span>*</span></p>
+         <input type="text" name="title" maxlength="100" required placeholder="nhập tên thẻ" class="box">
+         <input type="submit" value="Thêm" name="submit" class="btn">
+      </form>
 
    </div>
 

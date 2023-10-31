@@ -256,6 +256,7 @@ section{
    width: 30rem;
    transform: scale(0);
    transform-origin: top right;
+   transition: .2s linear;
 }
 
 .header .flex .profile.active{
@@ -1182,4 +1183,92 @@ section{
    font-size: 2rem;
    align-items: center;
    padding-bottom: 1.5rem;
+}
+.quick-select .addtag{
+   opacity: 0; 
+   position: absolute;
+   left: 33%;
+   top: 20%;
+   background-color: var(--white);
+   border-radius: .5rem;
+   padding: 2rem;
+   width: 50rem;
+   transform: translateY(-100%); 
+   transition: opacity 0.5s ease, transform 0.5s ease; 
+   z-index: 1400;
+   transition: .2s linear;
+}
+
+.quick-select .addtag.active{
+   opacity: 1; 
+   transform: translateY(0); 
+   transition: opacity 0.5s ease, transform 0.5s ease; 
+}
+
+.quick-select .addtag input{
+   width: 100%;
+   border-radius: 0.5rem;
+   margin: 1rem 0;
+   font-size: 1.8rem;
+   color: var(--black);
+   padding: 1.4rem;
+   background-color: var(--light-bg);
+}
+
+.quick-select .addtag h3{
+   text-align: center;
+   font-size: 2.5rem;
+   margin-bottom: 1rem;
+   color: var(--black);
+   text-transform: capitalize;
+}
+.quick-select .addtag p{
+   padding-top: 1rem;
+   font-size: 1.7rem;
+   color: var(--light-color);
+}
+
+.quick-select  .addtag span{
+   color: var(--red);
+}
+
+.quick-select .addtag .btn{
+   border-radius: 0.5rem;
+   padding: 1rem 1rem;
+   font-size: 1.7rem;
+   color: #fff;
+   margin-top: 1rem;
+   text-transform: capitalize;
+   cursor: pointer;
+   text-align: center;
+   background-color: var(--main-color);
+}
+.quick-select .addtag .close-side-bar {
+   text-align: right;
+}
+.quick-select .addtag .close-side-bar i{
+   height: 4.5rem;
+   width: 4.5rem;
+   line-height: 4.4rem;
+   font-size: 2.5rem;
+   color: #fff;
+   cursor: pointer;
+   background-color: var(--red);
+   text-align: center;
+   border-radius: 0.5rem;
+}
+#overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   display: none;
+}
+
+#overlay.active {
+   display: block;
+   z-index: 1300;
+   pointer-events: auto;
 }
