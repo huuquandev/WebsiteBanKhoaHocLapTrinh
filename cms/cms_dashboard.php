@@ -25,7 +25,6 @@
    <link rel="stylesheet" href="./cms_css/admin_style.css">
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <link rel="stylesheet" href="./cms_css/multi-select-tag.css">
-
 </head>
 <body>
 <div id="overlay"></div>

@@ -55,5 +55,5 @@
                 $tam = '';
                 include("cmsmain/cms_home_gird.php");
             }
-            
+            include 'cmspages/cms_footer.php';
         ?>   
