@@ -41,6 +41,10 @@ document.querySelector('.quick-select .addtag .close-side-bar').onclick = () =>{
    overlay.classList.remove('active');
 
 }
+document.querySelector('#overlay').onclick = () =>{
+   addtag.classList.remove('active');
+   overlay.classList.remove('active');
+}
 window.onscroll = () =>{
    profile.classList.remove('active');
    searchForm.classList.remove('active');
