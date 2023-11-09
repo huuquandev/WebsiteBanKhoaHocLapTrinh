@@ -2,7 +2,6 @@ let body = document.body;
 
 let profile = document.querySelector('.header .flex .profile');
 
-let addtag = document.querySelector('.quick-select .addtag');
 
 let overlay = document.getElementById('overlay');
 
@@ -11,11 +10,7 @@ document.querySelector('#user-btn').onclick = () =>{
    searchForm.classList.remove('active');
 }
 
-document.querySelector('#btnAddTag').onclick = () =>{
-   addtag.classList.toggle('active');
-   searchForm.classList.remove('active');
-   overlay.classList.toggle('active');
-}
+
 
 let searchForm = document.querySelector('.header .flex .search-form');
 
@@ -36,11 +31,7 @@ document.querySelector('.side-bar .close-side-bar').onclick = () =>{
    sideBar.classList.remove('active');
    body.classList.remove('active');
 }
-document.querySelector('.quick-select .addtag .close-side-bar').onclick = () =>{
-   addtag.classList.remove('active');
-   overlay.classList.remove('active');
 
-}
 document.querySelector('#overlay').onclick = () =>{
    addtag.classList.remove('active');
    overlay.classList.remove('active');

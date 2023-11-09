@@ -31,6 +31,7 @@
             include("pages/header.php");
             include("pages/sidebar.php");
             include("pages/main.php");
+
         ?>  
 
 <!-- custom js file link  -->

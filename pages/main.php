@@ -57,6 +57,3 @@
         ?>        
     </div>     
  </div>
- <?php
-            include("pages/footer.php");
-?>  

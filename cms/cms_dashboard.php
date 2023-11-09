@@ -33,7 +33,6 @@
 <?php include 'cmspages/cms_header.php'; ?>
 <?php include 'cmspages/cms_sidebar.php'; ?>
 <?php include 'cmspages/cms_main.php'; ?>
-<?php include 'cmspages/cms_footer.php'; ?>
 
 
 

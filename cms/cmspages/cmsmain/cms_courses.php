@@ -257,6 +257,7 @@
 </section>
 
 </section>
+
 <script type="text/javascript">
    function toggleAdd(){
       var addForm = document.getElementById("addForm");

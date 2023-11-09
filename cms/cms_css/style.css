@@ -44,7 +44,7 @@ html::-webkit-scrollbar-thumb{
 
 body{
    background-color: var(--light-bg);
-   padding-left: 30rem;
+   /* padding-left: 30rem; */
 }
 
 body.dark{
@@ -62,7 +62,6 @@ body.active{
 section{
    padding:2rem;
    margin: 0 auto;
-   max-width: 1200px;
 }
 
 .heading{
@@ -140,7 +139,7 @@ section{
    position: sticky;
    top:0; left:0; right: 0;
    background-color: var(--white);
-   z-index: 1000;
+   z-index: 1200;
    border-bottom: var(--border);
 }
 
@@ -253,7 +252,7 @@ section{
    background-color: var(--white);
    height: 100vh;
    border-right: var(--border);
-   z-index: 1200;
+   z-index: 1000;
 }
 
 .side-bar #close-btn{

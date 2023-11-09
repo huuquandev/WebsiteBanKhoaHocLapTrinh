@@ -55,17 +55,32 @@ if($id_taikhoan == ""){
       </div>
 
    </div>
-   <div class="addtag">
-      <div class="close-side-bar">
-            <i class="fas fa-times"></i>
-         </div>
-      <h3>Thêm thẻ</h3>
-      <form action="" method="post" enctype="multipart/form-data">
-         <p>Tên thẻ <span>*</span></p>
-         <input type="text" name="title" maxlength="100" required placeholder="nhập tên thẻ" class="box">
-         <input type="submit" value="Thêm" name="submit" class="btn">
-      </form>
-
-   </div>
+  <div class="form-tag">
+      <div class="addtag">
+         <div class="close-side-bar">
+               <i class="fas fa-times"></i>
+            </div>
+         <h3>Thêm thẻ</h3>
+         <form action="" method="post" enctype="multipart/form-data">
+            <p>Tên thẻ <span>*</span></p>
+            <input type="text" name="title" maxlength="100" required placeholder="nhập tên thẻ" class="box">
+            <input type="submit" value="Thêm" name="submit" class="btn">
+         </form>
+      </div>
+  </div>
 
 </section>
+<script>
+   let addtag = document.querySelector('.quick-select .addtag');
+
+   document.querySelector('#btnAddTag').onclick = () =>{
+   addtag.classList.toggle('active');
+   searchForm.classList.remove('active');
+   overlay.classList.toggle('active');
+   
+   document.querySelector('.quick-select .addtag .close-side-bar').onclick = () =>{
+   addtag.classList.remove('active');
+   overlay.classList.remove('active');
+}
+}
+</script>
