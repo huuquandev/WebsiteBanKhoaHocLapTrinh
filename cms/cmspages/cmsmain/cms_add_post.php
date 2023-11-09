@@ -36,8 +36,7 @@
             <textarea id="noidung_baiviet" name="noidung_baiviet" class="box" placeholder=" Nhập Nội dung bài viết"> </textarea>
             <p>Gắn thẻ</p>
                         
-                    <select name="profession" class="box" >
-                            <option value="" disabled selected>-- Chọn thẻ</option>
+                    <select name="profession" id="select_tags" multiple>
                             <?php
                                     $sqltag = "SELECT * FROM tb_tag"; 
                                     $querytag = mysqli_query($conn, $sqltag);

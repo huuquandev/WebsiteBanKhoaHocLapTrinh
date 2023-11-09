@@ -1272,3 +1272,6 @@ section{
    z-index: 1300;
    pointer-events: auto;
 }
+.mult-select-tag .rounded{
+   font-size: 1.5rem;
+}
