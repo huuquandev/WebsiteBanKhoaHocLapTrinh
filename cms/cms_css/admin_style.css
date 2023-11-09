@@ -1270,8 +1270,14 @@ section{
    z-index: 1300;
    pointer-events: auto;
 }
+<<<<<<< HEAD
 .form-tag{
    display: flex;
    align-items: center;
    justify-content: center;
 }
+=======
+.mult-select-tag .rounded{
+   font-size: 1.5rem;
+}
+>>>>>>> 2d3f556c95a03bc698bc3405affe326b326c7051

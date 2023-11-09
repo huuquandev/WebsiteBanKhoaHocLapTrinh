@@ -24,7 +24,7 @@
    <link rel="stylesheet" href="./cms_css/style.css">
    <link rel="stylesheet" href="./cms_css/admin_style.css">
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+   <link rel="stylesheet" href="./cms_css/multi-select-tag.css">
 
 </head>
 <body>
@@ -38,7 +38,9 @@
 
 <script src="../js/admin_script.js"></script>
 <script src="../admin/ckeditor/ckeditor.js"></script>
+<script src="../js/multi-select-tag.js"></script>
 <script>
+   new MultiSelectTag('select_tags')  // id
     CKEDITOR.replace('noidung_baiviet');
 </script>
 </body>
