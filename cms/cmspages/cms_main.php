@@ -1,4 +1,9 @@
-<?php
+<div class="main-content">
+    <?php include './cmspages/cms_sidebar.php'; ?>
+
+    <div class="content-sidebar">
+          
+    <?php
             if(isset($_GET['title'])){
                 $tam = $_GET['title'];
                 if($tam == "cms_courses"){
@@ -55,5 +60,7 @@
                 $tam = '';
                 include("cmsmain/cms_home_gird.php");
             }
-            include 'cmspages/cms_footer.php';
-        ?>   
+    ?>   
+    </div>
+
+</div>

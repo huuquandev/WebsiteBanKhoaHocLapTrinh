@@ -328,9 +328,6 @@ section{
    margin-right: 2.5rem;
 }
 
-.side-bar.active{
-   left: -30rem;
-}
 
 .home-grid .box-container{
    display: grid;
@@ -1273,28 +1270,6 @@ section{
    margin: 1rem 0;
 }
 
-@media (max-width:1200px){
-
-   body{
-      padding-left: 0;
-   }
-
-   .side-bar{
-      left: -30rem;
-      transition: .2s linear;
-   }
-
-   .side-bar #close-btn{
-      display: block;
-   }
-
-   .side-bar.active{
-      left: 0;
-      box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
-      border-right: 0;
-   }
-
-}
 
 @media (max-width:991px){
 

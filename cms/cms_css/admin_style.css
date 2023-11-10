@@ -293,7 +293,7 @@ section{
 }
 
 .side-bar{
-   position: fixed;
+   position: sticky;
    top: 0; left: 0;
    height: 100vh;
    width: 30rem;
@@ -463,7 +463,10 @@ section{
 .form-container .flex .col{
    flex: 1 1 25rem;
 }
-
+.dashboard{
+   
+   z-index: 1000;
+}
 .dashboard .box-container{
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -1008,6 +1011,7 @@ section{
    }
 
    .side-bar{
+      position: fixed;
       transition: .2s linear;
       left: -30rem;
    }
@@ -1015,10 +1019,6 @@ section{
    .side-bar.active{
       left: 0;
       box-shadow: 0 0 0 100vw rgba(0,0,0,.7);
-   }
-
-   .side-bar .close-side-bar{
-      display: block;
    }
 
 }
@@ -1343,4 +1343,21 @@ footer .coppyrightText{
    font-size: 15px;
    width: 100%;
    padding-top: 20px;
+}
+@media (max-width:991px){
+   footer{
+      padding: 40x;
+   }
+   footer .container{
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+   }
+}
+.main-content{
+   display: flex;
+}
+.content-sidebar{
+   width: 100%;
 }

@@ -78,9 +78,10 @@ if($id_taikhoan == ""){
    searchForm.classList.remove('active');
    overlay.classList.toggle('active');
    
+}
    document.querySelector('.quick-select .addtag .close-side-bar').onclick = () =>{
    addtag.classList.remove('active');
    overlay.classList.remove('active');
-}
-}
+   }
+
 </script>
