@@ -7,11 +7,12 @@ if($id_taikhoan == ""){
       if(isset($_GET['id_baiviet'])){
          $id_baiviet = $_GET['id_baiviet'];
       }
-      $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag 
-      FROM tb_bai_viet 
+      $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+      FROM tb_baiviet_tags 
+      JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
       JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-      JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
-      WHERE id_baiviet = $id_baiviet";
+      JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
+      WHERE tb_bai_viet.id_baiviet = $id_baiviet";
       $query = mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($query);
    ?>

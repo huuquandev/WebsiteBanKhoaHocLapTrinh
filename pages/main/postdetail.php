@@ -4,17 +4,24 @@
       if(isset($_GET['id_baiviet'])){
          $id_baiviet = $_GET['id_baiviet'];
       }
-      $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet 
+      $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+      FROM tb_baiviet_tags 
+      JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
       JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-      WHERE id_baiviet = $id_baiviet";
+      JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
+      WHERE tb_bai_viet.id_baiviet = $id_baiviet";
       $query = mysqli_query($conn, $sql);
       $row = mysqli_fetch_array($query);
       $sqlLike = "SELECT * FROM tb_thichbaiviet WHERE id_taikhoan = '$id_taikhoan'";
       $queryLike = mysqli_query($conn, $sqlLike);
       $rowLike = mysqli_fetch_array($queryLike);
       if (isset($_POST['likepost'])) {
-         $sqllike = "INSERT INTO tb_thichbaiviet (id_baiviet, id_taikhoan, ngay_thich_baiviet) VALUES ('$id_baiviet', '$id_taikhoan', NOW())";
-         $querylike = mysqli_query($conn, $sqllike);
+         if($id_taikhoan > 1){
+            $sqllike = "INSERT INTO tb_thichbaiviet (id_baiviet, id_taikhoan, ngay_thich_baiviet) VALUES ('$id_baiviet', '$id_taikhoan', NOW())";
+            $querylike = mysqli_query($conn, $sqllike);
+         }else{
+            header('location:home.php?title=login');
+         }
       }
       if(isset($_POST['Unlikepost'])){
          $sqlunlike = "DELETE FROM tb_thichbaiviet WHERE tb_thichbaiviet.id_baiviet = $id_baiviet AND tb_thichbaiviet.id_taikhoan = $id_taikhoan";
@@ -42,14 +49,8 @@
                             $total_comment = mysqli_num_rows(GetCommentByPost($id_baiviet));
                         ?>
       <div class="postItem_info">
-                <?php
-                    $tag_name = GetTagByIdPost($id_baiviet);
-                    if($tag_name != null){
-                ?>
-                    <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
-                    <?php
-                    }
-                    ?>
+      <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $row['ten_tag']; ?>"><?php echo $row['ten_tag'] ?></a>
+
       </div>
       <form action="" method="post" class="flex description">
       <div class="flex description">
@@ -88,8 +89,8 @@
 
    <form action="" class="add-comment">
       <h3>Thêm bình luận</h3>
-      <textarea name="comment_box" placeholder="enter your comment" required maxlength="1000" cols="30" rows="10"></textarea>
-      <input type="submit" value="add comment" class="inline-btn" name="add_comment">
+      <textarea name="comment_box" placeholder="Nhập bình luận của bạn" required maxlength="1000" cols="30" rows="10"></textarea>
+      <input type="submit" value="Thêm" class="inline-btn" name="add_comment">
    </form>
 
    <h1 class="heading">Bình luận người dùng</h1>

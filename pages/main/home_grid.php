@@ -16,38 +16,19 @@
          }
 
 ?>
+<section class="quick-select">
+   <div class="box-container">
+      <?php 
+            include_once 'slider.php';
+      ?>
+   </div>
 
+</section>
 <section class="quick-select">
 
    <h1 class="heading">Tùy chọn nhanh</h1>
 
    <div class="box-container">
-
-         <?php
-            if($id_taikhoan != ''){
-         ?>
-         <div class="box">
-            <h3 class="title">Lượt thích và bình luận</h3>
-            <p>Số lượt thích : <span><?php echo mysqli_num_rows($queryCountLike) ; ?></span></p>
-            <a href="likes.php" class="inline-btn">Xem lượt thích</a>
-            <p>Số lượng bình luận : <span><?php echo mysqli_num_rows($queryCountComennt); ?></span></p>
-            <a href="comments.php" class="inline-btn">Xem bình luận</a>
-            <p>Khóa học đã mua : <span><?php echo mysqli_num_rows($queryCountByCourses); ?></span></p>
-            <a href="bookmark.php" class="inline-btn">Xem khóa học</a>
-         </div>
-         <?php
-            }else{ 
-         ?>
-         <div class="box" style="text-align: center;">
-            <h3 class="title">Vui lòng đăng nhập hoặc đăng ký</h3>
-            <div class="flex-btn" style="padding-top: .5rem;">
-               <a href="home.php??title=login" class="option-btn">Đăng nhập</a>
-               <a href="home.php??title=register" class="option-btn">Đăng kí</a>
-            </div>
-         </div>
-         <?php
-         }
-         ?>
 
       <div class="box">
          <h3 class="title">Danh mục</h3>

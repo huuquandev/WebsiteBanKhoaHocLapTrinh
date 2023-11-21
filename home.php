@@ -30,12 +30,13 @@
       <?php
             include("pages/header.php");
             include("pages/main.php");
-
+            include("pages/footer.php");
         ?>  
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
 <script src="js/admin_script.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>

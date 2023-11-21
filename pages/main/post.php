@@ -9,8 +9,11 @@
     <?php 
          include_once './function.php';
 
-           $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi FROM tb_bai_viet 
-           JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan";
+           $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+           FROM tb_baiviet_tags 
+           JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
+           JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+           JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag";
            $query = mysqli_query($conn, $sql);
            while ($row = mysqli_fetch_array($query)) {
         ?>
@@ -36,14 +39,7 @@
                 </div>
             </div>
             <div class="postItem_info">
-                <?php
-                    $tag_name = GetTagByIdPost($row['id_baiviet']);
-                    if($tag_name != null){
-                ?>
-                    <a class="postItem_tags" href="home.php?title=cms_search_tag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
-                    <?php
-                    }
-                    ?>
+            <a class="postItem_tags" href="home.php?title=cms_search_tag&tag=<?php echo $row['ten_tag']; ?>"><?php echo $row['ten_tag'] ?></a>
             </div>
             <div class="footer_post">
                 <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
