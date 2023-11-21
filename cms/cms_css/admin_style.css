@@ -296,7 +296,7 @@ section{
    position: sticky;
    top: 0; left: 0;
    height: 100vh;
-   width: 30rem;
+   width: 19   rem;
    background-color: var(--white);
    border-right: var(--border);
    z-index: 1000;
@@ -366,7 +366,7 @@ section{
    display:block;
    padding: 2rem;
    margin: .5rem 0;
-   font-size: 1.8rem;
+   font-size: 1.6rem;
 }
 
 .side-bar .navbar a i{
@@ -1152,7 +1152,7 @@ section{
    align-items: center;
    padding-bottom: 1.5rem;
 }
-.quick-select .addtag{
+.addtag{
    opacity: 0; 
    position: absolute;
    top: 20%;
@@ -1166,13 +1166,13 @@ section{
    transition: .2s linear;
 }
 
-.quick-select .addtag.active{
+.addtag.active{
    opacity: 1; 
    transform: translateY(0); 
    transition: opacity 0.5s ease, transform 0.5s ease; 
 }
 
-.quick-select .addtag input{
+.addtag input{
    width: 100%;
    border-radius: 0.5rem;
    margin: 1rem 0;
@@ -1182,24 +1182,24 @@ section{
    background-color: var(--light-bg);
 }
 
-.quick-select .addtag h3{
+.addtag h3{
    text-align: center;
    font-size: 2.5rem;
    margin-bottom: 1rem;
    color: var(--black);
    text-transform: capitalize;
 }
-.quick-select .addtag p{
+.addtag p{
    padding-top: 1rem;
    font-size: 1.7rem;
    color: var(--light-color);
 }
 
-.quick-select  .addtag span{
+.addtag span{
    color: var(--red);
 }
 
-.quick-select .addtag .btn{
+.addtag .btn{
    border-radius: 0.5rem;
    padding: 1rem 1rem;
    font-size: 1.7rem;
@@ -1210,10 +1210,10 @@ section{
    text-align: center;
    background-color: var(--main-color);
 }
-.quick-select .addtag .close-side-bar {
+.addtag .close-side-bar {
    text-align: right;
 }
-.quick-select .addtag .close-side-bar i{
+.addtag .close-side-bar i{
    height: 4.5rem;
    width: 4.5rem;
    line-height: 4.4rem;

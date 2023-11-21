@@ -55,7 +55,10 @@ if($id_taikhoan == ""){
       </div>
 
    </div>
-  <div class="form-tag">
+
+
+</section>
+<div class="form-tag">
       <div class="addtag">
          <div class="close-side-bar">
                <i class="fas fa-times"></i>
@@ -67,11 +70,9 @@ if($id_taikhoan == ""){
             <input type="submit" value="Thêm" name="submit" class="btn">
          </form>
       </div>
-  </div>
-
-</section>
+</div>
 <script>
-   let addtag = document.querySelector('.quick-select .addtag');
+   let addtag = document.querySelector('.addtag');
 
    document.querySelector('#btnAddTag').onclick = () =>{
    addtag.classList.toggle('active');
@@ -79,7 +80,7 @@ if($id_taikhoan == ""){
    overlay.classList.toggle('active');
    
 }
-   document.querySelector('.quick-select .addtag .close-side-bar').onclick = () =>{
+   document.querySelector('.addtag .close-side-bar').onclick = () =>{
    addtag.classList.remove('active');
    overlay.classList.remove('active');
    }

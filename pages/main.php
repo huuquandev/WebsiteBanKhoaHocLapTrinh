@@ -1,6 +1,8 @@
-<div id="main">    
-    <div class="maincontent">
-        <?php
+<div class="main-content">
+    <?php include 'sidebar.php'; ?>
+
+    <div class="content-sidebar">        
+    <?php
             if(isset($_GET['title'])){
                 $tam = $_GET['title'];
                 if($tam == "about"){
@@ -54,6 +56,7 @@
                 include("main/home_grid.php");
             }
             
-        ?>        
-    </div>     
- </div>
+        ?>  
+    </div>
+
+</div>

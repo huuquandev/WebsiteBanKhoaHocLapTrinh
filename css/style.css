@@ -44,7 +44,6 @@ html::-webkit-scrollbar-thumb{
 
 body{
    background-color: var(--light-bg);
-   padding-left: 30rem;
 }
 
 body.dark{
@@ -137,11 +136,13 @@ section{
 }
 
 .header{
-   position: sticky;
-   top:0; left:0; right: 0;
    background-color: var(--white);
-   z-index: 1000;
    border-bottom: var(--border);
+   position: sticky;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 1200;
 }
 
 .header .flex{
@@ -247,13 +248,16 @@ section{
 }
 
 .side-bar{
-   position: fixed;
-   top: 0; left: 0;
-   width: 30rem;
-   background-color: var(--white);
+   position: sticky;
+   top: 0;
+   left: 0;
    height: 100vh;
+   width: 19rem;
+   background-color: var(--white);
    border-right: var(--border);
-   z-index: 1200;
+   z-index: 1000;
+   flex-direction: column;
+   display: flex;
 }
 
 .side-bar #close-btn{
