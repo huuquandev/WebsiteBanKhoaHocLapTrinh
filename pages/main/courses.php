@@ -37,7 +37,7 @@
                      </div>
                </div>
                <div class="thumb">
-               <img src="<?php echo "images/images_courses/" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
+               <img src="images/images_courses/<?php echo $row['anh_khoahoc'];?>" class="card-img-top" height="200vh" alt="">
                </div>
                <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
                <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>

@@ -20,7 +20,9 @@ if($id_taikhoan == ""){
 <section class="watch-video">
   
    <div class="video-container">
-      
+      <div class="name_post">
+         <?php echo $row['ten_baiviet']; ?>
+      </div>
       <div class="tutor info">
       <img src="../../../../images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
          <div>
@@ -28,7 +30,9 @@ if($id_taikhoan == ""){
             <p class="date"><i class="fas fa-calendar"></i><span><?php echo $row['ngaydang_baiviet']; ?></span></p>
          </div>
       </div>
-      
+      <div class="title">
+         <?php echo $row['mota_baiviet']; ?>
+      </div>
       <div class="description">
          <?php echo $row['noidung_baivet']; ?>
       </div>

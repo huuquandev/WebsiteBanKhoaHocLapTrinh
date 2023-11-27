@@ -1,7 +1,17 @@
 <?php
-if($id_taikhoan == ""){
-    header('location:../cms/cmspages/cms_login.php');
-}
+   if($id_taikhoan == ""){
+      header('location:../cms/cmspages/cms_login.php');
+   }
+   if (isset($_POST['submit'])) {
+      $name_tag = $_POST["name_tag"];
+      $sql = "INSERT INTO tb_tag (ten_tag) VALUES ('$name_tag')";
+      if ($conn->query($sql) === TRUE) {
+         echo '<script>alert("Thêm thẻ thành công");</script>';
+      } else {
+          echo "Lỗi: " . $sql . "<br>" . $conn->error;
+      }
+      
+  }
  ?>
 
 <section class="quick-select">
@@ -66,7 +76,7 @@ if($id_taikhoan == ""){
          <h3>Thêm thẻ</h3>
          <form action="" method="post" enctype="multipart/form-data">
             <p>Tên thẻ <span>*</span></p>
-            <input type="text" name="title" maxlength="100" required placeholder="nhập tên thẻ" class="box">
+            <input type="text" name="name_tag" maxlength="100" required placeholder="nhập tên thẻ" class="box">
             <input type="submit" value="Thêm" name="submit" class="btn">
          </form>
       </div>

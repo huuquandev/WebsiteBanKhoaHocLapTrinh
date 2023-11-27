@@ -1098,6 +1098,14 @@ section{
    border-radius: 0.5rem;
    padding: 0.5rem 1.5rem;
 }
+.watch-video .video-container .name_post{
+   font-weight: 1000;
+   padding-bottom: 0.8rem;
+   font-size: 3rem;
+   color: var(--black);
+   text-transform: capitalize;
+   margin-bottom: 2rem;
+}
 .comments .show-comments .box .tutor{
    display: flex;
    align-items: center;
@@ -1156,6 +1164,7 @@ section{
    opacity: 0; 
    position: absolute;
    top: 20%;
+   left: 35%;  
    background-color: var(--white);
    border-radius: .5rem;
    padding: 2rem;

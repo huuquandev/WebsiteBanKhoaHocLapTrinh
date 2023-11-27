@@ -44,7 +44,11 @@ if($id_taikhoan == ""){
                     <p class="content"><?php echo $row['mota_baiviet']; ?></p>
                 </div>
                 <div class="thumb">
-                    <img src="images/thumb-1.png" alt="">
+                    <?php if(!empty($row['anh_baiviet'])) {  ?>
+                    <img src="../../../../images/images_post/<?php echo $row['anh_baiviet']; ?>" alt="">
+                        <?php 
+                        }
+                        ?>
                 </div>
             </div>
             <div class="postItem_info">

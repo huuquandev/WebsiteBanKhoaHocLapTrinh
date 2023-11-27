@@ -767,7 +767,6 @@ section{
    display: flex;
    margin-top: 1.5rem;
    margin-bottom: 2rem;
-   border-bottom: var(--border);
    padding-bottom: 1.5rem;
    gap: 2.5rem;
    align-items: center;
@@ -847,10 +846,16 @@ section{
    color: var(--white);
 }
 
-.watch-video .video-container .description{
+.watch-video .video-container .title{
    line-height: 1.5;
    font-size: 1.7rem;
    color: var(--light-color);
+   margin-top: 2rem;
+}
+.watch-video .video-container .description{
+   line-height: 1.5;
+   font-size: 1.7rem;
+   color: #000;
    margin-top: 2rem;
 }
 
@@ -1512,7 +1517,7 @@ section{
    position: relative;
 }
 .posts .box-container .box .thumb img {
-   width: 100%;
+   width: 350px;
    height: 20rem;
    object-fit: cover;
    border-radius: .5rem;

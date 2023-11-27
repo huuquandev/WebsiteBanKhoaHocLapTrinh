@@ -26,23 +26,7 @@
 </section>
 <section class="quick-select">
 
-   <h1 class="heading">Tùy chọn nhanh</h1>
-
    <div class="box-container">
-
-      <div class="box">
-         <h3 class="title">Danh mục</h3>
-         <div class="flex">
-            <a href="#"><i class="fas fa-code"></i><span>development</span></a>
-            <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a>
-            <a href="#"><i class="fas fa-pen"></i><span>design</span></a>
-            <a href="#"><i class="fas fa-chart-line"></i><span>marketing</span></a>
-            <a href="#"><i class="fas fa-music"></i><span>music</span></a>
-            <a href="#"><i class="fas fa-camera"></i><span>photography</span></a>
-            <a href="#"><i class="fas fa-cog"></i><span>software</span></a>
-            <a href="#"><i class="fas fa-vial"></i><span>science</span></a>
-         </div>
-      </div>
 
       <div class="box">
          <h3 class="title">Phổ biến</h3>
@@ -85,7 +69,7 @@
                   </div>
             </div>
             <div class="thumb">
-            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
+            <img src="images/images_courses/<?php echo $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <h5 class="title" style="font-size: 1.5rem; color:red"><?php echo convertToVietnameseCurrency($row['gia_khoahoc']); ?></h5>
@@ -125,7 +109,7 @@
                   </div>
             </div>
             <div class="thumb">
-            <img src="<?php echo "images/images_courses" . $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
+            <img src="images/images_courses/<?php echo $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
             <a href="home.php?title=courses_content&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
@@ -162,7 +146,7 @@
                   </div>
             </div>
             <div class="thumb">
-                  <img src="<?php echo "images/images_post" . $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
+                  <img src="images/images_post/<?php echo  $row['anh_baiviet']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_baiviet']; ?></h3>
             <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>

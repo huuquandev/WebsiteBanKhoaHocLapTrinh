@@ -32,7 +32,7 @@
                 </div>
                 <div class="thumb">
                     <?php if(!empty($row['anh_baiviet'])) {  ?>
-                    <img src="<?php echo $row['anh_baiviet']; ?>" alt="">
+                    <img src="images/images_post/<?php echo $row['anh_baiviet']; ?>" alt="">
                         <?php 
                         }
                         ?>

@@ -1,7 +1,7 @@
 <footer>
    <div class="container">
       <div class="sec aboutus">
-         <h2>About us</h2>
+         <h2>Thông tin</h2>
          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe odio molestiae error aperiam magni! A architecto suscipit molestiae molestias repellendus fugit culpa voluptatibus ducimus fugiat. Repellat mollitia consequuntur ex officiis.</p>
          <ul class="sci">
             <li><a href="#" class="facebook-icon-info"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -10,25 +10,25 @@
          </ul>
       </div>
       <div class="sec quicklinks">         
-         <h2>Support</h2>
+         <h2>Hỗ trợ</h2>
          <ul>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Privacy Policy</i></a></li>
             <li><a href="#">Help </a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">Liên hế</a></li>
          </ul>
       </div>
       <div class="sec quicklinks">
-         <h2>Shop</h2>
+         <h2>Danh mục</h2>
          <ul >
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Women</i></a></li>
-            <li><a href="#">Kids</a></li>
-            <li><a href="#">Shoes</a></li>
+            <li><a href="#">Khóa học</a></li>
+            <li><a href="#">Học liệu</i></a></li>
+            <li><a href="#">Bài viết</a></li>
+            <li><a href="#">Giới thiệu</a></li>
          </ul>
       </div>
       <div class="sec contact">
-         <h2>Contact us</h2>
+         <h2>Liên hệ</h2>
          <ul class="info">
             <li>
                <span>

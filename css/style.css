@@ -852,13 +852,26 @@ section{
    color: var(--white);
 }
 
-.watch-video .video-container .description{
+.watch-video .video-container .title{
    line-height: 1.5;
    font-size: 1.7rem;
    color: var(--light-color);
    margin-top: 2rem;
 }
-
+.watch-video .video-container .description{
+   line-height: 1.5;
+   font-size: 1.7rem;
+   color: #000;
+   margin-top: 2rem;
+}
+.watch-video .video-container .name_post{
+   font-weight: 1000;
+   padding-bottom: 0.8rem;
+   font-size: 3rem;
+   color: var(--black);
+   text-transform: capitalize;
+   margin-bottom: 2rem;
+}
 .comments .add-comment{
    background-color: var(--white);
    border-radius: .5rem;
@@ -1564,7 +1577,7 @@ section{
    position: relative;
 }
 .posts .box-container .box .thumb img {
-   width: 100%;
+   width: 350px;
    height: 20rem;
    object-fit: cover;
    border-radius: .5rem;
@@ -1624,6 +1637,7 @@ section{
 .posts .box-container .box .footer_post span{
    margin-left: 8px;
 }
+
 .form-container .addpost {
    width: 100%;
 }
@@ -1727,7 +1741,7 @@ section{
    transition: 1s;
 }
 .slider .list img{
-   width: 1300px;
+   width: 1322px;
    max-width: 100vw;
    height: 100%;
    object-fit: cover;
