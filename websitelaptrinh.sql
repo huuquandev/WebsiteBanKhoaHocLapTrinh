@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 27, 2023 lúc 07:17 PM
--- Phiên bản máy phục vụ: 10.4.28-MariaDB
--- Phiên bản PHP: 8.2.4
+-- Thời gian đã tạo: Th10 28, 2023 lúc 11:25 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,9 +38,7 @@ CREATE TABLE `tb_baiviet_tags` (
 --
 
 INSERT INTO `tb_baiviet_tags` (`id_baiviet`, `id_tag`, `id_baiviet_tag`) VALUES
-(13, 11, 1),
-(14, 4, 2),
-(12, 3, 3);
+(30, 1, 18);
 
 -- --------------------------------------------------------
 
@@ -51,7 +49,6 @@ INSERT INTO `tb_baiviet_tags` (`id_baiviet`, `id_tag`, `id_baiviet_tag`) VALUES
 CREATE TABLE `tb_bai_viet` (
   `id_baiviet` int(11) NOT NULL,
   `id_taikhoan` int(11) DEFAULT NULL,
-  `id_tag` int(11) NOT NULL,
   `noidung_baivet` text DEFAULT NULL,
   `ten_baiviet` text DEFAULT NULL,
   `mota_baiviet` text DEFAULT NULL,
@@ -64,10 +61,8 @@ CREATE TABLE `tb_bai_viet` (
 -- Đang đổ dữ liệu cho bảng `tb_bai_viet`
 --
 
-INSERT INTO `tb_bai_viet` (`id_baiviet`, `id_taikhoan`, `id_tag`, `noidung_baivet`, `ten_baiviet`, `mota_baiviet`, `ngaydang_baiviet`, `anh_baiviet`, `xoa_baiviet`) VALUES
-(12, 1, 1, '<p><span style=\"font-size:22px\"><strong>Kh&oacute;a học lập tr&igrave;nh cơ bản</strong></span></p>\r\n\r\n<ol>\r\n	<li><span style=\"font-size:14px\">CSS cơ bản</span></li>\r\n</ol>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://localhost:3000/354c8dd2-c008-4689-8b92-9edb2c209966\" width=\"900\" />\r\n<figcaption>H&igrave;nh 1</figcaption>\r\n</figure>\r\n\r\n<ol>\r\n	<li><span style=\"font-size:14px\">JS cở bản</span></li>\r\n</ol>\r\n\r\n<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://localhost:3000/6d958f8e-4099-4cf4-892b-f54bc0e10c31\" width=\"900\" />\r\n<figcaption>H&igrave;nh 2</figcaption>\r\n</figure>\r\n\r\n<p><span style=\"color:#3498db\">eqweqw</span> <span style=\"background-color:#9b59b6\">qư eqw eqw</span> <span style=\"color:#e74c3c\">eqw eqw</span> <span style=\"color:#e67e22\">eqwe </span><span style=\"background-color:#9b59b6\">qwe qư</span> <span style=\"color:#27ae60\">eqwe qư</span></p>\r\n', 'Lập trình frontend cơ bản', 'Khóa học lập trình này giúp các bạn hiểu thêm về lập trình frontend ', '2023-10-18 13:22:53', 'PxVbAixnXdvS5W5dCrDO.png', 0),
-(13, 1, 5, '<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://localhost:3000/abda1ce9-9588-4449-9fde-a0b8df8c5f6c\" width=\"753\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>&nbsp;</p>\r\n', 'Design trong công nghệ thông tin', ' bài viết này giúp các bạn hiểu thêm về desing trong công nghệ thông tin hiểu thêm về các thành phần cơ bản của design', '2023-10-26 13:32:43', 'thumb-5.png', 0),
-(14, 1, 1, '<p>33</p>\r\n', '123', ' 22', '2023-11-22 13:47:58', 'wEqLAPju81ZD1np0inke.jpg', 0);
+INSERT INTO `tb_bai_viet` (`id_baiviet`, `id_taikhoan`, `noidung_baivet`, `ten_baiviet`, `mota_baiviet`, `ngaydang_baiviet`, `anh_baiviet`, `xoa_baiviet`) VALUES
+(30, 8, '<p>ưeqweqw</p>\r\n', 'eqweqw', ' eqweqw', '2023-11-28 15:47:51', 'MTsKw5oVqufAZYa5kDAl.png', 0);
 
 -- --------------------------------------------------------
 
@@ -77,8 +72,7 @@ INSERT INTO `tb_bai_viet` (`id_baiviet`, `id_taikhoan`, `id_tag`, `noidung_baive
 
 CREATE TABLE `tb_binh_luan` (
   `id_binhluan` int(100) NOT NULL,
-  `id_baiviet` int(100) DEFAULT NULL,
-  `id_hoclieu` int(11) DEFAULT NULL,
+  `id_topic` int(100) DEFAULT NULL,
   `id_taikhoan` int(100) NOT NULL,
   `noidung_binhluan` text NOT NULL,
   `ngay_binhluan` datetime NOT NULL,
@@ -109,7 +103,10 @@ CREATE TABLE `tb_cms_tai_khoan` (
 
 INSERT INTO `tb_cms_tai_khoan` (`id_cms_taikhoan`, `email`, `ten_hien_thi`, `mat_khau`, `ngay_sinh`, `doi_tuong`, `gioi_tinh`, `sdt`, `hinh_anh`) VALUES
 (1, 'huylohb123@gmail.com', 'huylohb123', 'huylohb123', '2023-10-03', 0, 1, 378452231, '77Ufi98pdK6TBvESPr0f.jpg'),
-(6, 'huylohb1234@gmail.com', 'pham huu quan', 'huylohb123', '2001-11-11', 1, 1, 21321321, 'enwRZWMlgAU1gBvTAF9g.jpg');
+(6, 'huylohb1234@gmail.com', 'pham huu quan', 'huylohb123', '2001-11-11', 1, 1, 21321321, 'enwRZWMlgAU1gBvTAF9g.jpg'),
+(7, 'hb123@gmail.com', 'admin', 'huylohb123', '2022-11-11', 1, 1, 378452231, 'B9i4y9g9Wog2LXI2umGb.png'),
+(8, 'huylo123@gmail.com', 'admin', 'huylohb123', '2002-11-11', 1, 0, 378452231, 'YM6JSxbMEe9obA97QEkM.png'),
+(10, 'viphuy422@gmail.com', 'admin', 'huylohb123', '2001-11-01', 1, 0, 378452231, 'Jb9mtKROYHecHpzVGDya.png');
 
 -- --------------------------------------------------------
 
@@ -233,7 +230,8 @@ INSERT INTO `tb_tag` (`id_tag`, `ten_tag`) VALUES
 (8, 'CSS'),
 (9, 'Javascript'),
 (10, 'React'),
-(11, 'Bootstrap');
+(11, 'Bootstrap'),
+(12, 'Data engineer');
 
 -- --------------------------------------------------------
 
@@ -264,7 +262,8 @@ INSERT INTO `tb_tai_khoan` (`id_taikhoan`, `email`, `ten_hien_thi`, `mat_khau`, 
 (22, 'hanhit123@gmail.com', 'Nguyen Thi Hanh', 'hanhit123@', 1, '2023-10-18', 1, '1234567', 'xPYdqUJuJj73GkqRKMey.jpg'),
 (23, 'hb@gmail.com', 'admin', '12345678', 1, '0000-00-00', 0, '04154687687', 'pic-2.jpg'),
 (24, 'huuquan432@gmail.com', 'huylohb123', 'huylohb123', 1, '2023-10-13', 1, '0378452231', 'kp1tMM3njZbN2Rv9P5Ue.jpg'),
-(25, 'huuquan18@gmail.com', 'pham huu quan', 'huylohb123', 1, '2001-11-11', 0, '0378452231', 'oJORy3mmZSSgYWEEKYdk.docx');
+(25, 'huuquan18@gmail.com', 'pham huu quan', 'huylohb123', 1, '2001-11-11', 0, '0378452231', 'oJORy3mmZSSgYWEEKYdk.docx'),
+(26, 'huylohb123@gmail.com', 'admin', 'huylohb123', 1, '2011-11-11', 1, '0378452231', '7RX1SLorSJFQqdgW04l6.png');
 
 -- --------------------------------------------------------
 
@@ -298,9 +297,7 @@ CREATE TABLE `tb_thichbaiviet` (
 --
 
 INSERT INTO `tb_thichbaiviet` (`id_thichbaiviet`, `id_baiviet`, `id_taikhoan`, `ngay_thich_baiviet`) VALUES
-(33, 12, 22, '2023-10-26 13:46:37'),
-(34, 13, 22, '2023-10-26 14:42:10'),
-(35, 12, 20, '2023-11-08 13:34:23');
+(36, 30, 26, '2023-11-28 16:19:53');
 
 -- --------------------------------------------------------
 
@@ -353,17 +350,15 @@ ALTER TABLE `tb_baiviet_tags`
 --
 ALTER TABLE `tb_bai_viet`
   ADD PRIMARY KEY (`id_baiviet`),
-  ADD KEY `baiviet_taikhoan` (`id_taikhoan`),
-  ADD KEY `baiviet_tag` (`id_tag`);
+  ADD KEY `baiviet_taikhoan` (`id_taikhoan`);
 
 --
 -- Chỉ mục cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
   ADD PRIMARY KEY (`id_binhluan`),
-  ADD KEY `binhluan_baiviet` (`id_baiviet`),
-  ADD KEY `binhluan_taikhoan` (`id_taikhoan`),
-  ADD KEY `binhluan_hoclieu` (`id_hoclieu`);
+  ADD KEY `binhluan_baiviet` (`id_topic`),
+  ADD KEY `binhluan_taikhoan` (`id_taikhoan`);
 
 --
 -- Chỉ mục cho bảng `tb_cms_tai_khoan`
@@ -451,13 +446,13 @@ ALTER TABLE `tb_thichhoclieu`
 -- AUTO_INCREMENT cho bảng `tb_baiviet_tags`
 --
 ALTER TABLE `tb_baiviet_tags`
-  MODIFY `id_baiviet_tag` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_baiviet_tag` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_binh_luan`
@@ -469,7 +464,7 @@ ALTER TABLE `tb_binh_luan`
 -- AUTO_INCREMENT cho bảng `tb_cms_tai_khoan`
 --
 ALTER TABLE `tb_cms_tai_khoan`
-  MODIFY `id_cms_taikhoan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cms_taikhoan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_hoc_lieu`
@@ -499,13 +494,13 @@ ALTER TABLE `tb_lienhe`
 -- AUTO_INCREMENT cho bảng `tb_tag`
 --
 ALTER TABLE `tb_tag`
-  MODIFY `id_tag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_tag` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_tai_khoan`
 --
 ALTER TABLE `tb_tai_khoan`
-  MODIFY `id_taikhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_taikhoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_thanhtoan`
@@ -517,7 +512,7 @@ ALTER TABLE `tb_thanhtoan`
 -- AUTO_INCREMENT cho bảng `tb_thichbaiviet`
 --
 ALTER TABLE `tb_thichbaiviet`
-  MODIFY `id_thichbaiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_thichbaiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_thichbinhluan`
@@ -546,15 +541,14 @@ ALTER TABLE `tb_baiviet_tags`
 -- Các ràng buộc cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  ADD CONSTRAINT `baiviet_tag` FOREIGN KEY (`id_tag`) REFERENCES `tb_tag` (`id_tag`) ON DELETE CASCADE,
   ADD CONSTRAINT `baiviet_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_cms_tai_khoan` (`id_cms_taikhoan`) ON DELETE SET NULL;
 
 --
 -- Các ràng buộc cho bảng `tb_binh_luan`
 --
 ALTER TABLE `tb_binh_luan`
-  ADD CONSTRAINT `binhluan_baiviet` FOREIGN KEY (`id_baiviet`) REFERENCES `tb_bai_viet` (`id_baiviet`) ON DELETE SET NULL,
-  ADD CONSTRAINT `binhluan_hoclieu` FOREIGN KEY (`id_hoclieu`) REFERENCES `tb_hoc_lieu` (`id_hoclieu`) ON DELETE SET NULL,
+  ADD CONSTRAINT `binhluan_baiviet` FOREIGN KEY (`id_topic`) REFERENCES `tb_bai_viet` (`id_baiviet`),
+  ADD CONSTRAINT `binhluan_hoclieu` FOREIGN KEY (`id_topic`) REFERENCES `tb_hoc_lieu` (`id_hoclieu`),
   ADD CONSTRAINT `binhluan_taikhoan` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_tai_khoan` (`id_taikhoan`);
 
 --

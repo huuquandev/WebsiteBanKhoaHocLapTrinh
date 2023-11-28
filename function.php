@@ -78,15 +78,23 @@
 
         $sql = "SELECT * FROM tb_tai_khoan WHERE email = '".$filter_email."'";
         $query = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($query) > 0){
-            return false;
-        } else{
-            $sql = "INSERT INTO tb_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
-            VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
-            $query = mysqli_query($conn, $sql);
-            move_uploaded_file($image_tmp_name, $image_folder);
-            return true;
+        $arr = ["gif", "jpg", "png", "jpeg"];
+        $flag = 0;
+        if (!in_array($ext, $arr)) {
+            $flag = 1;
+        }else{
+            if(mysqli_num_rows($query) > 0){
+                $flag = 2;
+            } else{
+                $sql = "INSERT INTO tb_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
+                VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
+                $query = mysqli_query($conn, $sql);
+                move_uploaded_file($image_tmp_name, $image_folder);
+                $flag = 0;
+            }
         }
+        
+        return $flag;
     }
     //---Đăng kí CMS---
     //---Ngọc---
@@ -362,4 +370,52 @@
         $row = mysqli_fetch_assoc($query);
         return $row;
     }
+
+    //---Thêm bài viết
+    function addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan){
+        GLOBAL $conn;
+        $filter_id = unique_id();
+        $filter_tieu_de = mysqli_real_escape_string($conn, $tieu_de);
+        $filter_mo_ta = mysqli_real_escape_string($conn, $mo_ta);
+        $filter_noi_dung = mysqli_real_escape_string($conn, $noi_dung);
+        $message = []; // Khởi tạo mảng thông báo lỗi
+    
+        $fileimg = $_FILES['hinhanh_baiviet']['name'];
+        if (!empty($fileimg)) {
+            $image = mysqli_real_escape_string($conn, $fileimg);
+            $ext = pathinfo($image, PATHINFO_EXTENSION);
+            $arr = ["gif", "jpg", "png", "jpeg"];
+            if (!in_array($ext, $arr)) {
+                $message[] = "File ảnh bìa chỉ nhận đuôi .jpg .jpeg .png .gif";
+            } else {
+                $rename = $filter_id . '.' . $ext;
+                $image_tmp_name = $_FILES['hinhanh_baiviet']['tmp_name'];
+                $image_folder = 'images/images_post/'.$rename;
+                if (move_uploaded_file($image_tmp_name, $image_folder)) {
+                    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan, anh_baiviet, xoa_baiviet) VALUES ('$filter_tieu_de', '$filter_mo_ta', '$filter_noi_dung', NOW(), '$id_taikhoan', '$rename', 0)";
+                } else {
+                    $message[] = "Không thể di chuyển file ảnh";
+                }
+            }
+        } else {
+            $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan, xoa_baiviet) VALUES ('$filter_tieu_de', '$filter_mo_ta', '$filter_noi_dung', NOW(), '$id_taikhoan', 0)";
+        }
+    
+        if (empty($message)) {
+            if ($conn->query($sql) === TRUE) {
+                if ($id_tag != null) {
+                    $id_baiviet = $conn->insert_id;
+                    $sql = "INSERT INTO tb_baiviet_tags (id_tag, id_baiviet) VALUES ('$id_tag', '$id_baiviet')";
+                    $conn->query($sql);
+                }
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return $message;
+        }
+    }
+    
+    
 ?>

@@ -27,6 +27,10 @@
          $sqlunlike = "DELETE FROM tb_thichbaiviet WHERE tb_thichbaiviet.id_baiviet = $id_baiviet AND tb_thichbaiviet.id_taikhoan = $id_taikhoan";
          $querysqlunlike = mysqli_query($conn, $sqlunlike);
       }
+      if(isset($_POST['add_comment'])){
+         $sqladdcomment = "INSERT INTO tb_binhluan (id_taikhoan, ngay_thich_baiviet) VALUES ('$id_baiviet', '$id_taikhoan', NOW())";
+         $querysqlunlike = mysqli_query($conn, $sqlunlike);
+      }
    ?>
 
 <section class="watch-video">
