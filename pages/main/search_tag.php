@@ -4,7 +4,7 @@
 
    if(isset($_GET['tag'])){
       $keyword = $_GET['tag'];
-      $row_posts = CMS_Search_Tag($keyword, $id_taikhoan);
+      $row_posts = Search_Tag($keyword, $id_taikhoan);
    }
 ?>
 

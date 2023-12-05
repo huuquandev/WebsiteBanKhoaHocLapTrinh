@@ -4,7 +4,7 @@
 
    if(isset($_GET['search_box'])){
       $keyword = $_GET['search_box'];
-      $row_posts = CMS_Search_Post($keyword, $id_taikhoan);
+      $row_posts = Search_Post($keyword, $id_taikhoan);
     }
 ?>
 
@@ -33,10 +33,7 @@
                 </div>
             </div>
             <div class="postItem_info">
-               <?php
-                  $tag_name = GetTagByIdPost($row_post['id_baiviet'])
-               ?>
-                <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $tag_name['ten_tag']; ?>"><?php echo $tag_name['ten_tag'] ?></a>
+                <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $row_post['ten_tag']; ?>"><?php echo $row_post['ten_tag'] ?></a>
                 
             </div>
             <div class="footer_post">

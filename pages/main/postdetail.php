@@ -66,17 +66,21 @@
         <h4 style="font-size: 1.2rem;"><?php echo $total_like; ?> lượt Thích</span></h4>
       </div>
       <?php
-               $sqlLikePost = "SELECT * FROM tb_thichbaiviet 
+      if($id_taikhoan > 1){
+         $sqlLikePost = "SELECT * FROM tb_thichbaiviet 
                WHERE tb_thichbaiviet.id_baiviet = $id_baiviet AND tb_thichbaiviet.id_taikhoan = $id_taikhoan";
                $queryLikePost = mysqli_query($conn, $sqlLikePost);
-               if(mysqli_num_rows($queryLikePost) < 1){
+               if(mysqli_num_rows($queryLikePost) < 1){    
              ?>
-        <button name="likepost"><i class="far fa-heart"></i><span>Thích</span></button>
+             <button name="likepost"><i class="far fa-heart"></i><span>Thích</span></button>
             <?php 
                }else{
             ?>            
-        <button name="Unlikepost"><i class="far fa-heart"></i><span>Đã thích</span></button>
+               <button name="Unlikepost"><i class="far fa-heart"></i><span>Đã thích</span></button>
             <?php 
+               }
+            }else{
+                  echo '<button name="likepost"><i class="far fa-heart"></i><span>Thích</span></button>';
                }
             ?>
       </form>
@@ -90,12 +94,22 @@
    JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_binh_luan.id_baiviet
    WHERE tb_bai_viet.id_baiviet = '$id_baiviet'";
    $queryCmt = mysqli_query($conn, $sqlCmt);
+   if (isset($_POST['add_comment'])) {
+      if (!isset($id_taikhoan)) {
+         header('location: home.php?title=login');
+      }else{
+         $comment = $_POST['comment_box'];
+         $sqladdcomment = "INSERT INTO tb_binh_luan(id_baiviet, id_taikhoan, noidung_binhluan, ngay_binhluan, xoa_binhluan) VALUES ('$id_baiviet', '$id_taikhoan', '$comment', NOW(), 0)";
+         $queryaddcomment = mysqli_query($conn, $sqladdcomment);
+         header("Refresh:0");
+      }
+   }
  ?> 
 <section class="comments">
 
 <h1 class="heading">Bình luận</h1>
 
-   <form action="" class="add-comment">
+   <form action="" class="add-comment" method="post">
       <h3>Thêm bình luận</h3>
       <textarea name="comment_box" placeholder="Nhập bình luận của bạn" required maxlength="1000" cols="30" rows="10"></textarea>
       <input type="submit" value="Thêm" class="inline-btn" name="add_comment">
@@ -122,7 +136,7 @@
             $id_binhluan = $rowComment['id_binhluan'];
             $total_like_comment = GetCountLikeByComment($id_binhluan);
          ?>
-         <form action="" class="flex-btn description" style="<?php if($rowComment["id_taikhoan"] != $id_taikhoan) echo "float: right;"; else echo ""; ?>">
+         <form action="" class="flex-btn description">
             <?php 
                if($rowComment["id_taikhoan"] == $id_taikhoan){
             ?>
@@ -135,10 +149,19 @@
                <input type="button" value="Hủy" name="cancel_comment" class="inline-delete-btn btnCancel">
             </div>
             <?php 
-               }
+               }else{
             ?>
-            
+            <div class="option_reply">
+               <input type="submit" value="trả lời" name="save_comment" class="inline-option-btn">
+            </div>
+            <?php                   
+               }
+            ?>      
             <button href="#" class="inline-option-btn btnlike" style="color: var(--light-color); "><?php echo $total_like_comment; ?> <i class="far fa-heart"></i></button>
+         </form>
+         <form action="" class="add-comment">
+            <textarea name="comment_box" placeholder="Nhập văn bản" required maxlength="1000" cols="30" rows="10"></textarea>
+            <input type="submit" value="trả lời" name="save_comment" class="inline-option-btn">
          </form>
       </div>
       <?php

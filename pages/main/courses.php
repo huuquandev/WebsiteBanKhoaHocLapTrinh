@@ -69,6 +69,13 @@
    <div class="box-container">  
       <?php 
       while ($row = mysqli_fetch_assoc($query)) {
+         $id_Khoahoc = $row['id_khoahoc'];
+            $sql_tag = "SELECT tb_khoahoc_tags.*, tb_tag.*, tb_khoa_hoc.id_khoahoc FROM tb_khoahoc_tags
+            JOIN tb_tag ON tb_khoahoc_tags.id_tag = tb_tag.id_tag
+            JOIN tb_khoa_hoc ON tb_khoahoc_tags.id_khoahoc = tb_khoa_hoc.id_khoahoc
+            WHERE tb_khoa_hoc.id_khoahoc = $id_Khoahoc";
+            $query_tag = mysqli_query($conn, $sql_tag);
+            $row_tag = mysqli_fetch_assoc($query_tag);
       ?>
          <div class="box">
             <div class="icon_courses" style="display: none;">
@@ -86,6 +93,13 @@
             <img src="<?php echo "images/images_courses/". $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <span class="course_tag" style="
+            font-size: 20px;
+            color: white;
+            background-color: gray;
+            padding: 5px;
+            border-radius: 10px;"
+         ><?= $row_tag['ten_tag'];  ?></span>
             <h5 class="title">Miễn phí</h5>
             <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
          </div>

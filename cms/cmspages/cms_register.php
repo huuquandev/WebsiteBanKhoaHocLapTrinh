@@ -33,12 +33,15 @@
     $bdate = $_POST['bdate'];
     $doi_tuong = 1;
     $gioi_tinh = $_POST['sex'];
- 
-    if(!registerCMS($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh)){
-       $message[] = 'Tài khoản đã tồn tại!';
-    }else if($pass != $cfpass){
-       $message[] = 'Mật khẩu không trùng nhau!';
-    }else{
+    $result = registerCMS($email, $name, $pass, $phone, $bdate, $doi_tuong, $gioi_tinh);
+
+   if($result == 2){
+      $message[] = 'Email đã tồn tại!';
+   }else if($result == 1){
+      $message[] = "File ảnh bìa chỉ nhận đuôi .jpg .jpeg .png .gif";
+   }else if($pass != $cfpass){
+      $message[] = 'Mật khẩu không trùng nhau!';
+   }else{
        if(loginCMS($email, $pass)){   
           header('Location: /cms/cms_dashboard.php');
        }

@@ -46,7 +46,7 @@ if(isset($_GET['search_box'])){
                             </div>
                         </div>
                         <div class="thumb">
-                            <img src="<?php echo "images/images_courses/" . $row_course['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
+                            <img src="<?php echo "../../../images/images_courses/" . $row_course['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
                         </div>
                         <h3 class="title" style="min-height: 50px"><?php echo $row_course['ten_khoahoc']; ?></h3>
                         <?php

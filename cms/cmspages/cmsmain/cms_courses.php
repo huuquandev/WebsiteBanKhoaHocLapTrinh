@@ -80,7 +80,22 @@
          background-color: green;
          padding: 10px 15px;
       }
-
+      .course_img{
+         
+         width: 100px;
+         height: 100px;
+         position: absolute;
+      }
+      .course_name{
+         margin-left: 120px;
+      }
+      .course_tag{
+         font-size: 20px;
+         color: white;
+         background-color: gray;
+         padding: 5px;
+         border-radius: 10px;
+      }
    </style>
 </head>
 <section class="playlists">
@@ -112,11 +127,18 @@
 
          if(mysqli_num_rows($query) > 0){
          while($row = mysqli_fetch_assoc($query)){
+            $id_Khoahoc = $row['id_khoahoc'];
+            $sql_tag = "SELECT tb_khoahoc_tags.*, tb_tag.*, tb_khoa_hoc.id_khoahoc FROM tb_khoahoc_tags
+            JOIN tb_tag ON tb_khoahoc_tags.id_tag = tb_tag.id_tag
+            JOIN tb_khoa_hoc ON tb_khoahoc_tags.id_khoahoc = tb_khoa_hoc.id_khoahoc
+            WHERE tb_khoa_hoc.id_khoahoc = $id_Khoahoc";
+            $query_tag = mysqli_query($conn, $sql_tag);
+            $row_tag = mysqli_fetch_assoc($query_tag);
       ?>
          <div class="cms_items description">
             <span class="titleContainer">
                <span class="idKH"><?php echo $row['id_khoahoc'] ?></span>
-               <img class="course_img"src="
+               <img class="course_img" src="
                   <?php 
                   if($row['anh_khoahoc']!=null){
                      echo "../../../images/images_courses/" . $row['anh_khoahoc'];
@@ -127,6 +149,7 @@
                " alt="course_img">
                <span class="course_name"><?= $row['ten_khoahoc']; ?></span>
                <span class="course_des"><?= $row['mota_khoahoc']; ?></span>
+               <span class="course_tag"><?= $row_tag['ten_tag'];  ?></span>
             </span>
             <span class="buttonContainer">
                <button class="Button edit" onclick="toggleEdit(<?php echo $row['id_khoahoc']; ?>)">Sửa khóa học</button>
@@ -177,13 +200,22 @@
                $motaKH = $_POST['description'];
                $trangthai_khoahoc = $_POST['status'];
                $image = $_FILES['image'];
+
+               // $tag = $_POST['tag'];
+               // echo $tag;
                $extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
                $tenFile = floor(microtime(true) * 1000) . "." .$extension;
-               move_uploaded_file($image['tmp_name'], "images/" . $tenFile);
-               $sql = "INSERT INTO tb_khoa_hoc(ten_khoahoc, id_taikhoan, anh_khoahoc, mota_khoahoc, trangthai_khoahoc, ngaydang_khoahoc) 
-            VALUES('$tenKH', '$id_taikhoan', '$tenFile', '$motaKH', '$trangthai_khoahoc', NOW())";
-            mysqli_query($conn, $sql);
-            echo '<script>alert("Thêm thành công"); window.location.href = "cms_dashboard.php?title=cms_courses";</script>';
+               move_uploaded_file($image['tmp_name'], "../images/images_courses/" . $tenFile);
+               foreach($_POST['tag'] as $tag){
+                  $sql = "INSERT INTO tb_khoa_hoc(ten_khoahoc, id_taikhoan, anh_khoahoc, mota_khoahoc, trangthai_khoahoc, ngaydang_khoahoc)
+               VALUES('$tenKH', '$id_taikhoan', '$tenFile', '$motaKH', '$trangthai_khoahoc', NOW())";
+               mysqli_query($conn, $sql);
+               echo '<script>alert("Thêm thành công"); window.location.href = "cms_dashboard.php?title=cms_courses";</script>';
+               $id_Khoahoc = $conn->insert_id;
+               $sql = "INSERT INTO tb_khoahoc_tags(id_tag, id_khoahoc) VALUES ('$tag', '$id_Khoahoc')";
+               $query = mysqli_query($conn, $sql);
+               }
+               
             }
           ?>
          <h1 class="heading">Thêm khóa học</h1>
@@ -201,36 +233,52 @@
             <textarea name="description" class="box" required placeholder="Mô tả khóa học" maxlength="1000" cols="30" rows="10"></textarea>
             <p>Ảnh khóa học <span>*</span></p>
             <input type="file" name="image" accept="image/*" required class="box">
-            <input type="submit" value="create playlist" name="submitAdd" class="btn">
+             <p>Thẻ tag</p>
+               <select name="tag[]" id="select_tags" multiple>
+                   <?php
+                           $sqltag = "SELECT * FROM tb_tag"; 
+                           $querytag = mysqli_query($conn, $sqltag);
+                           if(mysqli_num_rows($querytag)){
+                               while($rowtag = mysqli_fetch_assoc($querytag)){
+                   ?>
+                   <option value="<?php echo $rowtag["id_tag"] ?>"><?php echo $rowtag["ten_tag"] ?></option>
+                   <?php
+                               }
+                           }
+                   ?>
+               </select>
+            <input type="submit" value="Tạo khóa học" name="submitAdd" class="btn">
          </form>
 
       </section>
       <section class="playlist-form" id="editForm">
          <?php
-         $id_Khoahoc = $_POST['idEdit'];
-         echo $id_Khoahoc;
+         // $id_Khoahoc = $_POST['idEdit'];
+         // echo $id_Khoahoc;
             if (isset($_POST['submitEdit'])) {
                $id_Khoahoc = $_POST['idEdit'];
                $tenKH = $_POST['titleEdit'];
                $motaKH = $_POST['descriptionEdit'];
                $trangthai_khoahoc = $_POST['new_status'];
                $image = $_FILES['new_image'];
-               echo $id_Khoahoc;
                $extension = strtolower(pathinfo($image['name'], PATHINFO_EXTENSION));
                $tenFile = floor(microtime(true) * 1000) . "." .$extension;
                move_uploaded_file($image['tmp_name'], "images/" . $tenFile);
-               $sql = "UPDATE tb_khoa_hoc SET ten_khoahoc='$tenKH',id_taikhoan='$id_taikhoan', anh_khoahoc='$tenFile', mota_khoahoc='$motaKH', trangthai_khoahoc='$trangthai_khoahoc'
-                                , ngaydang_khoahoc=NOW() WHERE id_Khoahoc=$id_Khoahoc";
+               foreach($_POST['tag'] as $tag){
+                  echo $tag;
+                  $sql = "UPDATE tb_khoa_hoc SET ten_khoahoc='$tenKH',id_taikhoan='$id_taikhoan', anh_khoahoc='$tenFile', mota_khoahoc='$motaKH', trangthai_khoahoc='$trangthai_khoahoc'
+                                , ngaydang_khoahoc=NOW(), id_tag = '$tag' WHERE id_Khoahoc=$id_Khoahoc";
                   mysqli_query($conn, $sql);
                   echo '<script>alert("Sửa thành công"); window.location.href = "cms_dashboard.php?title=cms_courses";</script>';
+               }
             }
           ?>
          <h1 class="heading">Sửa khóa học</h1>
          <form action="" method="post" enctype="multipart/form-data">
           <h3 class="titlecenter">Thông tin khóa học</h3>
             <input type="hidden" name="old_image" value="">
-            <p>ID Khóa học</p>
-            <input type="text" name="idEdit" id="idKHEdit" class="box "style="" value="">
+            <!-- <p>ID Khóa học</p> -->
+            <input type="hidden" name="idEdit" id="idKHEdit" class="box "style="" value="">
             <p>Trạng thái <span>*</span></p>
             <select name="new_status" class="box" required>
                <option value="<?= $row['trangthai_khoahoc']; ?>" selected></option>
@@ -247,6 +295,20 @@
                <img src="../../../../images/images_courses/<?= $row['anh_khoahoc']; ?>" alt="">
             </div> -->
             <input type="file" name="new_image" accept="image/*" class="box">
+            <p>Thẻ tag</p>
+               <select name="tag[]" id="select_tags" multiple>
+                   <?php
+                           $sqltag = "SELECT * FROM tb_tag"; 
+                           $querytag = mysqli_query($conn, $sqltag);
+                           if(mysqli_num_rows($querytag)){
+                               while($rowtag = mysqli_fetch_assoc($querytag)){
+                   ?>
+                   <option value="<?php echo $rowtag["id_tag"] ?>"><?php echo $rowtag["ten_tag"] ?></option>
+                   <?php
+                               }
+                           }
+                   ?>
+               </select>
             <input type="submit" value="Lưu lại" name="submitEdit" class="btn">
             <!-- <div class="flex-btn">
                 <a href="cms_dashboard.php?title=detail_courses&idKH=<?= $idKH; ?>" class="option-btn">Chi tiết</a>

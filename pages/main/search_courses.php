@@ -4,7 +4,7 @@
 
    if(isset($_GET['search_box'])){
       $keyword = $_GET['search_box'];
-      $row_courses = CMS_Search_Courses($keyword, $id_taikhoan);
+      $row_courses = Search_Courses($keyword, $id_taikhoan);
    }
 ?>
 <section class="courses">

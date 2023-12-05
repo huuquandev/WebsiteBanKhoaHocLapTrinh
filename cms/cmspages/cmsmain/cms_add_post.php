@@ -12,13 +12,13 @@
 
    <?php 
     if (isset($_POST['submit'])) {
-    
+        $id_taikhoan = $_SESSION['cms_id_tai_khoan'];
         $tieu_de = $_POST["ten_baiviet"];
         $mo_ta = $_POST["mota_baiviet"];
         $noi_dung = $_POST["noidung_baiviet"];
-        $id_tag = $_POST['profession'];
-    
-        $result = addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan);
+        // $id_tag = $_POST['profession'];
+        foreach($_POST['profession'] as $id_tag){
+            $result = addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan);
     
         if ($result === true) {
             echo '<script>alert("Thêm bài viết thành công");</script>';
@@ -31,6 +31,7 @@
                 </div>
                 ';
             }
+        }
         }
     }
     
@@ -47,9 +48,9 @@
             <input type="file" name="hinhanh_baiviet" accept="image/*" class="box">
             <p>Nội dung bài viết<span>*</span></p>
             <textarea id="noidung_baiviet" name="noidung_baiviet" class="box" placeholder="Nhập Nội dung bài viết"> </textarea>
-            <p>Gắn thẻ</p>
+            <p>Gắn thẻ<span>*</span></p>
                         
-                    <select name="profession" id="select_tags" multiple>
+                    <select name="profession[]" id="select_tags" required multiple>
                             <?php
                                     $sqltag = "SELECT * FROM tb_tag"; 
                                     $querytag = mysqli_query($conn, $sqltag);
@@ -66,10 +67,10 @@
 
             <input type="submit" name="submit" value="Thêm" class="btn">
             <div class="flex">
-         <div class="col">
+         <!-- <div class="col">
          <a href="add_playlist.php" class="delete-btn" style="background-color: green;">Thêm thẻ</a>
 
-         </div>
+         </div> -->
          <div class="col">
          <a href="cms_dashboard.php?title=cms_post" class="delete-btn">Trở lại</a>
 

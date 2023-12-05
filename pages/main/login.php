@@ -31,6 +31,7 @@
       <p>Mật khẩu <span>*</span></p>
       <input type="password" name="pass" placeholder="Nhập mật khẩu" required maxlength="20" class="box">
       <p class="link">Bạn chưa có tài khoản? <a href="home.php?title=register">Đăng ký ngay</a></p>
+      <p class="link">Bạn <a href="home.php?title=resetpassword">quên mật khẩu?</a></p>
       <input type="submit" value="Đăng nhập" name="submit" class="btn">
 
       <p class="switch-type-login">Hoặc sử dụng tài khoản khác</p>

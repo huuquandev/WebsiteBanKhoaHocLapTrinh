@@ -118,16 +118,24 @@
         $image_folder = '../../images/images_user/'.$rename;
 
         $sql = "SELECT * FROM tb_cms_tai_khoan WHERE email = '".$filter_email."'";
+        $arr = ["gif", "jpg", "png", "jpeg"];
+        $flag = 0;
         $query = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($query) > 0){
-            return false;
-        } else{
-            $sql = "INSERT INTO tb_cms_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
-            VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
-            $query = mysqli_query($conn, $sql);
-            move_uploaded_file($image_tmp_name, $image_folder);
-            return true;
+        if (!in_array($ext, $arr)) {
+            $flag = 1;
+        }else{
+            if(mysqli_num_rows($query) > 0){
+                $flag = 2;
+            } else{
+                $sql = "INSERT INTO tb_cms_tai_khoan (email, ten_hien_thi, mat_khau, doi_tuong, ngay_sinh, gioi_tinh, sdt, hinh_anh ) 
+                VALUES('$filter_email','$filter_name','$filter_pass','$filter_doi_tuong','$filter_bdate','$filter_gioi_tinh','$filter_phone', '$rename')";
+                $query = mysqli_query($conn, $sql);
+                move_uploaded_file($image_tmp_name, $image_folder);
+                $flag = 0;
+            }
         }
+        return $flag;
+
     }
     //---Thêm khóa học---
     //---Phong---
@@ -253,10 +261,11 @@
     function Search_Post($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
-                FROM tb_bai_viet 
+        $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+                FROM tb_baiviet_tags 
+                JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
                 WHERE ten_baiviet LIKE '%{$key_word}%'";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -265,10 +274,11 @@
     function CMS_Search_Post($key_word, $id_taikhoan) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
-                FROM tb_bai_viet 
+        $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+                FROM tb_baiviet_tags 
+                JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
                 WHERE ten_baiviet LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -279,10 +289,11 @@
     function Search_Tag($key_word) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
-                FROM tb_bai_viet 
+        $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+                FROM tb_baiviet_tags 
+                JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
                 WHERE tb_tag.ten_tag LIKE '%{$key_word}%'";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -291,10 +302,11 @@
     function CMS_Search_Tag($key_word, $id_taikhoan) {
         GLOBAL $conn;
         $key_word = mysqli_real_escape_string($conn, $key_word);
-        $sql = "SELECT tb_bai_viet.*, tb_cms_tai_khoan.hinh_anh, tb_cms_tai_khoan.ten_hien_thi, tb_tag.ten_tag
-                FROM tb_bai_viet 
+        $sql = "SELECT tb_baiviet_tags.*, tb_bai_viet.*,tb_tag.ten_tag, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+                FROM tb_baiviet_tags 
+                JOIN tb_bai_viet ON tb_bai_viet.id_baiviet = tb_baiviet_tags.id_baiviet
                 JOIN tb_cms_tai_khoan ON tb_bai_viet.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-                JOIN tb_tag ON tb_bai_viet.id_tag = tb_tag.id_tag
+                JOIN tb_tag ON tb_tag.id_tag = tb_baiviet_tags.id_tag
                 WHERE tb_tag.ten_tag LIKE '%{$key_word}%' AND tb_cms_tai_khoan.id_cms_taikhoan = $id_taikhoan";
         $query = mysqli_query($conn, $sql); 
         return $query;
@@ -390,9 +402,9 @@
             } else {
                 $rename = $filter_id . '.' . $ext;
                 $image_tmp_name = $_FILES['hinhanh_baiviet']['tmp_name'];
-                $image_folder = 'images/images_post/'.$rename;
+                $image_folder = '../images/images_post/'.$rename;
                 if (move_uploaded_file($image_tmp_name, $image_folder)) {
-                    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan, anh_baiviet, xoa_baiviet) VALUES ('$filter_tieu_de', '$filter_mo_ta', '$filter_noi_dung', NOW(), '$id_taikhoan', '$rename', 0)";
+                    $sql = "INSERT INTO tb_bai_viet (ten_baiviet, mota_baiviet, noidung_baivet, ngaydang_baiviet, id_taikhoan, anh_baiviet, xoa_baiviet) VALUES ('$filter_tieu_de', '$filter_mo_ta', '$filter_noi_dung', NOW(), '$id_taikhoan', '$rename',0)";
                 } else {
                     $message[] = "Không thể di chuyển file ảnh";
                 }

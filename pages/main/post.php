@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="postItem_info">
-            <a class="postItem_tags" href="home.php?title=cms_search_tag&tag=<?php echo $row['ten_tag']; ?>"><?php echo $row['ten_tag'] ?></a>
+            <a class="postItem_tags" href="home.php?title=searchtag&tag=<?php echo $row['ten_tag']; ?>"><?php echo $row['ten_tag'] ?></a>
             </div>
             <div class="footer_post">
                 <a href="home.php?title=postdetail&id_baiviet=<?php echo $row['id_baiviet']?>" class="inline-btn">Xem chi tiết</a>
