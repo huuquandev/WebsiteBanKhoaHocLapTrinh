@@ -17,30 +17,40 @@
    <div class="row">
 
       <div class="column">
-         <form action="" method="post" class="save-playlist">
+         <form action="pages/Payment.php?courses=<?=$idKH?>" method="post" class="save-playlist">
          <?php 
-          $sqlByCourses = "SELECT * FROM tb_khoahoc_damua WHERE tb_khoahoc_damua.id_khoahoc = $idKH  AND tb_khoahoc_damua.id_taikhoan = $id_taikhoan";
+          $sqlByCourses = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
+          FROM tb_khoa_hoc 
+          JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+          WHERE id_khoahoc = $idKH";
           $queryByCourses = mysqli_query($conn, $sqlByCourses);
-          if(mysqli_num_fields($queryByCourses) > 0){
+          if($id_taikhoan != null){
+          if(mysqli_num_rows($queryByCourses) > 0){
             
          ?>
-            <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đã Mua</span></button>
+            <button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đã Mua</span></button>
             <?php
             }else{
             ?>
-             <button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
+             <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
             <?php 
                         } 
-            ?>
+                     }else{
+
+                        ?>
+                        <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
+                        <?php
+                     }
+                     ?>
          </form>
    
          <div class="thumb">
-            <img src="<?php echo 'images/images_courses/'.$coursesdetail['anh_khoahoc'];?>" alt="">
+            <img src="<?php echo '../../../images/images_courses/'.$coursesdetail['anh_khoahoc'];?>" alt="">
          </div>
       </div>
       <div class="column">
       <div class="tutor">
-                  <img src="images/images_user/<?php echo $row['hinh_anh']; ?>" alt="">
+                  <img src="../../../images/images_user/<?php echo $coursesdetail['hinh_anh']; ?>" alt="">
                   <div class="info">
                      <h3><?php echo $coursesdetail['ten_hien_thi']; ?></h3>
                      <span><?php echo $coursesdetail['ngaydang_khoahoc']; ?></span>
@@ -57,16 +67,8 @@
 </section>
 
 <section class="playlist-videos">
-   <h1 class="heading" style="
-   position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;">  
-    Các học liệu 
-      <div class="flex-option" style="display: flex;" >
-         <button class="btn" style="width: auto; background: orange;" id="btnEdit">Chỉnh sửa</button>
-         <a href="home.php?title=addplaylist&idKH=<?php echo $idKH; ?>" class="btn" id="btnAdd" style="width: auto; background: green;">Thêm học liệu</a>
-      </div>     
+   <h1 class="heading">  
+    Các học liệu    
    </h1>
    <div class="box-container">
    <?php 
