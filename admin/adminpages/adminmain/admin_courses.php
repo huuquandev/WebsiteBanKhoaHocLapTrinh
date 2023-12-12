@@ -64,7 +64,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="serial">1.</td>
+                                            <td class="serial">2.</td>
                                             <td class="avatar">
                                                 <div class="round-img">
                                                 <img class="" src="../../../images/images_courses/1697009446588.png" alt="" style="width: 70px;height: 70px;">                                                </div>
@@ -76,7 +76,7 @@
                                                 <span class="user">Hữu Quân</span>
                                             </td>
                                             <td>
-                                                <span class="badge badge-complete">Đã duyệt</span>                                            
+                                                <span class="badge badge-pending">Chưa duyệt</span>                                            
                                             </td>
                                             <td>
                                                 <span class="badge-warrning iconOption"><i class="fa fa-pencil"></i></span>

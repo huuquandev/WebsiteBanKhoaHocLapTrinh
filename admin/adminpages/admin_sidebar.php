@@ -7,19 +7,19 @@
                     </li>
                     <li class="menu-title">Quản lí và vận hành</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Người dùng</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Người dùng</a>
                         <ul class="sub-menu children dropdown-menu">                            
-                            <li><i class="fa fa-puzzle-piece"></i><a href="admin_dashboard.php?title=admin_user">Danh sách tài khoản</a></li>
+                            <li><i class="fa fa-users"></i><a href="admin_dashboard.php?title=admin_user">Danh sách tài khoản</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Khóa học</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Khóa học</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="admin_dashboard.php?title=admin_courses">Danh sách khóa học</a></li>
+                            <li><i class="fa fa-columns"></i><a href="admin_dashboard.php?title=admin_courses">Danh sách khóa học</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Bài viết</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-pencil-square-o"></i>Bài viết</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-th"></i><a href="admin_dashboard.php?title=admin_post">Danh sách bài viết</a></li>
                         </ul>
@@ -30,7 +30,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Phân quyền</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="admin_dashboard.php?title=admin_role">Danh sách quyền</a></li>
+                            <li><i class="menu-icon fa fa-puzzle-piece"></i><a href="admin_dashboard.php?title=admin_role">Danh sách quyền</a></li>
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="admin_dashboard.php?title=admin_permission">Danh sách vài trò</a></li>
 
                         </ul>
@@ -39,18 +39,18 @@
                     <li class="menu-title">Báo cáo</li><!-- /.menu-title -->
 
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Tài chính</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Tài chính</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Danh sách hóa đơn</a></li>
+                            <li><i class="menu-icon fa  fa-calendar-o"></i><a href="font-fontawesome.html">Danh sách hóa đơn</a></li>
                         </ul>
                     </li>
 
                     <li class="menu-title">Cài đặt hệ thống</li><!-- /.menu-title -->
-                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Cài đặt chung</a></li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cog"></i>Cài đặt chung</a></li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Danh mục khác</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Danh mục khác</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Hotline</a></li>
+                            <li><i class="menu-icon fa fa-phone"></i><a href="page-login.html">Hotline</a></li>
                         </ul>
                     </li>
                 </ul>
