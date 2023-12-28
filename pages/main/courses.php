@@ -22,7 +22,6 @@
       justify-content: space-between;">
       Khóa học Pro      
       </h1>
-
       <div class="box-container">  
          <?php 
        
@@ -100,7 +99,7 @@
             border-radius: 10px;"
          ><?= $row_tag['ten_tag'];  ?></span>
             <h5 class="title">Miễn phí</h5>
-            <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Vào học</a>
+            <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
       <?php 
          }

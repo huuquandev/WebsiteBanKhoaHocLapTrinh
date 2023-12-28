@@ -85,7 +85,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div> <!-- /.table-stats -->
+                            </div> 
                 </div>
             </div>
 </div>
