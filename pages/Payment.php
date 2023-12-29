@@ -58,46 +58,48 @@
                     </div>
                 </div>
                 <div class="payment-right">
-                    <form action="" class="payment-form">
+                    <div action="" class="payment-form">
                         <h1 class="payment-title">Phương thức thanh toán</h1>
                         <div class="payment-method">
-                            <input type="radio" name="payment-method" id="method-1" checked>
-                            <label for="method-1" class="payment-method-item">
-                                <img src="../images/visa.png" alt="">
-                            </label>
-                            <input type="radio" name="payment-method" id="method-2">
-                            <label for="method-2" class="payment-method-item">
-                                <img src="../images/mastercard.png" alt="">
-                            </label>
-                            <input type="radio" name="payment-method" id="method-3">
-                            <label for="method-3" class="payment-method-item">
-                                <img src="../images/paypal.png" alt="">
-                            </label>
-                            <input type="radio" name="payment-method" id="method-4">
-                            <label for="method-4" class="payment-method-item">
-                                <img src="../images/stripe.png" alt="">
-                            </label>
+                            <form action="payment_momo.php"  class="payment-method-item" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                                <button type="submit"><img src="../images/Logo-MoMo-Square.webp" alt=""></button>
+                            </form>
+                            <form action=""  class="payment-method-item" method="POST" target="_blank" enctype="application/x-www-form-urlencoded">
+                                <button type="submit"><img src="../images/Logo-VNPAY-QR.webp" alt=""></button>
+                            </form>
                         </div>
+                        <h3 class="local-payment-title">Chuyển khoản QR</h3>
+                            <div class="PaymentContent_bank-detail__HbGrO">
+                                <div class="PaymentContent_qr-code__Sjawx">
+                                    <img src="https://img.vietqr.io/image/Vietcombank-9353538222-znVvEh.jpg?accountName=Cong%20Ty%20Co%20Phan%20Cong%20Nghe%20Giao%20duc%20F8&amp;amount=1299000&amp;addInfo=F8C1QJTG" alt="Vietcombank - 9353538222 - 1299000 - F8C1QJTG" style="opacity: 1;">
+                                </div>
+                                <ul class="PaymentContent_instruction__bRL9x">
+                                    <li>Bước 1: Mở app ngân hàng và quét mã QR.</li>
+                                    <li>Bước 2: Đảm bảo nội dung chuyển khoản là <span>F8C1QJTG</span>. </li>
+                                    <li>Bước 3: Thực hiện thanh toán.</li>
+                                </ul>
+                            </div>
+                        <h3 class="local-payment-title">Chuyển khoản thủ công</h3>
                         <div class="payment-form-group">
-                            <input type="email" placeholder=" " class="payment-form-control" id="email">
-                            <label for="email" class="payment-form-label payment-form-label-required">Email</label>
-                        </div>
-                        <div class="payment-form-group">
-                            <input type="text" placeholder=" " class="payment-form-control" id="card-number">
-                            <label for="card-number" class="payment-form-label payment-form-label-required">Số thẻ</label>
+                            <h2 class="payment-form-control" id="cardNumber">19038393431014</h2>
+                            <label for="email" class="payment-form-label payment-form-label-required">Số tài khoản</label>
                         </div>
                         <div class="payment-form-group-flex">
                             <div class="payment-form-group">
-                                <input type="date" placeholder=" " class="payment-form-control" id="expiry-date">
-                                <label for="expiry-date" class="payment-form-label payment-form-label-required">Ngày hết hạn</label>
+                                <h2 class="payment-form-control" id="NameCard">Techcombank</h2>
+                                <label for="expiry-date" class="payment-form-label payment-form-label-required">Ngân hàng</label>
                             </div>
                             <div class="payment-form-group">
-                                <input type="text" placeholder=" " class="payment-form-control" id="cvv">
-                                <label for="cvv" class="payment-form-label payment-form-label-required">CVV</label>
+                                <h2 class="payment-form-control" id="NameCard">Phạm Hữu Quân</h2>
+                                <label for="cvv" class="payment-form-label payment-form-label-required">Tên người nhận</label>
                             </div>
                         </div>
+                        <div class="payment-form-group">
+                            <h2 class="payment-form-control" id="titeCard">Thanh toán khóa học</h2>
+                            <label for="card-number" class="payment-form-label payment-form-label-required">Nội dung chuyển</label>
+                        </div>
                         <button type="submit" class="payment-form-submit-button"><i class="ri-wallet-line"></i> Thanh toán</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

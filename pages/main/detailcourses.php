@@ -34,29 +34,15 @@
             <p><?php echo $coursesdetail['mota_khoahoc']; ?></p>
             <form action="pages/Payment.php?courses=<?=$idKH?>" method="post" class="save-playlist">
                <?php 
-               $sqlByCourses = "SELECT tb_khoa_hoc.*, tb_cms_tai_khoan.ten_hien_thi, tb_cms_tai_khoan.hinh_anh
-               FROM tb_khoa_hoc 
-               JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
-               WHERE id_khoahoc = $idKH";
+               $sqlByCourses = "SELECT * FROM tb_khoa_hoc WHERE id_khoahoc = $idKH";
                $queryByCourses = mysqli_query($conn, $sqlByCourses);
-               if($id_taikhoan != null){
-               if(mysqli_num_rows($queryByCourses) > 0){
-                  
+               $rowByCourses = mysqli_fetch_assoc($queryByCourses);
+               if($rowByCourses['gia_khoahoc'] > 0){
+                  echo '<button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>';
+               }else{
+                  echo '<button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đăng ký</span></button>';
+               }
                ?>
-                  <button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đã Mua</span></button>
-                  <?php
-                  }else{
-                  ?>
-                  <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
-                  <?php 
-                              } 
-                           }else{
-
-                              ?>
-                              <button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>
-                              <?php
-                           }
-                           ?>
             </form>
          </div>
       </div>

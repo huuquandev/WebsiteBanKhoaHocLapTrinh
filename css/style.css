@@ -2008,6 +2008,12 @@ body {
     margin-bottom: 12px;
     line-height: 1.3;
 }
+.local-payment-title {
+   font-size: 15px;
+   font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
 .payment-method {
     display: flex;
     align-items: center;
@@ -2047,7 +2053,7 @@ input:checked + .payment-method-item::before {
     background-position: center;
     background-repeat: no-repeat;
 }
-.payment-method-item > img {
+.payment-method-item  img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -2063,6 +2069,7 @@ input:checked + .payment-method-item::before {
     padding: 24px 16px 8px 16px;
     width: 100%;
     transition: all .15s ease-in-out;
+    font-size: 15px;
 }
 .payment-form-label {
     position: absolute;
@@ -2294,4 +2301,32 @@ svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
    content: "-";
    font-size: 40px;
    top: 45%;
+}
+.PaymentContent_bank-detail__HbGrO{
+   display: flex;
+   margin-top: 16px;
+}
+.PaymentContent_qr-code__Sjawx {
+   background-color: #fff;
+   border-radius: 8px;
+   height: 125px;
+   margin-right: 8px;
+   overflow: hidden;
+   width: 125px;
+}
+.PaymentContent_qr-code__Sjawx img {
+   display: inline-block;
+   width: 100%;
+}
+.PaymentContent_instruction__bRL9x {
+   color: #000;
+   font-size: 1.3rem;
+   font-weight: 400;
+   line-height: 28px;
+   margin: 0;
+   padding-left: 25px;
+}
+.PaymentContent_instruction__bRL9x span {
+   color: #fa8c16;
+   font-weight: 700;
 }
