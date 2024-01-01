@@ -382,7 +382,20 @@
         $row = mysqli_fetch_assoc($query);
         return $row;
     }
-
+    //---Lấy hóa đơn theo mã hóa đơn---
+    //---Quân---
+    function GetOrderByCode($code_order){
+        GLOBAL $conn;
+        $filter_code_order = mysqli_real_escape_string($conn, $code_order);
+        $sql = "SELECT tb_hoadon.*, tb_tai_khoan.*, tb_khoa_hoc.*
+        FROM tb_hoadon 
+        JOIN tb_tai_khoan ON tb_tai_khoan.id_taikhoan = tb_hoadon.id_taikhoan
+        JOIN tb_khoa_hoc ON tb_khoa_hoc.id_khoahoc = tb_hoadon.id_khoahoc
+        WHERE tb_hoadon.ma_hoadon  = '$filter_code_order'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
+    }
     //---Thêm bài viết
     function addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan){
         GLOBAL $conn;
