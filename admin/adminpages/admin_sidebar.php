@@ -41,7 +41,7 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Tài chính</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa  fa-calendar-o"></i><a href="font-fontawesome.html">Danh sách hóa đơn</a></li>
+                            <li><i class="menu-icon fa  fa-calendar-o"></i><a href="admin_dashboard.php?title=admin_order">Danh sách hóa đơn</a></li>
                         </ul>
                     </li>
 

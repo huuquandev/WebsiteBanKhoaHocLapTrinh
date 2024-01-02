@@ -1,4 +1,5 @@
 <?php 
+
    include_once './function.php';
 
    // unset($_SESSION['idKH']);
@@ -7,7 +8,14 @@
         $coursesdetail = GetCoursesById($idKH);
 
     }
-    
+
+   if (isset($_POST['registerCourses'])) {
+      if(isset($_SESSION['id_taikhoan']) && $_SESSION['id_taikhoan'] !== ''){
+         $id_taikhoan = $_SESSION['id_taikhoan'];
+      } else {
+         header('location:../home.php?title=login');
+      }
+   }
 ?>
 
 <section class="playlist-details">
@@ -38,9 +46,9 @@
                $queryByCourses = mysqli_query($conn, $sqlByCourses);
                $rowByCourses = mysqli_fetch_assoc($queryByCourses);
                if($rowByCourses['gia_khoahoc'] > 0){
-                  echo '<button type="submit" style="background: orange;"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>';
+                  echo '<button type="submit" style="background: orange;" name="buyCourses"><i class="far fa-bookmark"></i> <span>Mua khóa học</span></button>';
                }else{
-                  echo '<button type="button" style="background: orange;"><i class="far fa-bookmark"></i> <span>Đăng ký</span></button>';
+                  echo '<button style="background: orange;" name="registerCourses"><i class="far fa-bookmark"></i> <span>Đăng ký</span></button>';
                }
                ?>
             </form>

@@ -14,10 +14,16 @@
     <?php
     include "../components/connect.php";
     include "../function.php";
-    $idKH = $_GET['courses'];
+    session_start(); 
+    if(isset($_SESSION['id_taikhoan']) && $_SESSION['id_taikhoan'] !== ''){
+        $idKH = $_GET['courses'];
         $sql = "SELECT * FROM tb_khoa_hoc WHERE id_khoahoc = '$idKH'";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_fetch_assoc($query);
+     } else {
+        header('location:../home.php?title=login');
+     }
+   
     ?>
     <section class="payment-section">
         <div class="container">

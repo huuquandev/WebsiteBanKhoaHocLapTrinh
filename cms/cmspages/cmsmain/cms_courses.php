@@ -43,7 +43,6 @@
          font-size: 15px;
          cursor: pointer;
          text-transform: capitalize;
-/*         padding:1rem 3rem;*/
          margin-top: 1rem;
          height: 40px;
          width: 150px;

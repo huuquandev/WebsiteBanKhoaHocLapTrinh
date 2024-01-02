@@ -396,6 +396,21 @@
         $row = mysqli_fetch_assoc($query);
         return $row;
     }
+    //---Xóa thẻ hoặc nhiểu thẻ---
+    //---Quân---
+    function deleteTags($tags) {
+        global $conn;
+        $deletedCount = 0;  
+        foreach ($tags as $name_Tag) {
+            $filter_name_Tag = mysqli_real_escape_string($conn, $name_Tag);
+            $sql = "DELETE FROM tb_tag WHERE tb_tag.ten_tag = '$filter_name_Tag'";
+            $query = mysqli_query($conn, $sql); 
+            $deletedCount += mysqli_affected_rows($conn);
+        }
+    
+        return $deletedCount;
+    }
+    
     //---Thêm bài viết
     function addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan){
         GLOBAL $conn;

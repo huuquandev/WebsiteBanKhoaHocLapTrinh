@@ -28,8 +28,14 @@
                             <div class="card-header">
                                 <strong class="card-title">Tài khoản</strong>
                             </div>
+                            <?php 
+                            $sql = "SELECT * FROM tb_tai_khoan";  
+                            $query = mysqli_query($conn, $sql);
+                            if(mysqli_num_rows($query) > 0)
+                            {
+                            ?>
                             <div class="table-stats order-table ov-h">
-                                <table class="table ">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th class="serial">#</th>
@@ -42,22 +48,26 @@
                                             <th>Hành động</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                        $count = 1; 
+                                      while ($row = mysqli_fetch_assoc($query)) {      
+                                     ?>
                                     <tbody>
                                         <tr>
-                                            <td class="serial">1.</td>
+                                            <td class="serial"><?=$count++?>.</td>
                                             <td class="avatar">
                                                 <div class="round-img">
-                                                    <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
+                                                    <a href="#"><img class="rounded-circle equal-size" src="../../../images/images_user/<?=$row['hinh_anh']?>" alt=""></a>
                                                 </div>
                                             </td>
-                                            <td>  <span class="name">Phạm Hữu Quân</span> </td>
-                                            <td> <span class="product">12-12-2002</span> </td>
-                                            <td><span class="sex">Nam</span></td>
+                                            <td>  <span class="name"><?=$row['ten_hien_thi']?></span> </td>
+                                            <td> <span class="product"><?=$row['ngay_sinh']?></span> </td>
+                                            <td><span class="sex"><?=($row['gioi_tinh'] == 1) ? 'Nam' : (($row['gioi_tinh'] == 2) ? 'Nữ' : 'Khác')?></span></td>
                                             <td>
-                                                <span class="email">viphuy12@gmail.com</span>
+                                                <span class="email"><?=$row['email']?></span>
                                             </td>
                                             <td>
-                                                <span class="phone">0378452231</span>
+                                                <span class="phone"><?=$row['sdt']?></span>
                                             </td>
                                             <td>
                                                 <span class="badge-warrning iconOption"><i class="fa fa-pencil"></i></span>
@@ -66,8 +76,14 @@
                                         </tr>
 
                                     </tbody>
+                                    <?php 
+                                      }
+                                     ?>
                                 </table>
                             </div> <!-- /.table-stats -->
+                            <?php 
+                            }
+                            ?>
                 </div>
             </div>
 </div>

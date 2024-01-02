@@ -1370,3 +1370,21 @@ footer .coppyrightText{
 .content-sidebar{
    width: 100%;
 }
+.quick-select .box-container .box .flex a .deleteTag{
+   position: absolute;
+   background: red;
+   color: white;
+   border-radius: 50%;
+   font-size: 14px;
+   margin-left: 5px;
+   margin-top: -13px;
+}
+.quick-select .box-container .box .flex a .deleteTag{
+   position: absolute;
+   background: red;
+   color: white;
+   border-radius: 50%;
+   font-size: 14px;
+   margin-left: 5px;
+   margin-top: -13px;
+}
