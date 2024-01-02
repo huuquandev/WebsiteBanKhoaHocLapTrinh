@@ -91,13 +91,18 @@
             <img src="<?php echo "images/images_courses/". $row['anh_khoahoc']; ?>" class="card-img-top" height="200vh" alt="">
             </div>
             <h3 class="title" style="min-height: 50px"><?php echo $row['ten_khoahoc']; ?></h3>
+            <?php 
+               if (isset($row_tag['ten_tag']) && $row_tag['ten_tag']!=null) {
+            ?>
             <span class="course_tag" style="
             font-size: 20px;
             color: white;
             background-color: gray;
             padding: 5px;
-            border-radius: 10px;"
-         ><?= $row_tag['ten_tag'];  ?></span>
+            border-radius: 10px;">
+            <?php echo $row_tag['ten_tag']; ?>
+            </span>
+            <?php }  ?>
             <h5 class="title">Miễn phí</h5>
             <a href="home.php?title=detailcourses&idKH=<?php echo $row['id_khoahoc']; ?>" style="display: block;" class="btn btn-success">Chi tiết</a>
          </div>
@@ -105,11 +110,9 @@
          }
       ?>
    </div>
-
-
 </section>
 <?php 
-      }; 
+      }
 ?>
 <script>
    //Hiển thị thêm sửa xóa

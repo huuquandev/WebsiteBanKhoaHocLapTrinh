@@ -28,12 +28,6 @@
                             <div class="card-header">
                                 <strong class="card-title">Tài khoản</strong>
                             </div>
-                            <?php 
-                            $sql = "SELECT * FROM tb_tai_khoan";  
-                            $query = mysqli_query($conn, $sql);
-                            if(mysqli_num_rows($query) > 0)
-                            {
-                            ?>
                             <div class="table-stats order-table ov-h">
                                 <table class="table">
                                     <thead>
@@ -49,6 +43,10 @@
                                         </tr>
                                     </thead>
                                     <?php
+                                     $sql = "SELECT * FROM tb_tai_khoan";  
+                                     $query = mysqli_query($conn, $sql);
+                                     if(mysqli_num_rows($query) > 0)
+                                     {
                                         $count = 1; 
                                       while ($row = mysqli_fetch_assoc($query)) {      
                                      ?>
@@ -77,13 +75,11 @@
 
                                     </tbody>
                                     <?php 
+                                        }
                                       }
                                      ?>
                                 </table>
                             </div> <!-- /.table-stats -->
-                            <?php 
-                            }
-                            ?>
                 </div>
             </div>
 </div>

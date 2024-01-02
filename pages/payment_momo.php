@@ -14,8 +14,9 @@ $secretKey = $array['secretKey'];
 $orderInfo = "Thanh toán qua MoMo";
 $amount = $_POST['tongtien'];
 $orderId = time() ."";
-$redirectUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
-$ipnUrl = "https://webhook.site/b3088a6a-2d17-4f8d-a383-71389a6c600b";
+$idKH = $_POST['idKH'];
+$redirectUrl = "http://localhost:3000/pages/checkout.php?courses=$idKH&method=3";
+$ipnUrl = "http://localhost:3000/pages/checkout.php?courses=$idKH&method=3";
 $extraData = "";
 
     $requestId = time() . "";

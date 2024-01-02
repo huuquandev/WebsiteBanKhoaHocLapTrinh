@@ -1,4 +1,5 @@
 <?php
+    require('mail/send_mail.php');
     //Check session
     function checkLogin(){
         if(!isset($_SESSION['id_taikhoan'])){
@@ -396,10 +397,25 @@
         $row = mysqli_fetch_assoc($query);
         return $row;
     }
+    //---Lấy hóa đơn theo id---
+    //---Quân---
+    function GetOrderById($Id_order){
+        GLOBAL $conn;
+        $filter_Id_order = mysqli_real_escape_string($conn, $Id_order);
+        $sql = "SELECT tb_hoadon.*, tb_tai_khoan.*, tb_khoa_hoc.*, tb_cms_tai_khoan.ten_hien_thi AS ten_nguoi_dang, tb_cms_tai_khoan.hinh_anh AS anh_nguoi_dang
+        FROM tb_hoadon 
+        JOIN tb_tai_khoan ON tb_tai_khoan.id_taikhoan = tb_hoadon.id_taikhoan
+        JOIN tb_khoa_hoc ON tb_khoa_hoc.id_khoahoc = tb_hoadon.id_khoahoc
+        JOIN tb_cms_tai_khoan ON tb_khoa_hoc.id_taikhoan = tb_cms_tai_khoan.id_cms_taikhoan
+        WHERE tb_hoadon.id_hoadon  = '$filter_Id_order'";
+        $query = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($query);
+        return $row;
+    }
     //---Xóa thẻ hoặc nhiểu thẻ---
     //---Quân---
     function deleteTags($tags) {
-        global $conn;
+        GLOBAL $conn;
         $deletedCount = 0;  
         foreach ($tags as $name_Tag) {
             $filter_name_Tag = mysqli_real_escape_string($conn, $name_Tag);
@@ -410,7 +426,65 @@
     
         return $deletedCount;
     }
-    
+    //---Update trạng thái thanh toán cho hóa đơn---
+    //---Quân---
+    function UpdateStatusOrder($id_order, $status, $id_user, $id_courses) {
+        GLOBAL $conn;
+        $filter_id_order = mysqli_real_escape_string($conn, $id_order);
+        $filter_status = mysqli_real_escape_string($conn, $status);
+        $filter_id_user = mysqli_real_escape_string($conn, $id_user);
+        $filter_id_courses = mysqli_real_escape_string($conn, $id_courses);
+        $sql = "UPDATE tb_hoadon SET tb_hoadon.trangthai_thanhtoan='$filter_status' WHERE tb_hoadon.id_hoadon=$filter_id_order";    
+        $query = mysqli_query($conn, $sql); 
+        if ($query) {    
+            if($filter_status == 1){
+                $sql_insertBycourses = "INSERT INTO tb_khoahoc_damua(id_khoahoc, id_taikhoan, ngay_mua) 
+                                 VALUES('$filter_id_courses', '$filter_id_user', NOW())";   
+                $query_insertBycourses = mysqli_query($conn, $sql_insertBycourses); 
+
+                $sql_user = "SELECT * FROM tb_tai_khoan WHERE tb_tai_khoan.id_taikhoan = $filter_id_user";    
+                $query_user = mysqli_query($conn, $sql_user); 
+                $row = mysqli_fetch_assoc($query_user);
+
+                $mail = new Mailer();
+                $tieude = "Xác nhận thanh toán khóa học";
+                $noidung = $row['ten_hien_thi'];
+                $mailmuakhoahoc = $row['email'];              
+                $mail->xacnhanthanhtoan($tieude, $noidung, $mailmuakhoahoc);
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //---Thêm quyền---
+    //---Quân---
+    function addRole($ten_quyen){
+        GLOBAL $conn;
+        $filter_ten_quyen = mysqli_real_escape_string($conn, $ten_quyen);
+        $sql = "INSERT INTO tb_quyen(ten_quyen) VALUES('$filter_ten_quyen')";     
+        $query = mysqli_query($conn, $sql); 
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //---Sửa quyền---
+    //---Quân---
+    function UpdateRole($ten_quyen, $id_quyen){
+        GLOBAL $conn;
+        $filter_ten_quyen = mysqli_real_escape_string($conn, $ten_quyen);
+        $filter_id_quyen = mysqli_real_escape_string($conn, $id_quyen);
+
+        $sql = "UPDATE tb_quyen SET tb_quyen.ten_quyen='$filter_ten_quyen' WHERE tb_quyen.id_quyen=$filter_id_quyen";     
+        $query = mysqli_query($conn, $sql); 
+        if($query){
+            return true;
+        }else{
+            return false;
+        }
+    }
     //---Thêm bài viết
     function addPost($tieu_de, $mo_ta, $noi_dung, $id_tag, $id_taikhoan){
         GLOBAL $conn;
@@ -456,6 +530,79 @@
             return $message;
         }
     }
+    //------ Doi mat khau---------------
+    function resetPassword($email, $newpassword){
+        GLOBAL $conn;
+        $filter_email = mysqli_real_escape_string($conn, $email);
+        $filter_newpassword = mysqli_real_escape_string($conn, $newpassword);
+        $sql = "update tb_tai_khoan set mat_khau = '".$filter_newpassword."' where email = '".$filter_email."'";
+        $query = mysqli_query($conn, $sql);
+        if($query){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    function deleteCodeConfirmByemail($email) {
+        GLOBAL $conn;
     
+        // Chuẩn bị câu truy vấn DELETE
+        $sql = "DELETE FROM code_confirm WHERE email = '$email'";
+    
+        // Thực thi câu truy vấn DELETE
+        $query = mysqli_query($conn, $sql);
+        
+        // Kiểm tra xem câu truy vấn đã thành công hay không
+        if($query){
+            return true;
+        } else{
+            return false;
+        }
+    }
+    
+    function checkIfPasswordEqualNewPassword($username, $newpassword, $email){
+        GLOBAL $conn;
+        
+        // Lấy thông tin tài khoản từ cơ sở dữ liệu
+        $sql = "SELECT password FROM tb_tai_khoan WHERE password = '".$newpassword."' AND email='".$email."'";
+        $query = mysqli_query($conn, $sql);
+        
+        // Kiểm tra số lượng bản ghi trả về
+        if(mysqli_num_rows($query) != 0) {
+            return true; // Mật khẩu trong cơ sở dữ liệu giống với mật khẩu mới
+        } 
+        
+        return false; // Mật khẩu trong cơ sở dữ liệu không giống với mật khẩu mới
+        }
+        function getUserInfo($user){
+            GLOBAL $conn;
+            $filter_user = mysqli_real_escape_string($conn, $user);
+            $data = array();
+            $sql = "SELECT * FROM tb_tai_khoan WHERE id_taikhoan = '$filter_user'";
+            $query = mysqli_query($conn, $sql);
+            if(mysqli_num_rows($query) > 0){
+                while ($row = mysqli_fetch_assoc($query)) {
+                    array_push($data, $row);
+                }
+            }
+            return $data;
+        }
+        function UpdateInfor($id, $name, $ngaysinh,$gioitinh,$sdt){
+            GLOBAL $conn;
+            $filter_id = mysqli_real_escape_string($conn, $id);
+            $filter_name = mysqli_real_escape_string($conn, $name);
+            $filter_ngaysinh = mysqli_real_escape_string($conn, $ngaysinh);
+            $filter_gioitinh = mysqli_real_escape_string($conn, $gioitinh);
+            $filter_sdt = mysqli_real_escape_string($conn, $sdt);
+
+            echo 		$filter_ngaysinh;
+            $sql = "UPDATE tb_tai_khoan SET ten_hien_thi = '$filter_name',  ngay_sinh = '$filter_ngaysinh', gioi_tinh ='$gioitinh', sdt='$sdt' WHERE id_taikhoan = '$filter_id'";
+            $query = mysqli_query($conn, $sql);
+            if($query){
+                return true;
+            } else{
+                return false;
+            }
+	}
     
 ?>

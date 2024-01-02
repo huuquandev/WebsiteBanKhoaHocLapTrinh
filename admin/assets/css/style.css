@@ -2518,6 +2518,7 @@ footer.site-footer {
     vertical-align: baseline;
     border-radius: 0.25rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
     }
     .iconOption i{
       font-size: 20px;
@@ -2548,6 +2549,8 @@ footer.site-footer {
 .order_table_list .badge-pending {
   background: #fb9678;
 }
+.badge-complete {
+  background: #00c292; }
 .post_table .post-content{
   position: relative;
   display: flex;
@@ -2618,4 +2621,87 @@ footer.site-footer {
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 0.25rem;
 }
+.detail-order{
+  display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+.detail-order .column {
+  flex: 1 1 30rem
+}
+.detail-order .column .thumb {
+  position: relative;
+}
+.detail-order .column .thumb img {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+.detail-order .column .tutor {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.detail-order .column .tutor img {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.detail-order .column .tutor h3 {
+  font-size: 1rem;
+  color: var(--black);
+  margin-bottom: 0.2rem;
+}
+.detail-order .column .tutor span {
+  font-size: 1rem;
+  color: var(--light-color);
+}
+.detail-order .column .details {
+  flex: 1 1 30rem
+}
+.detail-order .column .details h3 {
+  font-size: 1rem;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.detail-order .column .details p {
+  padding: 1rem 0;
+  line-height: 2;
+  font-size: 1rem;
+  color: var(--light-color);
+}
+.detail-order .column .title-content {
+  display: flex;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+.detail-order .column .title-content ul {
+  display: flex;
+  margin: 0;
+  padding-left: 0;
+}
+.detail-order .column .title-content li {
+  display: inline-block;
+}
+.detail-order .column .title-content strong {
+  font-weight: 600;
+}
+.detail-order .column .title-content .content_lesson {
+  font-size: 1rem;
+  margin-top: 1px;
+  opacity: .8;
+  padding: 0 8px;
+}
+.detail-order .column .details .title {
+  padding-bottom: 1rem;
+  color: var(--black);
+}
+
 /*# sourceMappingURL=style.css.map */

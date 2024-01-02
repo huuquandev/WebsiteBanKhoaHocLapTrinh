@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 06, 2023 lúc 01:29 PM
+-- Thời gian đã tạo: Th1 02, 2024 lúc 09:42 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -40,7 +40,8 @@ CREATE TABLE `tb_baiviet_tags` (
 INSERT INTO `tb_baiviet_tags` (`id_baiviet`, `id_tag`, `id_baiviet_tag`) VALUES
 (30, 1, 18),
 (31, 3, 19),
-(32, 4, 20);
+(32, 4, 20),
+(33, 1, 21);
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,8 @@ CREATE TABLE `tb_bai_viet` (
 INSERT INTO `tb_bai_viet` (`id_baiviet`, `id_taikhoan`, `noidung_baivet`, `ten_baiviet`, `mota_baiviet`, `ngaydang_baiviet`, `anh_baiviet`, `xoa_baiviet`) VALUES
 (30, 8, '<p>ưeqweqw</p>\r\n', 'eqweqw', ' eqweqw', '2023-11-28 15:47:51', 'tbH45AsqfZ8AkCfp6eVg.png', 0),
 (31, 1, '<p>Để sử dụng dev mode, bạn cần phải <u><span style=\"color:#e74c3c\">truy cập</span></u> v&agrave;o kh&oacute;a học Pro</p>\r\n', 'Hướng dẫn chi tiết cách sử dụng Dev Mode trong khóa Pro', ' Đây là bài viết hướng dẫn cách sử dụng Dev Mode', '2023-11-29 14:11:14', 'HyYXRdwF1cYsTlu641Lo.jpg', 0),
-(32, 1, '<p><span style=\"color:#1abc9c\">b&agrave;i viết mi&ecirc;u tả về c&aacute;c loại con vật</span></p>\r\n', 'Bài viết mới', ' bài viết nói về nhiều chủ đề khác nhau', '2023-11-29 15:41:18', NULL, 0);
+(32, 1, '<p><span style=\"color:#1abc9c\">b&agrave;i viết mi&ecirc;u tả về c&aacute;c loại con vật</span></p>\r\n', 'Bài viết mới', ' bài viết nói về nhiều chủ đề khác nhau', '2023-11-29 15:41:18', NULL, 0),
+(33, 1, '<figure class=\"easyimage easyimage-full\"><img alt=\"\" src=\"blob:http://localhost:3000/b608ddef-6e86-4add-b2b1-36b58f459899\" width=\"650\" />\r\n<figcaption></figcaption>\r\n</figure>\r\n\r\n<p>&nbsp;</p>\r\n', 'Hướng dẫn chi tiết cách sử dụng Dev Mode trong khóa Pro', ' wqeqwe', '2024-01-01 23:49:13', 'lt1yZdOeqmXJ8e96UVBz.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -122,6 +124,40 @@ INSERT INTO `tb_cms_tai_khoan` (`id_cms_taikhoan`, `email`, `ten_hien_thi`, `mat
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tb_hoadon`
+--
+
+CREATE TABLE `tb_hoadon` (
+  `id_hoadon` int(11) NOT NULL,
+  `ma_hoadon` varchar(50) NOT NULL,
+  `id_taikhoan` int(11) NOT NULL,
+  `id_khoahoc` int(11) NOT NULL,
+  `ngay_mua` datetime NOT NULL,
+  `so_tien` decimal(10,0) NOT NULL,
+  `phuongthuc_thanhtoan` int(11) NOT NULL,
+  `trangthai_thanhtoan` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_hoadon`
+--
+
+INSERT INTO `tb_hoadon` (`id_hoadon`, `ma_hoadon`, `id_taikhoan`, `id_khoahoc`, `ngay_mua`, `so_tien`, `phuongthuc_thanhtoan`, `trangthai_thanhtoan`) VALUES
+(1, '2506', 20, 22, '2024-01-02 00:23:44', 123123, 1, 1),
+(2, '2922', 20, 22, '2024-01-02 02:20:11', 123123, 1, 1),
+(4, '2443', 20, 22, '2024-01-02 03:19:18', 123123, 1, 1),
+(5, '3409', 20, 22, '2024-01-02 03:28:52', 123123, 1, 1),
+(6, '2382', 20, 22, '2024-01-02 03:29:12', 123123, 1, 1),
+(7, '4596', 20, 22, '2024-01-02 03:30:55', 123123, 1, 1),
+(8, '4379', 20, 22, '2024-01-02 03:49:35', 123123, 2, 1),
+(9, '4023', 20, 22, '2024-01-02 03:51:07', 123123, 2, 0),
+(10, '8084', 26, 22, '2024-01-02 20:01:47', 123123, 2, 0),
+(11, '4389', 26, 21, '2024-01-02 20:03:18', 109000, 3, 0),
+(12, '7430', 26, 21, '2024-01-02 20:03:43', 109000, 3, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tb_hoc_lieu`
 --
 
@@ -162,7 +198,8 @@ CREATE TABLE `tb_khoahoc_damua` (
 --
 
 INSERT INTO `tb_khoahoc_damua` (`id_khoahoc_damua`, `id_khoahoc`, `id_taikhoan`, `ngay_mua`) VALUES
-(2, 5, 26, '2023-12-06 09:11:07');
+(2, 5, 26, '2023-12-06 09:11:07'),
+(3, 22, 20, '2024-01-03 02:03:35');
 
 -- --------------------------------------------------------
 
@@ -250,6 +287,99 @@ INSERT INTO `tb_lienhe` (`id_lienhe`, `Ho_ten`, `E_mail`, `So_dien_thoai`, `Noi_
 (10, 'EQWE', 'huuquan18@gmail.com', '3123213', '312123', '2023-10-17 22:54:57'),
 (11, 'EQWE', 'huuquan18@gmail.com', '3123213', '312123', '2023-10-17 22:55:05'),
 (12, 'admin', 'huylohb123@gmail.com', '0378452231', 'tôi muốn thắc mắc', '2023-11-29 15:46:00');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_momo`
+--
+
+CREATE TABLE `tb_momo` (
+  `id_momo` int(11) NOT NULL,
+  `partner_code` varchar(50) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `amount` varchar(50) NOT NULL,
+  `order_info` varchar(50) NOT NULL,
+  `order_type` varchar(50) NOT NULL,
+  `trans_id` int(11) NOT NULL,
+  `pay_type` varchar(50) NOT NULL,
+  `ma_hoadon` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_momo`
+--
+
+INSERT INTO `tb_momo` (`id_momo`, `partner_code`, `order_id`, `amount`, `order_info`, `order_type`, `trans_id`, `pay_type`, `ma_hoadon`) VALUES
+(1, 'MOMOBKUN20180529', 1704200516, '109000', 'Thanh toán qua MoMo', 'momo_wallet', 2147483647, 'napas', '7430');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_quyen`
+--
+
+CREATE TABLE `tb_quyen` (
+  `id_quyen` int(11) NOT NULL,
+  `ten_quyen` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_quyen`
+--
+
+INSERT INTO `tb_quyen` (`id_quyen`, `ten_quyen`) VALUES
+(1, 'Thêm'),
+(2, 'Sửa'),
+(3, 'Xóa'),
+(4, 'Xem'),
+(5, 'Thêm bài viết'),
+(6, 'Thêm khóa học');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_quyen_vaitro`
+--
+
+CREATE TABLE `tb_quyen_vaitro` (
+  `id_quyen_vaitro` int(11) NOT NULL,
+  `id_quyen` int(11) DEFAULT NULL,
+  `id_vaitro` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_quyen_vaitro`
+--
+
+INSERT INTO `tb_quyen_vaitro` (`id_quyen_vaitro`, `id_quyen`, `id_vaitro`) VALUES
+(1, 2, 1),
+(2, 1, 1),
+(3, 4, 1),
+(4, 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_rating`
+--
+
+CREATE TABLE `tb_rating` (
+  `id_rate` int(10) NOT NULL,
+  `hoten_rate` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_520_nopad_ci NOT NULL,
+  `noidung_rate` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_520_nopad_ci NOT NULL,
+  `rate_score` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_520_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_rating`
+--
+
+INSERT INTO `tb_rating` (`id_rate`, `hoten_rate`, `noidung_rate`, `rate_score`) VALUES
+(1, 'a', 'b', 5),
+(2, 'Nguyễn Văn A', 'Website hay quá', 5),
+(3, 'Nguyễn Văn A', 'Website hay quá', 5),
+(4, 'Nguyễn Văn A', 'Website hay quá', 5);
 
 -- --------------------------------------------------------
 
@@ -382,6 +512,55 @@ INSERT INTO `tb_thichhoclieu` (`id_thichhoclieu`, `id_hoclieu`, `id_taikhoan`) V
 (2, 8, 22),
 (3, 8, 21);
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_vaitro`
+--
+
+CREATE TABLE `tb_vaitro` (
+  `id_vaitro` int(11) NOT NULL,
+  `ten_vaitro` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_vaitro`
+--
+
+INSERT INTO `tb_vaitro` (`id_vaitro`, `ten_vaitro`) VALUES
+(1, 'Quản trị viên'),
+(2, 'Quản trị nội dung'),
+(3, 'Quản lý bài viết'),
+(4, 'Quản lý khóa học'),
+(5, 'Quản lý tag');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_vnpay`
+--
+
+CREATE TABLE `tb_vnpay` (
+  `id_vnpay` int(11) NOT NULL,
+  `so_tien_vnpay` varchar(50) NOT NULL,
+  `bankcode_vnpay` varchar(50) NOT NULL,
+  `banktrano_vnpay` varchar(50) NOT NULL,
+  `cardtype_vnpay` varchar(50) NOT NULL,
+  `orderinfo_vnpay` varchar(50) NOT NULL,
+  `paydate_vnpay` varchar(50) NOT NULL,
+  `tmncode_vnpay` varchar(50) NOT NULL,
+  `transactinono_vnpay` varchar(50) NOT NULL,
+  `ma_hoadon` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_vnpay`
+--
+
+INSERT INTO `tb_vnpay` (`id_vnpay`, `so_tien_vnpay`, `bankcode_vnpay`, `banktrano_vnpay`, `cardtype_vnpay`, `orderinfo_vnpay`, `paydate_vnpay`, `tmncode_vnpay`, `transactinono_vnpay`, `ma_hoadon`) VALUES
+(1, '12312300', 'NCB', 'VNP14266996', 'ATM', 'Thanh toán qua VNPAY', '20240102034931', 'B8J1NGM3', '14266996', '4023'),
+(2, '12312300', 'NCB', 'VNP14267798', 'ATM', 'Thanh toán qua VNPAY', '20240102195936', 'B8J1NGM3', '14267798', '8084');
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -414,6 +593,12 @@ ALTER TABLE `tb_binh_luan`
 --
 ALTER TABLE `tb_cms_tai_khoan`
   ADD PRIMARY KEY (`id_cms_taikhoan`);
+
+--
+-- Chỉ mục cho bảng `tb_hoadon`
+--
+ALTER TABLE `tb_hoadon`
+  ADD PRIMARY KEY (`id_hoadon`);
 
 --
 -- Chỉ mục cho bảng `tb_hoc_lieu`
@@ -450,6 +635,32 @@ ALTER TABLE `tb_khoa_hoc`
 --
 ALTER TABLE `tb_lienhe`
   ADD PRIMARY KEY (`id_lienhe`);
+
+--
+-- Chỉ mục cho bảng `tb_momo`
+--
+ALTER TABLE `tb_momo`
+  ADD PRIMARY KEY (`id_momo`);
+
+--
+-- Chỉ mục cho bảng `tb_quyen`
+--
+ALTER TABLE `tb_quyen`
+  ADD PRIMARY KEY (`id_quyen`);
+
+--
+-- Chỉ mục cho bảng `tb_quyen_vaitro`
+--
+ALTER TABLE `tb_quyen_vaitro`
+  ADD PRIMARY KEY (`id_quyen_vaitro`),
+  ADD KEY `id_vaitro` (`id_vaitro`),
+  ADD KEY `id_quyen` (`id_quyen`);
+
+--
+-- Chỉ mục cho bảng `tb_rating`
+--
+ALTER TABLE `tb_rating`
+  ADD PRIMARY KEY (`id_rate`);
 
 --
 -- Chỉ mục cho bảng `tb_tag`
@@ -496,6 +707,18 @@ ALTER TABLE `tb_thichhoclieu`
   ADD KEY `thichhoclieu_taikhoan` (`id_taikhoan`);
 
 --
+-- Chỉ mục cho bảng `tb_vaitro`
+--
+ALTER TABLE `tb_vaitro`
+  ADD PRIMARY KEY (`id_vaitro`);
+
+--
+-- Chỉ mục cho bảng `tb_vnpay`
+--
+ALTER TABLE `tb_vnpay`
+  ADD PRIMARY KEY (`id_vnpay`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -503,13 +726,13 @@ ALTER TABLE `tb_thichhoclieu`
 -- AUTO_INCREMENT cho bảng `tb_baiviet_tags`
 --
 ALTER TABLE `tb_baiviet_tags`
-  MODIFY `id_baiviet_tag` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_baiviet_tag` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_bai_viet`
 --
 ALTER TABLE `tb_bai_viet`
-  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_baiviet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_binh_luan`
@@ -524,6 +747,12 @@ ALTER TABLE `tb_cms_tai_khoan`
   MODIFY `id_cms_taikhoan` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT cho bảng `tb_hoadon`
+--
+ALTER TABLE `tb_hoadon`
+  MODIFY `id_hoadon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT cho bảng `tb_hoc_lieu`
 --
 ALTER TABLE `tb_hoc_lieu`
@@ -533,7 +762,7 @@ ALTER TABLE `tb_hoc_lieu`
 -- AUTO_INCREMENT cho bảng `tb_khoahoc_damua`
 --
 ALTER TABLE `tb_khoahoc_damua`
-  MODIFY `id_khoahoc_damua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_khoahoc_damua` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_khoahoc_tags`
@@ -552,6 +781,30 @@ ALTER TABLE `tb_khoa_hoc`
 --
 ALTER TABLE `tb_lienhe`
   MODIFY `id_lienhe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_momo`
+--
+ALTER TABLE `tb_momo`
+  MODIFY `id_momo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_quyen`
+--
+ALTER TABLE `tb_quyen`
+  MODIFY `id_quyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_quyen_vaitro`
+--
+ALTER TABLE `tb_quyen_vaitro`
+  MODIFY `id_quyen_vaitro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_rating`
+--
+ALTER TABLE `tb_rating`
+  MODIFY `id_rate` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_tag`
@@ -588,6 +841,18 @@ ALTER TABLE `tb_thichbinhluan`
 --
 ALTER TABLE `tb_thichhoclieu`
   MODIFY `id_thichhoclieu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_vaitro`
+--
+ALTER TABLE `tb_vaitro`
+  MODIFY `id_vaitro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_vnpay`
+--
+ALTER TABLE `tb_vnpay`
+  MODIFY `id_vnpay` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -638,6 +903,13 @@ ALTER TABLE `tb_khoahoc_tags`
 --
 ALTER TABLE `tb_khoa_hoc`
   ADD CONSTRAINT `khoahoc_cms` FOREIGN KEY (`id_taikhoan`) REFERENCES `tb_cms_tai_khoan` (`id_cms_taikhoan`);
+
+--
+-- Các ràng buộc cho bảng `tb_quyen_vaitro`
+--
+ALTER TABLE `tb_quyen_vaitro`
+  ADD CONSTRAINT `id_quyen` FOREIGN KEY (`id_quyen`) REFERENCES `tb_quyen` (`id_quyen`),
+  ADD CONSTRAINT `id_vaitro` FOREIGN KEY (`id_vaitro`) REFERENCES `tb_vaitro` (`id_vaitro`) ON DELETE SET NULL;
 
 --
 -- Các ràng buộc cho bảng `tb_thanhtoan`

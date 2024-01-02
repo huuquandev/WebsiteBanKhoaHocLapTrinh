@@ -19,6 +19,8 @@
                     include("adminmain/admin_role.php");
                 }if($tam == "admin_permission"){
                     include("adminmain/admin_permission.php");
+                }if($tam == "admin_order_details"){
+                    include("adminmain/admin_order_details.php");
                 }
                 
             }else{
